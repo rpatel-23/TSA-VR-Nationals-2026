@@ -74,6 +74,10 @@ namespace Decrypted.Interaction
         [SerializeField] private Transform _exitDoor;
         [SerializeField] private Vector3 _doorOpenLocalOffset = new Vector3(0f, 3.2f, 0f);
         [SerializeField] private float _doorOpenSeconds = 1.6f;
+        [Tooltip("When true, drive the exit door via a Blender FBX Animator (the " +
+                 "'Open' trigger) instead of the transform slide. Default false = " +
+                 "current behaviour. See Documentation/08_Animation_Pipeline.md.")]
+        [SerializeField] private bool _useBlenderAnimations = false;
 
         [Header("Audio")]
         [SerializeField] private string _gearStepKey = "sfx_gear_step";
@@ -87,6 +91,13 @@ namespace Decrypted.Interaction
         private bool _armed;          // lever is live (ready to commit)
         private bool _solved;
         private string _lastDecoded = string.Empty;
+
+        // Exit-door motion goes through this swappable animator (procedural slide or
+        // Blender Animator), so this controller never moves the door transform directly.
+        private IEnigmaAnimator _enigmaAnim;
+        private IEnigmaAnimator EnigAnim => _enigmaAnim ??= (_useBlenderAnimations && _exitDoorAnimator != null)
+            ? (IEnigmaAnimator)new BlenderEnigmaAnimator(_exitDoorAnimator)
+            : new ProceduralEnigmaAnimator(_exitDoor);
 
         // ----------------------------------------------------------------- life
 
@@ -261,9 +272,9 @@ namespace Decrypted.Interaction
             }
             SetTimelineEmissive(_timelinePeak);
 
-            // Open the exit door (Animator preferred, transform slide as fallback).
-            if (_exitDoorAnimator != null) _exitDoorAnimator.SetTrigger("Open");
-            else if (_exitDoor != null) yield return SlideDoorOpen();
+            // Open the exit door through the animator (Blender trigger wins if used;
+            // otherwise the procedural slide runs).
+            if (!EnigAnim.TryTriggerOpen() && _exitDoor != null) yield return SlideDoorOpen();
 
             // Tell the rest of the museum. GameManager schedules the transition.
             GameManager.Instance?.MarkSolved(MuseumState.WWIIRoom);
@@ -288,10 +299,10 @@ namespace Decrypted.Interaction
             while (t < 1f)
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, _doorOpenSeconds);
-                _exitDoor.localPosition = Vector3.Lerp(start, end, Mathf.SmoothStep(0f, 1f, t));
+                EnigAnim.SetExitDoorPosition(Vector3.Lerp(start, end, Mathf.SmoothStep(0f, 1f, t)));
                 yield return null;
             }
-            _exitDoor.localPosition = end;
+            EnigAnim.SetExitDoorPosition(end);
         }
 
         private void EmitTraces()

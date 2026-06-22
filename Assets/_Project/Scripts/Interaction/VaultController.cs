@@ -43,6 +43,10 @@ namespace Decrypted.Interaction
         [SerializeField] private float _openSeconds = 2.4f;
         [SerializeField] private AnimationCurve _openEase =
             AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        [Tooltip("When true, drive the door + ring via a Blender FBX Animator (the " +
+                 "'Open' trigger) instead of the procedural tween. Default false = " +
+                 "current behaviour. See Documentation/08_Animation_Pipeline.md.")]
+        [SerializeField] private bool _useBlenderAnimations = false;
 
         [Header("Locking ring")]
         [Tooltip("Optional ring that spins as the bolts retract.")]
@@ -75,6 +79,14 @@ namespace Decrypted.Interaction
         private Quaternion _doorClosedRot;
         private Vector3 _doorClosedPos;
 
+        // Door + locking-ring motion goes through this swappable animator (procedural
+        // tween or Blender Animator), so this controller never moves those transforms
+        // directly.
+        private IVaultAnimator _vaultAnim;
+        private IVaultAnimator VaultAnim => _vaultAnim ??= (_useBlenderAnimations && _doorAnimator != null)
+            ? (IVaultAnimator)new BlenderVaultAnimator(_doorAnimator)
+            : new ProceduralVaultAnimator(_door, _lockingRing);
+
         private void Awake()
         {
             _mpb = new MaterialPropertyBlock();
@@ -101,11 +113,8 @@ namespace Decrypted.Interaction
         {
             StopAllCoroutines();
             _unlocked = false;
-            if (_door != null)
-            {
-                _door.localRotation = _doorClosedRot;
-                _door.localPosition = _doorClosedPos;
-            }
+            VaultAnim.SetDoorRotation(_doorClosedRot);
+            VaultAnim.SetDoorPosition(_doorClosedPos);
             SetStatusLights(_lockedColor);
             SetArchiveEmissive(0f);
             SetRevealLights(0f);
@@ -124,9 +133,8 @@ namespace Decrypted.Interaction
             if (_lockingRing != null) yield return SpinRing();
 
             // 3) Open the door (Animator wins if present), warming the room in parallel.
-            if (_doorAnimator != null)
+            if (VaultAnim.TryTriggerOpen())
             {
-                _doorAnimator.SetTrigger("Open");
                 StartCoroutine(RevealRoom(_openSeconds));
                 yield return new WaitForSeconds(_openSeconds);
             }
@@ -151,10 +159,10 @@ namespace Decrypted.Interaction
             while (t < 1f)
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, _ringSpinSeconds);
-                _lockingRing.localRotation = Quaternion.Slerp(start, end, Mathf.SmoothStep(0f, 1f, t));
+                VaultAnim.SetRingRotation(Quaternion.Slerp(start, end, Mathf.SmoothStep(0f, 1f, t)));
                 yield return null;
             }
-            _lockingRing.localRotation = end;
+            VaultAnim.SetRingRotation(end);
         }
 
         private IEnumerator OpenDoorTween()
@@ -172,13 +180,13 @@ namespace Decrypted.Interaction
                 t += Time.deltaTime / Mathf.Max(0.01f, _openSeconds);
                 float k = _openEase.Evaluate(Mathf.Clamp01(t));
                 if (_style == DoorStyle.Hinged)
-                    _door.localRotation = Quaternion.Slerp(rotStart, rotEnd, k);
+                    VaultAnim.SetDoorRotation(Quaternion.Slerp(rotStart, rotEnd, k));
                 else
-                    _door.localPosition = Vector3.Lerp(posStart, posEnd, k);
+                    VaultAnim.SetDoorPosition(Vector3.Lerp(posStart, posEnd, k));
                 yield return null;
             }
-            if (_style == DoorStyle.Hinged) _door.localRotation = rotEnd;
-            else _door.localPosition = posEnd;
+            if (_style == DoorStyle.Hinged) VaultAnim.SetDoorRotation(rotEnd);
+            else VaultAnim.SetDoorPosition(posEnd);
         }
 
         private IEnumerator RevealRoom(float seconds)

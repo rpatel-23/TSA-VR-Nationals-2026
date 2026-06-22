@@ -13349,6 +13349,8 @@ MonoBehaviour:
   _detentMagnetism: 0.25
   _detentSfxKey: sfx_brass_click
   _detentVolume: 0.7
+  _useBlenderAnimations: 0
+  _blenderAnimator: {fileID: 0}
 --- !u!65 &57804337
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -95260,7 +95262,7 @@ Transform:
   m_GameObject: {fileID: 401925910}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2.039, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -96226,7 +96228,7 @@ MonoBehaviour:
   _verboseEventLogging: 0
   _requireSolveToAdvance: 1
   _restoreProgressOnLaunch: 0
-  _demoMode: 0
+  _demoMode: 1
 --- !u!114 &404104028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237081,6 +237083,8 @@ MonoBehaviour:
   _detentMagnetism: 0.25
   _detentSfxKey: sfx_brass_click
   _detentVolume: 0.7
+  _useBlenderAnimations: 0
+  _blenderAnimator: {fileID: 0}
 --- !u!65 &989090035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -290451,7 +290455,7 @@ Transform:
   m_GameObject: {fileID: 1204633110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.6}
+  m_LocalPosition: {x: 0, y: 1.3, z: -0.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -303119,6 +303123,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _useBlenderAnimations: 0
   _lockingRing: {fileID: 1255190822}
   _ringSpinDegrees: 220
   _ringSpinSeconds: 1
@@ -353899,7 +353904,7 @@ Transform:
   m_GameObject: {fileID: 1468478032}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.14, z: 0}
+  m_LocalPosition: {x: 0, y: -0.074, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -411874,6 +411879,8 @@ MonoBehaviour:
   _detentMagnetism: 0.25
   _detentSfxKey: sfx_brass_click
   _detentVolume: 0.7
+  _useBlenderAnimations: 0
+  _blenderAnimator: {fileID: 0}
 --- !u!114 &1692822691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411905,6 +411912,7 @@ MonoBehaviour:
   _exitDoor: {fileID: 0}
   _doorOpenLocalOffset: {x: 0, y: 3.2, z: 0}
   _doorOpenSeconds: 1.6
+  _useBlenderAnimations: 0
   _gearStepKey: sfx_gear_step
   _successKey: sfx_success_chime
 --- !u!114 &1692822692
@@ -466037,6 +466045,8 @@ MonoBehaviour:
   _detentMagnetism: 0.25
   _detentSfxKey: sfx_brass_click
   _detentVolume: 0.7
+  _useBlenderAnimations: 0
+  _blenderAnimator: {fileID: 0}
 --- !u!65 &1919261584
 BoxCollider:
   m_ObjectHideFlags: 0

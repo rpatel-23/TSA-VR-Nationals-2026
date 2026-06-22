@@ -47,6 +47,13 @@ namespace Decrypted.Interaction
         [SerializeField] private string _detentSfxKey = "sfx_brass_click";
         [SerializeField] private float _detentVolume = 0.7f;
 
+        [Header("Animation (procedural by default; Blender = Animator)")]
+        [Tooltip("When true, drive a Unity Animator (Blender FBX) via the 'DiskAngle' " +
+                 "float instead of rotating the transform directly. Default false = " +
+                 "current behaviour. See Documentation/08_Animation_Pipeline.md.")]
+        [SerializeField] private bool _useBlenderAnimations = false;
+        [SerializeField] private Animator _blenderAnimator;
+
         /// <summary>Current detent index in [0, Detents-1].</summary>
         public int CurrentStep { get; private set; }
 
@@ -59,6 +66,13 @@ namespace Decrypted.Interaction
         private bool _hasPrev;
         private Coroutine _snap;
         private float StepDeg => 360f / Mathf.Max(1, _detents);
+
+        // All visible rotation of the dial goes through this swappable animator, so
+        // the interaction/puzzle logic below never moves a transform directly.
+        private IDiskAnimator _diskAnim;
+        private IDiskAnimator Anim => _diskAnim ??= (_useBlenderAnimations && _blenderAnimator != null)
+            ? (IDiskAnimator)new BlenderDiskAnimator(_blenderAnimator)
+            : new ProceduralDiskAnimator(transform, _localAxis);
 
         // ----------------------------------------------------------- selection
 
@@ -120,7 +134,7 @@ namespace Decrypted.Interaction
                 float nearest = Mathf.Round(_angle / StepDeg) * StepDeg;
                 visible = Mathf.Lerp(_angle, nearest, _detentMagnetism);
             }
-            transform.localRotation = Quaternion.AngleAxis(visible, _localAxis.normalized);
+            Anim.ApplyAngle(visible);
         }
 
         private void ReportStep()
@@ -146,11 +160,11 @@ namespace Decrypted.Interaction
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, _snapSeconds);
                 _angle = Mathf.Lerp(start, target, Mathf.SmoothStep(0f, 1f, t));
-                transform.localRotation = Quaternion.AngleAxis(_angle, _localAxis.normalized);
+                Anim.ApplyAngle(_angle);
                 yield return null;
             }
             _angle = target;
-            transform.localRotation = Quaternion.AngleAxis(_angle, _localAxis.normalized);
+            Anim.ApplyAngle(_angle);
             ReportStep();
             _snap = null;
         }
@@ -160,7 +174,7 @@ namespace Decrypted.Interaction
         {
             step = ((step % _detents) + _detents) % _detents;
             _angle = step * StepDeg;
-            transform.localRotation = Quaternion.AngleAxis(_angle, _localAxis.normalized);
+            Anim.ApplyAngle(_angle);
             if (silent) { _lastReportedStep = step; CurrentStep = step; }
             else ReportStep();
         }
@@ -186,11 +200,11 @@ namespace Decrypted.Interaction
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, seconds);
                 _angle = Mathf.Lerp(start, end, Mathf.SmoothStep(0f, 1f, t));
-                transform.localRotation = Quaternion.AngleAxis(_angle, _localAxis.normalized);
+                Anim.ApplyAngle(_angle);
                 yield return null;
             }
             _angle = target;
-            transform.localRotation = Quaternion.AngleAxis(_angle, _localAxis.normalized);
+            Anim.ApplyAngle(_angle);
             ReportStep();
             _snap = null;
         }
