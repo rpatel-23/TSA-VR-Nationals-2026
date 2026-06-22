@@ -21,6 +21,7 @@
 // -----------------------------------------------------------------------------
 
 using System;
+using Decrypted.Util;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -42,6 +43,14 @@ namespace Decrypted.Interaction
         [SerializeField] private float _snapSeconds = 0.12f;
         [Tooltip("Soft detent magnetism while turning (0 = free, 1 = sticky).")]
         [Range(0f, 1f)] [SerializeField] private float _detentMagnetism = 0.25f;
+
+        [Header("Motion feel (swap live to try different versions)")]
+        [Tooltip("Curve for the release snap-to-detent. BackOut = tactile 'click " +
+                 "into place' overshoot; ExpoOut = crisp mechanical snap.")]
+        [SerializeField] private Ease _snapEase = Ease.BackOut;
+        [Tooltip("Curve for programmatic step animation (Enigma rotor dial / Caesar " +
+                 "auto-solve). BackOut reads as a satisfying mechanical settle.")]
+        [SerializeField] private Ease _stepEase = Ease.BackOut;
 
         [Header("Audio")]
         [SerializeField] private string _detentSfxKey = "sfx_brass_click";
@@ -159,7 +168,7 @@ namespace Decrypted.Interaction
             while (t < 1f)
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, _snapSeconds);
-                _angle = Mathf.Lerp(start, target, Mathf.SmoothStep(0f, 1f, t));
+                _angle = Mathf.LerpUnclamped(start, target, Easing.Evaluate(_snapEase, t));
                 Anim.ApplyAngle(_angle);
                 yield return null;
             }
@@ -199,7 +208,7 @@ namespace Decrypted.Interaction
             while (t < 1f)
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, seconds);
-                _angle = Mathf.Lerp(start, end, Mathf.SmoothStep(0f, 1f, t));
+                _angle = Mathf.LerpUnclamped(start, end, Easing.Evaluate(_stepEase, t));
                 Anim.ApplyAngle(_angle);
                 yield return null;
             }

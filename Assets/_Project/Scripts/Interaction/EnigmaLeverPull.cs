@@ -21,6 +21,7 @@
 using System;
 using System.Collections;
 using Decrypted.Managers;
+using Decrypted.Util;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -42,8 +43,18 @@ namespace Decrypted.Interaction
         [Header("Feel")]
         [Tooltip("Seconds for the lever to spring back to rest on release.")]
         [SerializeField] private float _returnSeconds = 0.25f;
+        [Tooltip("Curve for the spring-back to rest. BackOut/ElasticOut add a lively " +
+                 "overshoot so the lever 'springs' rather than glides.")]
+        [SerializeField] private Ease _returnEase = Ease.BackOut;
         [Tooltip("If true the lever stays down after a successful pull (committed).")]
         [SerializeField] private bool _latchWhenPulled = true;
+
+        [Header("Auto / demo pull")]
+        [Tooltip("Seconds the demo lever takes to swing down (0 = instant snap).")]
+        [SerializeField] private float _forcePullSeconds = 0.45f;
+        [Tooltip("Curve for the demo pull swing. CubicIn = a deliberate hand pull " +
+                 "that builds force as it commits.")]
+        [SerializeField] private Ease _pullEase = Ease.CubicIn;
 
         [Header("Audio")]
         [SerializeField] private string _pullSfxKey = "sfx_lever_pull";
@@ -125,13 +136,37 @@ namespace Decrypted.Interaction
         public float Normalised =>
             Mathf.Clamp01(Mathf.InverseLerp(_restAngle, _pulledAngle, _angle));
 
-        /// <summary>Programmatic pull (used by the demo director / auto-play).</summary>
+        /// <summary>Programmatic pull (used by the demo director / auto-play). Swings
+        /// the lever down over _forcePullSeconds so the recorded demo shows a real
+        /// pull instead of the lever teleporting to the committed angle.</summary>
         public void ForcePull()
         {
             if (IsLatched) return;
-            _angle = _pulledAngle;
-            ApplyAngle();
-            EvaluatePull();
+            if (_return != null) { StopCoroutine(_return); _return = null; }
+            if (_forcePullSeconds <= 0f)
+            {
+                _angle = _pulledAngle;
+                ApplyAngle();
+                EvaluatePull();
+                return;
+            }
+            _return = StartCoroutine(AnimatePull());
+        }
+
+        private IEnumerator AnimatePull()
+        {
+            float start = _angle;
+            float t = 0f;
+            while (t < 1f && !IsLatched)
+            {
+                t += Time.deltaTime / Mathf.Max(0.01f, _forcePullSeconds);
+                _angle = ClampToTravel(Mathf.Lerp(start, _pulledAngle, Easing.Evaluate(_pullEase, t)));
+                ApplyAngle();
+                EvaluatePull();   // fires OnPulled once the threshold is crossed mid-swing
+                yield return null;
+            }
+            if (!IsLatched) { _angle = _pulledAngle; ApplyAngle(); EvaluatePull(); }
+            _return = null;
         }
 
         /// <summary>Reset the lever to rest and clear the latch (used by full reset).</summary>
@@ -174,7 +209,8 @@ namespace Decrypted.Interaction
             while (t < 1f)
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, _returnSeconds);
-                _angle = Mathf.Lerp(start, _restAngle, Mathf.SmoothStep(0f, 1f, t));
+                // Unclamped so a BackOut/ElasticOut return springs slightly past rest.
+                _angle = Mathf.LerpUnclamped(start, _restAngle, Easing.Evaluate(_returnEase, t));
                 ApplyAngle();
                 yield return null;
             }

@@ -23,6 +23,7 @@
 using System.Collections;
 using Decrypted.Core;
 using Decrypted.Managers;
+using Decrypted.Util;
 using TMPro;
 using UnityEngine;
 
@@ -56,6 +57,9 @@ namespace Decrypted.Interaction
 
         [Header("Motion")]
         [SerializeField] private float _morphSeconds = 7.0f;
+        [Tooltip("Curve for the era morph. SineInOut eases the transformation in and " +
+                 "out so it breathes instead of crossfading at a constant rate.")]
+        [SerializeField] private Ease _morphEase = Ease.SineInOut;
         [Tooltip("Gentle rotation of the sculpture during the reveal (deg/sec).")]
         [SerializeField] private float _spinSpeed = 12f;
         [SerializeField] private Transform _spinRoot;
@@ -132,7 +136,7 @@ namespace Decrypted.Interaction
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, _morphSeconds);
                 float p = Mathf.Clamp01(t);
-                ApplyMorph(p);
+                ApplyMorph(Easing.Evaluate(_morphEase, p));
 
                 if (_spinRoot != null)
                     _spinRoot.Rotate(Vector3.up, _spinSpeed * Time.deltaTime, Space.World);
