@@ -219,10 +219,9 @@ namespace Decrypted.Core
 
         private void OnExperienceStarted(ExperienceStartedEvent _)
         {
-            // Progression is exclusively the physical RoomDoor system now. The old
-            // PLAY-button path (Splash -> Atrium) is intentionally inert: the
-            // Splash exit door advances instead. Demo Mode still uses this hook.
-            if (_demoMode && CurrentState == MuseumState.Splash) AdvanceTo(MuseumState.Atrium);
+            // The splash PLAY button starts the tour (Splash -> Atrium). Rooms use
+            // physical doors; the splash is a menu, so its button remains its exit.
+            if (CurrentState == MuseumState.Splash) AdvanceTo(MuseumState.Atrium);
         }
 
         private void OnExhibitSolved(ExhibitSolvedEvent e)

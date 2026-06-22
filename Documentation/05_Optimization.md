@@ -97,3 +97,46 @@ are simply compiled out, so the project builds and runs in-editor regardless.
 Holding 72 FPS here is mostly a matter of **not regressing** the defaults above —
 keep the environment opaque and batched, keep lighting baked, keep one room active,
 and keep the FX shaders off the critical mass of pixels.
+
+## Current state vs. the baked design (action required)
+
+The sections above describe the **intended** baked pipeline. The working scene has
+**not yet been baked** — it currently runs ~48 realtime lights, which is over budget
+for Quest. The doors were reworked to add **zero** realtime lights (the activation
+glow is an emissive-material pulse on the frame, not a point light). The remaining
+realtime-light reduction must be done in the editor because it depends on a bake:
+
+**Already applied in-repo (safe, no bake needed):**
+- `Time.fixedDeltaTime = 0.013889` (1/72) so physics ticks match the frame rate.
+- URP-Quest: **HDR off**, **soft shadows off** (additional-light shadows were
+  already off).
+- `Room_Complete` floor marked **Batching/Occluder/Occludee/GI static**.
+
+**Must be done in the editor, in this order (do NOT reorder):**
+1. Mark every non-moving object **Static** (Batching + Occluder + Occludee +
+   Contribute GI). Leave the hands, door slabs, rotors/disk, and the reveal
+   sculpture **non-static** (they move).
+2. Set static geometry to **URP/Baked Lit**; keep dynamic objects on **Simple Lit**.
+3. **Window ▸ Rendering ▸ Lighting**: Realtime Global Illumination **off**, Baked GI
+   **on**, then **Generate Lighting** (bake). Per-room lightmaps stay small because
+   only one room is enabled at a time.
+4. Add **Light Probe Groups** per room so the dynamic objects (hands, exhibits,
+   sculpture, doors) pick up the baked light.
+5. **Only after the bake looks right**, in URP-Quest set **Additional Lights ▸ Per
+   Vertex** (or Disabled). Doing this *before* the bake would darken/flatten the
+   currently unbaked scene, which is why it is intentionally left for last.
+6. **Window ▸ Rendering ▸ Occlusion Culling ▸ Bake**.
+7. Keep **post-processing disabled** once fully baked (no full-screen passes on the
+   tile GPU).
+
+## OVR Metrics Tool — required on-device profiling
+
+Install **OVR Metrics Tool** from the Meta Quest store (or sideload), enable its
+persistent overlay, and run a full Splash→Complete pass on device:
+- Read **FPS / stale frames**, **GPU and CPU frame time** (target ≤ 13.9 ms each),
+  **draw calls**, and **app GPU/CPU utilisation**.
+- Verify FPS holds 72 across **every room transition** (the door-open → fade → load
+  hand-off is the heaviest moment) and during the reveal morph.
+- If GPU-bound: overdraw (transparency/FX), shadow distance, MSAA, foveation.
+  If CPU-bound: draw calls (batching), `Update` count, GC spikes.
+- Confirm only one room root is active at a time during the capture.

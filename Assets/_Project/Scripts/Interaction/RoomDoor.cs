@@ -2,24 +2,28 @@
 //  RoomDoor.cs
 //  DECRYPTED - A Walk Through the History of Secret Writing
 //
-//  A physical exit door. Replaces the old "Let's Go" notification panel as the
-//  ONLY way the player advances between rooms. One door per room, built from
-//  simple low-poly white geometry (frame + slab + handle) in the SUPERHOT style.
+//  A physical exit door. The ONLY way the player advances between rooms. One door
+//  per room, built from simple low-poly white geometry (frame + slab + handle) in
+//  the SUPERHOT style.
 //
 //  Lifecycle:
 //    * Inert until the room's win condition is met: darker frame, no glow, the
 //      handle cannot be grabbed, no NEXT label.
-//    * On the win condition it ACTIVATES: the frame glow pulses on a ~1.5s cycle
-//      (emissive + point light), a short spatial tone plays from the door, and a
-//      billboarding "NEXT" label appears above the frame.
+//    * On the win condition it ACTIVATES: the frame EMISSIVE pulses on a tunable
+//      cycle (NO realtime lights - this project is baked-lighting / 72 FPS), a
+//      short spatial tone plays from the door, and a billboarding "NEXT" label
+//      appears above the frame.
 //    * The handle is the grab point and uses the existing collision/grip hand
-//      system (an XR interactable). Within ~0.35 m it highlights warm white; grip
-//      it and the slab swings open 90 degrees (ease in out, 0.6s), then the
-//      experience advances (the SceneController fades to black, loads the next
-//      room, and fades back in). The last room advances to the completion state.
+//      system (an XR interactable + trigger sphere of _handleReach radius). Within
+//      reach it highlights warm white; grip it and the slab swings open (ease in
+//      out), then the experience advances via the existing ScreenFader transition
+//      (no second fade system). The last room advances to the Complete state.
 //
-//  Purely a progression-trigger replacement: it does not touch hands, the time
-//  scaling system, narrator audio, the WorldLabel system, or room content.
+//  Placement is the ExitDoor Transform itself (per-room, editable in the Inspector
+//  / Scene view). Geometry can be previewed/tuned in edit mode via the context
+//  menu and is rebuilt fresh at runtime. Purely a progression-trigger mechanism:
+//  it does not touch hands, time-scaling, narrator audio, the WorldLabel system,
+//  or room content.
 // -----------------------------------------------------------------------------
 
 using System.Collections;
@@ -36,20 +40,28 @@ namespace Decrypted.Interaction
     {
         [Header("Which room this door exits")]
         [SerializeField] private MuseumState _room;
-        [Tooltip("Rooms with no puzzle (Splash, Atrium, Reveal) activate after a " +
-                 "short dwell on entry; puzzle rooms activate when solved.")]
+        [Tooltip("Rooms with no puzzle (Splash, Atrium) activate after a short dwell " +
+                 "on entry; puzzle/reveal rooms activate on their win event.")]
         [SerializeField] private bool _activateOnDwell = false;
         [SerializeField] private float _dwellSeconds = 4f;
 
-        [Header("Dimensions (metres)")]
+        [Header("Dimensions (metres) - tunable per door")]
         [SerializeField] private float _openingWidth = 0.95f;
         [SerializeField] private float _openingHeight = 2.05f;
         [Tooltip("Handle height from the local floor (0.9-1.0).")]
         [SerializeField] private float _handleHeight = 0.95f;
+        [Tooltip("Radius of the handle's grab trigger - the reach distance (m).")]
+        [SerializeField] private float _handleReach = 0.35f;
 
-        [Header("Open animation")]
+        [Header("Open animation - tunable per door")]
         [SerializeField] private float _swingAngle = 90f;
         [SerializeField] private float _swingSeconds = 0.6f;
+
+        [Header("Activation glow (emissive only - no realtime lights)")]
+        [Tooltip("Full pulse cycle in seconds (~1.5).")]
+        [SerializeField] private float _pulseCycle = 1.5f;
+        [SerializeField] private float _pulseMinEmissive = 0.12f;
+        [SerializeField] private float _pulseMaxEmissive = 1.4f;
 
         [Header("Audio (short clean tone on activation)")]
         [SerializeField] private string _activateSfxKey = "sfx_lamp_on";
@@ -58,16 +70,15 @@ namespace Decrypted.Interaction
         [Header("Label font (clean sans-serif, e.g. Inter)")]
         [SerializeField] private TMP_FontAsset _font;
 
-        // ---- built references ----
+        // ---- runtime references (re-resolved on each Build) ----
         private Transform _slabPivot;
-        private Light _frameLight;
         private XRSimpleInteractable _handle;
         private CanvasGroup _labelGroup;
         private Transform _label;
         private Material _frameMat;
         private Material _handleMat;
 
-        private bool _built, _active, _opening, _hovering;
+        private bool _active, _opening, _hovering;
         private Transform _head;
 
         private static readonly int EmissionID = Shader.PropertyToID("_EmissionColor");
@@ -94,7 +105,7 @@ namespace Decrypted.Interaction
 
         // ----------------------------------------------------------- lifecycle
 
-        private void Awake() => Build();
+        private void Awake() => Build();   // runtime: rebuild fresh (clears any editor preview)
 
         private void OnEnable()
         {
@@ -106,12 +117,14 @@ namespace Decrypted.Interaction
         {
             EventBus.Unsubscribe<RoomEnteredEvent>(OnRoomEntered);
             EventBus.Unsubscribe<ExhibitSolvedEvent>(OnExhibitSolved);
+            // Defensive teardown: stop any in-flight swing and drop references so a
+            // mid-transition deactivation can never dereference a destroyed object.
+            StopAllCoroutines();
+            _opening = false;
         }
 
         private void Start()
         {
-            // Splash is set instantly at boot (no RoomEnteredEvent), so begin here
-            // if we are already in this door's room.
             if (GameManager.Instance != null && GameManager.Instance.CurrentState == _room)
                 BeginRoom();
         }
@@ -130,7 +143,6 @@ namespace Decrypted.Interaction
         {
             if (_active) return;
             if (_activateOnDwell) StartCoroutine(DwellThenActivate());
-            // puzzle rooms simply wait for OnExhibitSolved.
         }
 
         private IEnumerator DwellThenActivate()
@@ -152,7 +164,6 @@ namespace Decrypted.Interaction
             if (_active) return;
             _active = true;
 
-            if (_frameLight != null) _frameLight.enabled = true;
             if (_handle != null) _handle.enabled = true;
             if (_labelGroup != null) _labelGroup.alpha = 1f;
 
@@ -166,20 +177,15 @@ namespace Decrypted.Interaction
         {
             if (!_active) return;
 
-            // Slow ~1.5s glow pulse on the frame (unscaled so time-scaling never
-            // freezes it). Suppressed while the door is mid-swing.
-            float pulse = _opening ? 0f : (Mathf.Sin(Time.unscaledTime * (2f * Mathf.PI / 1.5f)) + 1f) * 0.5f;
+            // Emissive-only pulse (unscaled so time-scaling can never freeze it).
+            // No realtime lights are used anywhere on the door.
+            float pulse = _opening ? 0f
+                : (Mathf.Sin(Time.unscaledTime * (2f * Mathf.PI / Mathf.Max(0.1f, _pulseCycle))) + 1f) * 0.5f;
             if (_frameMat != null)
-                _frameMat.SetColor(EmissionID, GlowWhite * Mathf.Lerp(0.12f, 1.4f, pulse));
-            if (_frameLight != null)
-                _frameLight.intensity = Mathf.Lerp(0.3f, 2.2f, pulse);
+                _frameMat.SetColor(EmissionID, GlowWhite * Mathf.Lerp(_pulseMinEmissive, _pulseMaxEmissive, pulse));
 
-            // Handle highlight when the hand is in proximity (hover).
             if (_handleMat != null)
-            {
-                float warm = _hovering ? 1.3f : 0.15f;
-                _handleMat.SetColor(EmissionID, HandleWarm * warm);
-            }
+                _handleMat.SetColor(EmissionID, HandleWarm * (_hovering ? 1.3f : 0.15f));
         }
 
         private void LateUpdate()
@@ -205,30 +211,39 @@ namespace Decrypted.Interaction
 
         private IEnumerator OpenRoutine()
         {
-            // Swing the slab on its hinge with ease-in-out.
             Quaternion from = Quaternion.identity;
             Quaternion to = Quaternion.Euler(0f, _swingAngle, 0f);
             float t = 0f;
             while (t < 1f)
             {
                 t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _swingSeconds);
-                _slabPivot.localRotation = Quaternion.Slerp(from, to, Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t)));
+                if (_slabPivot != null)
+                    _slabPivot.localRotation = Quaternion.Slerp(from, to, Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t)));
                 yield return null;
             }
-            _slabPivot.localRotation = to;
+            if (_slabPivot != null) _slabPivot.localRotation = to;
             if (_labelGroup != null) _labelGroup.alpha = 0f;
 
-            // Hand off to the existing transition: fade to black, load the next
-            // room, fade back in. From the last room this advances to Complete.
-            GameManager.Instance?.Advance();
+            // Existing ScreenFader transition: fade to black, load next room, fade in.
+            // From the last room this advances to the Complete state.
+            if (GameManager.Instance != null) GameManager.Instance.Advance();
         }
 
         // ------------------------------------------------------------- geometry
 
+        [ContextMenu("Rebuild Door (editor preview)")]
+        private void RebuildInEditor() => Build();
+
         private void Build()
         {
-            if (_built) return;
-            _built = true;
+            // Clear any previously built geometry so this is idempotent (editor
+            // preview rebuilds, runtime rebuilds over an editor preview). The
+            // ExitDoor object holds nothing but door parts.
+            for (int i = transform.childCount - 1; i >= 0; i--)
+            {
+                var c = transform.GetChild(i).gameObject;
+                if (Application.isPlaying) Destroy(c); else DestroyImmediate(c);
+            }
 
             float w = _openingWidth, h = _openingHeight;
             float post = 0.09f, depth = 0.12f;
@@ -237,12 +252,10 @@ namespace Decrypted.Interaction
             var slabMat = MakeMat(OffWhite, false);
             _handleMat = MakeMat(OffWhite, true);
 
-            // Frame: two posts + a lintel (all share the glowing frame material).
             MakeBox("Post_L", transform, new Vector3(-(w * 0.5f + post * 0.5f), h * 0.5f, 0f), new Vector3(post, h, depth), _frameMat);
             MakeBox("Post_R", transform, new Vector3(+(w * 0.5f + post * 0.5f), h * 0.5f, 0f), new Vector3(post, h, depth), _frameMat);
             MakeBox("Lintel", transform, new Vector3(0f, h + post * 0.5f, 0f), new Vector3(w + post * 2f, post, depth), _frameMat);
 
-            // Hinge pivot on the left edge; unscaled parents so meshes never distort.
             var pivot = new GameObject("SlabPivot");
             pivot.transform.SetParent(transform, false);
             pivot.transform.localPosition = new Vector3(-w * 0.5f, 0f, 0f);
@@ -250,33 +263,27 @@ namespace Decrypted.Interaction
 
             var slab = new GameObject("Slab");
             slab.transform.SetParent(_slabPivot, false);
-            slab.transform.localPosition = new Vector3(w * 0.5f, 0f, 0f);   // recentre in opening
+            slab.transform.localPosition = new Vector3(w * 0.5f, 0f, 0f);
             MakeBox("SlabMesh", slab.transform, new Vector3(0f, h * 0.5f, 0f), new Vector3(w * 0.94f, h * 0.95f, 0.05f), slabMat);
 
-            // Handle near the latch edge, at hand height, nudged toward the player.
             var handle = new GameObject("Handle");
             handle.transform.SetParent(slab.transform, false);
             handle.transform.localPosition = new Vector3(w * 0.5f - 0.10f, _handleHeight, 0.05f);
-            MakeBox("HandleMesh", handle.transform, new Vector3(0f, 0f, 0f), new Vector3(0.05f, 0.16f, 0.05f), _handleMat);
+            MakeBox("HandleMesh", handle.transform, Vector3.zero, new Vector3(0.05f, 0.16f, 0.05f), _handleMat);
             var sc = handle.AddComponent<SphereCollider>();
-            sc.isTrigger = true;          // detected by the hand's direct interactor; never blocks movement
-            sc.radius = 0.25f;            // ~0.35 m effective grab with the hand sphere
+            sc.isTrigger = true;                 // detected by the hand's direct interactor; never blocks movement
+            sc.radius = Mathf.Max(0.05f, _handleReach);
             _handle = handle.AddComponent<XRSimpleInteractable>();
-            _handle.enabled = false;      // inert until the door activates
-            _handle.hoverEntered.AddListener(_ => _hovering = true);
-            _handle.hoverExited.AddListener(_ => _hovering = false);
-            _handle.selectEntered.AddListener(_ => Open());
+            _handle.enabled = false;             // inert until the door activates
 
-            // Frame glow light.
-            var lightGO = new GameObject("FrameLight");
-            lightGO.transform.SetParent(transform, false);
-            lightGO.transform.localPosition = new Vector3(0f, h * 0.6f, 0.15f);
-            _frameLight = lightGO.AddComponent<Light>();
-            _frameLight.type = LightType.Point;
-            _frameLight.color = GlowWhite;
-            _frameLight.range = 2.5f;
-            _frameLight.intensity = 0f;
-            _frameLight.enabled = false;
+            // Runtime-only wiring (lambdas do not serialize, so we add them whenever
+            // Build runs at runtime; editor preview leaves the handle inert).
+            if (Application.isPlaying)
+            {
+                _handle.hoverEntered.AddListener(_ => _hovering = true);
+                _handle.hoverExited.AddListener(_ => _hovering = false);
+                _handle.selectEntered.AddListener(_ => Open());
+            }
 
             BuildLabel(h);
         }
@@ -301,7 +308,7 @@ namespace Decrypted.Interaction
             trt.sizeDelta = new Vector2(400f, 160f);
             if (_font != null) t.font = _font;
             t.text = "NEXT";
-            t.fontSize = 60f;                 // *0.001 = ~0.06 m
+            t.fontSize = 60f;
             t.color = Color.white;
             t.alignment = TextAlignmentOptions.Center;
             t.raycastTarget = false;
@@ -330,7 +337,7 @@ namespace Decrypted.Interaction
             var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
             go.name = name;
             var col = go.GetComponent<Collider>();
-            if (col != null) Destroy(col);          // visual only; never blocks the player
+            if (col != null) { if (Application.isPlaying) Destroy(col); else DestroyImmediate(col); }
             go.transform.SetParent(parent, false);
             go.transform.localPosition = localPos;
             go.transform.localScale = size;

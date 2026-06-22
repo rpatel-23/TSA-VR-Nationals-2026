@@ -3,6 +3,20 @@
 Target: **Unity 2022.3 LTS**, Universal Render Pipeline, Meta Quest standalone
 (Android). This guide takes a fresh project to a buildable Quest app.
 
+## 0. Clone with Git LFS (do this first)
+
+This project stores binary art/audio (`*.fbx`, `*.wav`) via **Git LFS**. A plain
+clone leaves those as tiny pointer files, which import as **empty/broken exhibits**.
+Immediately after cloning:
+
+```
+git lfs install      # once per machine
+git lfs pull         # fetch the real FBX/WAV binaries for this clone
+```
+
+If exhibits look empty/scattered or you see import errors, the cause is almost
+always unresolved LFS pointers — run `git lfs pull` and reimport.
+
 ## 1. Create the project
 
 Use Unity Hub → **2022.3 LTS** → **3D (URP)** template. (Starting from the URP
