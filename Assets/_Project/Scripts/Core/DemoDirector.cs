@@ -111,32 +111,32 @@ namespace Decrypted.Core
         private IEnumerator PressPlayAfterDelay()
         {
             _handled.Add(MuseumState.Splash);
-            yield return new WaitForSeconds(_splashDelay);
+            yield return new WaitForSecondsRealtime(_splashDelay);
             EventBus.Publish(new ExperienceStartedEvent()); // Splash -> Atrium
         }
 
         private IEnumerator DoAtrium()
         {
-            yield return new WaitForSeconds(_atriumDwell);
+            yield return new WaitForSecondsRealtime(_atriumDwell);
             if (_gm != null) _gm.Advance(); // Atrium -> Ancient Room
         }
 
         private IEnumerator DoAncient()
         {
-            yield return new WaitForSeconds(_readDwell);
+            yield return new WaitForSecondsRealtime(_readDwell);
             if (_caesar != null) _caesar.AutoSolve(); // solve -> GameManager auto-advances
         }
 
         private IEnumerator DoWWII()
         {
-            yield return new WaitForSeconds(_readDwell);
+            yield return new WaitForSecondsRealtime(_readDwell);
             if (_enigma != null)
                 yield return _enigma.AutoSolve(_typeCadence, pullLever: true); // -> auto-advances
         }
 
         private IEnumerator DoVault()
         {
-            yield return new WaitForSeconds(_readDwell);
+            yield return new WaitForSecondsRealtime(_readDwell);
             if (_vault != null)
                 yield return _vault.AutoEnter(_typeCadence); // unlock -> auto-advances
         }
@@ -145,7 +145,7 @@ namespace Decrypted.Core
         {
             // The reveal controller auto-starts on RoomEntered; calling BeginReveal
             // here is a harmless idempotent safety in case auto-start is disabled.
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSecondsRealtime(0.5f);
             if (_reveal != null) _reveal.BeginReveal();
         }
 

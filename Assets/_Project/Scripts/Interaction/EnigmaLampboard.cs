@@ -69,11 +69,11 @@ namespace Decrypted.Interaction
         private IEnumerator Flash(int idx)
         {
             float t = 0f;
-            while (t < 1f) { t += Time.deltaTime / Mathf.Max(0.01f, _onSeconds); SetLamp(idx, _peak * t); yield return null; }
+            while (t < 1f) { t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _onSeconds); SetLamp(idx, _peak * t); yield return null; }
             SetLamp(idx, _peak);
-            yield return new WaitForSeconds(_holdSeconds);
+            yield return new WaitForSecondsRealtime(_holdSeconds);
             t = 0f;
-            while (t < 1f) { t += Time.deltaTime / Mathf.Max(0.01f, _offSeconds); SetLamp(idx, _peak * (1f - t)); yield return null; }
+            while (t < 1f) { t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _offSeconds); SetLamp(idx, _peak * (1f - t)); yield return null; }
             SetLamp(idx, 0f);
             _routines[idx] = null;
         }

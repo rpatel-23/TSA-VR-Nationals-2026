@@ -47,6 +47,11 @@ namespace Decrypted.Core
         public MuseumState CurrentState { get; private set; } = MuseumState.Boot;
         public bool DemoMode => _demoMode;
 
+        /// <summary>True while a room transition is in flight. A future time-scaling
+        /// ("SUPERHOT") system MUST treat this as a hard override: hold Time.timeScale
+        /// at 1.0 while this is true so a transition can never run under frozen time.</summary>
+        public bool IsTransitioning => _transitioning;
+
         // The canonical forward order. Index lookups keep CanTransition trivial.
         private static readonly MuseumState[] _order =
         {
@@ -192,15 +197,33 @@ namespace Decrypted.Core
         {
             _transitioning = true;
 
-            // Fade out -> activate room -> place player -> fade in is delegated to
-            // the SceneController, which owns the screen-fade + room toggling.
-            if (_sceneController != null)
-                yield return _sceneController.TransitionTo(target);
+            // A room transition must NEVER run under a non-1 timeScale. There is no
+            // timeScale driver in the project today, but the codebase is written for a
+            // planned "SUPERHOT" time-scaling system (see CountdownPanel/ScreenFader
+            // comments). Forcing 1.0 here self-heals if anything ever lowered it, so a
+            // solve can never stall the advance. This single log lets you verify the
+            // safety is firing once per transition.
+            Debug.Log($"[GameManager] Transition -> {target}: forcing Time.timeScale to 1.0 (was {Time.timeScale:0.###}).");
+            Time.timeScale = 1f;
 
-            SetState(target, instant: false);
-            EventBus.Publish(new RoomEnteredEvent(target));
+            // try/finally GUARANTEES we always clear _transitioning, even if the
+            // SceneController throws mid-fade. Without this, an exception during room
+            // activation would latch "transitioning" forever and silently reject every
+            // future Advance() — a permanent freeze from the player's point of view.
+            try
+            {
+                // Fade out -> activate room -> place player -> fade in is delegated to
+                // the SceneController, which owns the screen-fade + room toggling.
+                if (_sceneController != null)
+                    yield return _sceneController.TransitionTo(target);
 
-            _transitioning = false;
+                SetState(target, instant: false);
+                EventBus.Publish(new RoomEnteredEvent(target));
+            }
+            finally
+            {
+                _transitioning = false;
+            }
         }
 
         private void SetState(MuseumState target, bool instant)
@@ -234,7 +257,7 @@ namespace Decrypted.Core
 
         private IEnumerator AdvanceAfter(float delay, MuseumState room)
         {
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSecondsRealtime(delay); // unscaled: survives a time freeze
             if (CurrentState == room) Advance();
         }
     }

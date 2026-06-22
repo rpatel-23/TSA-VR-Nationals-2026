@@ -117,7 +117,7 @@ namespace Decrypted.Interaction
 
         private IEnumerator RevealRoutine()
         {
-            yield return new WaitForSeconds(_autoStartDelay);
+            yield return new WaitForSecondsRealtime(_autoStartDelay); // unscaled: survives a time freeze
 
             // Final chord swells right as the transformation begins.
             if (!_chordPlayed && !string.IsNullOrEmpty(_finalChordKey) && AudioManager.Instance != null)
@@ -130,12 +130,12 @@ namespace Decrypted.Interaction
             bool plaqueStarted = false;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _morphSeconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _morphSeconds); // unscaled: survives a time freeze
                 float p = Mathf.Clamp01(t);
                 ApplyMorph(p);
 
                 if (_spinRoot != null)
-                    _spinRoot.Rotate(Vector3.up, _spinSpeed * Time.deltaTime, Space.World);
+                    _spinRoot.Rotate(Vector3.up, _spinSpeed * Time.unscaledDeltaTime, Space.World);
 
                 if (!plaqueStarted && p >= _plaqueFadeStart)
                 {
@@ -152,7 +152,7 @@ namespace Decrypted.Interaction
             // Hold the final tableau briefly, then signal the win condition. The
             // ProgressionGateController shows the "Let's Go" panel; the player
             // presses it to finish (RevealChamber -> Complete). No auto-advance.
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSecondsRealtime(2.0f); // unscaled: survives a time freeze
             EventBus.Publish(new ExhibitSolvedEvent(MuseumState.RevealChamber));
         }
 
@@ -209,7 +209,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _plaqueFadeSeconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _plaqueFadeSeconds); // unscaled: survives a time freeze
                 _conclusionGroup.alpha = Mathf.Lerp(start, 1f, Mathf.SmoothStep(0f, 1f, t));
                 yield return null;
             }

@@ -158,7 +158,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _snapSeconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _snapSeconds); // unscaled: survives a time freeze
                 _angle = Mathf.Lerp(start, target, Mathf.SmoothStep(0f, 1f, t));
                 Anim.ApplyAngle(_angle);
                 yield return null;
@@ -198,7 +198,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, seconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, seconds); // unscaled: survives a time freeze
                 _angle = Mathf.Lerp(start, end, Mathf.SmoothStep(0f, 1f, t));
                 Anim.ApplyAngle(_angle);
                 yield return null;

@@ -116,7 +116,7 @@ namespace Decrypted.Managers
 
         private System.Collections.IEnumerator SpeakAfter(float delay, string line, float hold, string voKey)
         {
-            if (delay > 0f) yield return new WaitForSeconds(delay);
+            if (delay > 0f) yield return new WaitForSecondsRealtime(delay); // unscaled: survives a time freeze
             Speak(line, hold, voKey);
         }
 

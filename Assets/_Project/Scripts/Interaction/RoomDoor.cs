@@ -58,6 +58,19 @@ namespace Decrypted.Interaction
         public void PlayExitFlourish()
         {
             _glowing = true;
+
+            // The flourish is purely cosmetic. If this door's GameObject is inactive
+            // (it lives in a room that is currently toggled off, or it was left
+            // disabled in the scene) we must NOT call StartCoroutine — Unity logs
+            // "Coroutine couldn't be started because the game object 'ExitDoor' is
+            // inactive!" and the swing never runs. Snap straight to the open pose so
+            // the door is still correct if it later becomes visible, then bail.
+            if (!isActiveAndEnabled)
+            {
+                if (_slabPivot != null) _slabPivot.localRotation = Quaternion.Euler(0f, _swingAngle, 0f);
+                return;
+            }
+
             StartCoroutine(SwingOpen());
         }
 

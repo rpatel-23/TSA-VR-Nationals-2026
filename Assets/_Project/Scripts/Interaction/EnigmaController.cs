@@ -266,7 +266,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _powerUpSeconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _powerUpSeconds); // unscaled: survives a time freeze
                 SetTimelineEmissive(Mathf.SmoothStep(0f, 1f, t) * _timelinePeak);
                 yield return null;
             }
@@ -287,7 +287,7 @@ namespace Decrypted.Interaction
             for (int i = 0; i < 26; i++)
             {
                 _lampboard.Light((char)('A' + i));
-                yield return new WaitForSeconds(0.03f);
+                yield return new WaitForSecondsRealtime(0.03f);
             }
         }
 
@@ -298,7 +298,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _doorOpenSeconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _doorOpenSeconds); // unscaled: survives a time freeze
                 EnigAnim.SetExitDoorPosition(Vector3.Lerp(start, end, Mathf.SmoothStep(0f, 1f, t)));
                 yield return null;
             }
@@ -346,16 +346,16 @@ namespace Decrypted.Interaction
                 int target = key[Mathf.Clamp(r.RotorIndex, 0, key.Length - 1)] - 'A';
                 r.SetValue(target, animate: true);
             }
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSecondsRealtime(0.6f);
 
             // Type the ciphertext through the real keypress path.
             foreach (char c in _machine.CipherWord)
             {
                 HandleKey(c);
-                yield return new WaitForSeconds(perKeyDelay);
+                yield return new WaitForSecondsRealtime(perKeyDelay);
             }
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSecondsRealtime(0.3f);
             if (pullLever && _lever != null) _lever.ForcePull();
 
             // DEMO GUARANTEE (demo hook only): the recorded walkthrough must always

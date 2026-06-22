@@ -81,9 +81,19 @@ namespace Decrypted.Core
         {
             if (_fader != null) yield return _fader.FadeOut(_fadeDuration);
 
-            ActivateRoom(target);
-            PlacePlayer(target);
-            _active = target;
+            // The room swap is synchronous; guard it so a throw here can NEVER skip the
+            // fade-in below. A stuck-opaque fader would look exactly like a hard freeze
+            // (black headset, no progression). On failure we log and still fade back in.
+            try
+            {
+                ActivateRoom(target);
+                PlacePlayer(target);
+                _active = target;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[SceneController] Room activation for {target} failed; revealing anyway. {e}");
+            }
 
             // Give the GPU a couple of frames to warm up the now-visible room
             // before we reveal it (prevents a first-frame hitch in the headset).

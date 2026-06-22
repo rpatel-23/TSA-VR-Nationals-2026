@@ -149,7 +149,7 @@ namespace Decrypted.Interaction
         private IEnumerator RejectFlash()
         {
             RenderDisplay(_rejectColor, "ACCESS DENIED");
-            yield return new WaitForSeconds(1.1f);
+            yield return new WaitForSecondsRealtime(1.1f);
             _entered.Clear();
             RenderDisplay(_neutralColor);
             _flash = null;
@@ -186,9 +186,9 @@ namespace Decrypted.Interaction
             foreach (char c in _passphrase)
             {
                 HandlePress(c.ToString());
-                yield return new WaitForSeconds(perKeyDelay);
+                yield return new WaitForSecondsRealtime(perKeyDelay);
             }
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSecondsRealtime(0.25f);
             Submit();
         }
     }
