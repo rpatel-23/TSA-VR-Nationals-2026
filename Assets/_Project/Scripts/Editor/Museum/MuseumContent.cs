@@ -3,8 +3,8 @@
 //  DECRYPTED — A Walk Through the History of Secret Writing
 //
 //  The EDUCATIONAL HEART of the expanded museum. This is a single, reviewable
-//  source of truth for every word the visitor reads — gallery identities, ~50
-//  secondary exhibits, codebreaker biographies, wall timelines and wayfinding
+//  source of truth for every word the visitor reads — gallery identities, dozens
+//  of secondary exhibits, codebreaker biographies, wall timelines and wayfinding
 //  copy. Every entry is original, historically grounded museum-label prose
 //  (Title / Date / Description / Significance). There is no placeholder text and
 //  no lorem ipsum anywhere in this file.

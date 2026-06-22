@@ -2,10 +2,10 @@
 //  VRHandPoser.cs
 //  DECRYPTED - A Walk Through the History of Secret Writing
 //
-//  Drives a stylized low-poly VR hand the SUPERHOT way: the hand mesh is a pure
-//  positional/rotational puppet of the controller (it is parented to the
-//  controller, so pose tracking is automatic) and the only animation is a simple
-//  two-pose finger curl driven by the grip and trigger inputs:
+//  Drives a stylized low-poly VR hand: the hand mesh is a pure positional/
+//  rotational puppet of the controller (it is parented to the controller, so pose
+//  tracking is automatic) and the only animation is a simple two-pose finger curl
+//  driven by the grip and trigger inputs:
 //
 //    * Grip squeezed  -> all fingers curl toward the palm (make a fist).
 //    * Trigger pulled -> the index finger extends (pointing), the rest follow grip.

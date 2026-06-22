@@ -9,10 +9,10 @@
 //  pulse, no realtime lights) and swings open as a visual flourish synced to the
 //  countdown. The door never calls Advance and never blocks the player.
 //
-//  Built from simple low-poly white geometry (frame + slab + a decorative handle)
-//  in the SUPERHOT style. Geometry can be previewed in edit mode via the context
-//  menu and is rebuilt fresh at runtime. Placement is the ExitDoor transform
-//  itself (per-room, editable in the Inspector / Scene view).
+//  Built from simple low-poly white geometry (frame + slab + a decorative handle).
+//  Geometry can be previewed in edit mode via the context menu and is rebuilt
+//  fresh at runtime. Placement is the ExitDoor transform itself (per-room,
+//  editable in the Inspector / Scene view).
 // -----------------------------------------------------------------------------
 
 using System.Collections;

@@ -110,11 +110,9 @@ namespace Decrypted.Core
             if (GameManager.Instance == null || GameManager.Instance.CurrentState != room) return;
             _busy = true;
 
-            // Win condition just fired. From this instant through the upcoming advance,
-            // time must run at 1.0. The countdown + fade are already unscaled, but a
-            // future time-scaling system could otherwise freeze the solve FX; forcing
-            // it here (and again in GameManager for the transition) keeps the whole
-            // win -> countdown -> transition window immune to a stalled timeScale.
+            // Defensive: keep time at 1.0 through the countdown + advance. The countdown
+            // and fade already run on unscaled time; this just guards against a stalled
+            // timeScale (nothing in the project lowers it today).
             Time.timeScale = 1f;
 
             // Cosmetic flourish: auto-open this room's exit door if one exists.

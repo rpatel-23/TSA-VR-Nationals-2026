@@ -9,7 +9,7 @@
 //
 //  Music sits at an exploration volume and DUCKS automatically while the narrator
 //  speaks (RoomNarratorController.DuckFor), easing back afterwards. All fades use
-//  unscaled time so the SUPERHOT-style time-scaling never affects the music.
+//  unscaled time so they are unaffected by Time.timeScale.
 //
 //  Clips are the pre-baked synth loops keyed mus_* (Tooling/Audio).
 // -----------------------------------------------------------------------------

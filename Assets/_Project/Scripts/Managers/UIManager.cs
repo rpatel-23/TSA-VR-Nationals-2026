@@ -91,7 +91,7 @@ namespace Decrypted.Managers
         {
             if (_toastLabel != null) _toastLabel.text = message;
             yield return Fade(_toastGroup, 0f, 1f, _fadeTime);
-            yield return new WaitForSecondsRealtime(hold); // unscaled: survives a time freeze
+            yield return new WaitForSecondsRealtime(hold); // unscaled: independent of Time.timeScale
             yield return Fade(_toastGroup, 1f, 0f, _fadeTime);
             _toastRoutine = null;
         }
@@ -102,7 +102,7 @@ namespace Decrypted.Managers
             float t = 0f;
             while (t < time)
             {
-                t += Time.unscaledDeltaTime; // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime; // unscaled: independent of Time.timeScale
                 g.alpha = Mathf.Lerp(from, to, t / time);
                 yield return null;
             }

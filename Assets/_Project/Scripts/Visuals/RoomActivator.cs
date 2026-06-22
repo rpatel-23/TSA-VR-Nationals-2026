@@ -140,7 +140,7 @@ namespace Decrypted.Visuals
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, seconds); // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, seconds); // unscaled: independent of Time.timeScale
                 float k = Mathf.SmoothStep(from, to, t);
                 ApplyEmissive(k);
                 yield return null;

@@ -43,8 +43,6 @@ namespace Decrypted.Core
         [Header("Pacing (seconds)")]
         [Tooltip("Delay on the splash screen before pressing PLAY.")]
         [SerializeField] private float _splashDelay = 2.5f;
-        [Tooltip("Time spent taking in the atrium before walking to the first exhibit.")]
-        [SerializeField] private float _atriumDwell = 5f;
         [Tooltip("Time to read an exhibit's plaque before starting to solve it.")]
         [SerializeField] private float _readDwell = 4f;
         [Tooltip("Per-keypress cadence while typing on the Enigma / vault.")]
@@ -113,12 +111,6 @@ namespace Decrypted.Core
             _handled.Add(MuseumState.Splash);
             yield return new WaitForSecondsRealtime(_splashDelay);
             EventBus.Publish(new ExperienceStartedEvent()); // Splash -> Atrium
-        }
-
-        private IEnumerator DoAtrium()
-        {
-            yield return new WaitForSecondsRealtime(_atriumDwell);
-            if (_gm != null) _gm.Advance(); // Atrium -> Ancient Room
         }
 
         private IEnumerator DoAncient()

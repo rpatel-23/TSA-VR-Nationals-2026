@@ -117,7 +117,7 @@ namespace Decrypted.Interaction
 
         private IEnumerator RevealRoutine()
         {
-            yield return new WaitForSecondsRealtime(_autoStartDelay); // unscaled: survives a time freeze
+            yield return new WaitForSecondsRealtime(_autoStartDelay); // unscaled time
 
             // Final chord swells right as the transformation begins.
             if (!_chordPlayed && !string.IsNullOrEmpty(_finalChordKey) && AudioManager.Instance != null)
@@ -130,7 +130,7 @@ namespace Decrypted.Interaction
             bool plaqueStarted = false;
             while (t < 1f)
             {
-                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _morphSeconds); // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _morphSeconds); // unscaled time
                 float p = Mathf.Clamp01(t);
                 ApplyMorph(p);
 
@@ -149,10 +149,10 @@ namespace Decrypted.Interaction
             // Make sure the plaque is fully up even on very short morph times.
             if (!plaqueStarted) yield return FadePlaqueIn();
 
-            // Hold the final tableau briefly, then signal the win condition. The
-            // ProgressionGateController shows the "Let's Go" panel; the player
-            // presses it to finish (RevealChamber -> Complete). No auto-advance.
-            yield return new WaitForSecondsRealtime(2.0f); // unscaled: survives a time freeze
+            // Hold the final tableau briefly, then signal the win condition.
+            // AutoProgressionController listens for this and carries the player on
+            // (RevealChamber -> Complete) via the countdown popup.
+            yield return new WaitForSecondsRealtime(2.0f); // unscaled time
             EventBus.Publish(new ExhibitSolvedEvent(MuseumState.RevealChamber));
         }
 
@@ -209,7 +209,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _plaqueFadeSeconds); // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _plaqueFadeSeconds); // unscaled time
                 _conclusionGroup.alpha = Mathf.Lerp(start, 1f, Mathf.SmoothStep(0f, 1f, t));
                 yield return null;
             }

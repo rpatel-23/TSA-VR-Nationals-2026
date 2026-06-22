@@ -46,15 +46,6 @@ namespace Decrypted.Core
         [Tooltip("Seconds to wait after entering a room before pre-warming the next one.")]
         [SerializeField] private float _preWarmDelay = 1.5f;
 
-        [Header("Pacing")]
-        [Tooltip("Default delay between solving an exhibit and the room transition.")]
-        [SerializeField] private float _defaultExitDelay = 2.5f;
-        [Tooltip("Per-room overrides (lets the WWII 'power up' sequence breathe).")]
-        [SerializeField] private List<RoomExitDelay> _exitDelays = new List<RoomExitDelay>();
-
-        [System.Serializable]
-        public struct RoomExitDelay { public MuseumState state; public float delay; }
-
         private readonly Dictionary<MuseumState, RoomDescriptor> _byState =
             new Dictionary<MuseumState, RoomDescriptor>();
 
@@ -69,12 +60,6 @@ namespace Decrypted.Core
             // Start with everything off; GameManager will SnapTo the first state.
             foreach (var r in _rooms)
                 if (r?.roomRoot != null) r.roomRoot.SetActive(false);
-        }
-
-        public float GetExitDelay(MuseumState state)
-        {
-            foreach (var e in _exitDelays) if (e.state == state) return e.delay;
-            return _defaultExitDelay;
         }
 
         /// <summary>Immediate activation with no fade (boot/reset).</summary>
@@ -138,10 +123,8 @@ namespace Decrypted.Core
 
         private void ActivateRoom(MuseumState target)
         {
-            // Activate target; deactivate all others. We also pre-warm the *next*
-            // room one step ahead so its lightmaps/meshes are resident, but keep
-            // it disabled-but-loaded by toggling only the renderers via the
-            // RoomActivator's PreWarm path.
+            // Activate the target room and deactivate all others. (Pre-warming the next
+            // room ahead of time is handled separately by PreWarm/PreWarmAfter.)
             foreach (var kvp in _byState)
             {
                 bool isActive = kvp.Key == target;

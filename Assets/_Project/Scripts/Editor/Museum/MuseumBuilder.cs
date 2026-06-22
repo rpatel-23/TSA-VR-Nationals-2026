@@ -2,15 +2,18 @@
 //  MuseumBuilder.cs   (Editor)
 //  DECRYPTED — A Walk Through the History of Secret Writing
 //
-//  The orchestrator that turns the six bare room roots into a dense, grand,
-//  world-class museum. For every gallery it:
+//  The orchestrator that turns the bare room roots into a dense, grand,
+//  world-class museum. It dresses every gallery authored in MuseumContent
+//  (Entrance, Atrium, Ancient, WWII, Vault, Reveal and the Complete hall). For
+//  each one it:
 //
-//    1. Builds a GRAND architectural shell — large footprint, 6 m ceilings,
-//       coffered ceiling + skylight, colonnade, framed archway doorways, baseboard
+//    1. Builds a GRAND architectural shell — large footprint, tall ceilings,
+//       coffered ceiling + laylight, colonnade, framed archway doorways, baseboard
 //       and cornice, a runner-and-border floor, wall sconces.
-//    2. Drops a dramatic procedural HERO centerpiece (cipher disk, Enigma, vault
-//       door, synthesis sculpture, armillary globe, entrance portal) on a plinth
-//       with rope barrier, benches and real spotlights.
+//    2. Drops a dramatic procedural HERO centerpiece (entrance portal, armillary
+//       globe, cipher disk, Enigma, vault door, synthesis sculpture, or the
+//       closing-plaque panel) on a plinth — with rope barrier, benches and real
+//       spotlights, except the entrance (own layout) and the baked-only Complete hall.
 //    3. Densely DRESSES the perimeter from MuseumContent — display cases,
 //       pedestals, tablet cases, wall reliefs, framed infographics, a portrait
 //       gallery of pioneers, a wall timeline, kiosks — every one carrying unique,
@@ -40,8 +43,9 @@ namespace Decrypted.EditorTools
     {
         private const string DressingName = "MuseumDressing";
 
-        // Per-gallery look. (floor, wall, ceiling, trim, accent metal, sconce glow,
-        // hero light colour, hero light intensity, footprint W, D, ceiling H)
+        // Per-gallery look: material keys for floor, wall, ceiling, trim, accent
+        // metal, sconce glow and floor runner; the hero-light colour (Key) and
+        // Intensity; and the footprint W, D and ceiling height H.
         private struct Style
         {
             public string Floor, Wall, Ceil, Trim, Accent, Sconce, Runner;

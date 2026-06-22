@@ -266,7 +266,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _powerUpSeconds); // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _powerUpSeconds); // unscaled so the payoff runs at real time
                 SetTimelineEmissive(Mathf.SmoothStep(0f, 1f, t) * _timelinePeak);
                 yield return null;
             }
@@ -298,7 +298,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _doorOpenSeconds); // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _doorOpenSeconds); // unscaled so the door opens at real time
                 EnigAnim.SetExitDoorPosition(Vector3.Lerp(start, end, Mathf.SmoothStep(0f, 1f, t)));
                 yield return null;
             }

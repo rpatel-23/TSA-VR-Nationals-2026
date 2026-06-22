@@ -141,7 +141,7 @@ namespace Decrypted.Interaction
             if (VaultAnim.TryTriggerOpen())
             {
                 StartCoroutine(RevealRoom(_openSeconds));
-                yield return new WaitForSecondsRealtime(_openSeconds); // unscaled: survives a time freeze
+                yield return new WaitForSecondsRealtime(_openSeconds); // unscaled time
             }
             else if (_door != null)
             {
@@ -163,7 +163,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _ringSpinSeconds); // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _ringSpinSeconds); // unscaled time
                 VaultAnim.SetRingRotation(Quaternion.Slerp(start, end, Mathf.SmoothStep(0f, 1f, t)));
                 yield return null;
             }
@@ -187,7 +187,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _openSeconds); // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _openSeconds); // unscaled time
                 float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t));         // ease-in-out
                 if (_style == DoorStyle.Hinged)
                 {
@@ -212,7 +212,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, seconds); // unscaled: survives a time freeze
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, seconds); // unscaled time
                 float k = Mathf.SmoothStep(0f, 1f, t);
                 SetRevealLights(k * _revealLightTarget);
                 SetArchiveEmissive(k * _archivePeak);

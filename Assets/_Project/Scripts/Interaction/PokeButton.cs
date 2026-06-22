@@ -13,7 +13,6 @@
 //   * On press: depress the cap by a configurable travel, play a click SFX,
 //     pulse an emissive highlight, fire UnityEvent + C# Action.
 //   * Debounced so a single poke doesn't double-fire.
-//   * Optional "latching" mode for toggle buttons (not used by default).
 //
 //  Designers wire everything in the Inspector. Code consumers subscribe to the
 //  OnPressed Action (preferred for the keyboards, which need the key value).

@@ -47,11 +47,6 @@ namespace Decrypted.Core
         public MuseumState CurrentState { get; private set; } = MuseumState.Boot;
         public bool DemoMode => _demoMode;
 
-        /// <summary>True while a room transition is in flight. A future time-scaling
-        /// ("SUPERHOT") system MUST treat this as a hard override: hold Time.timeScale
-        /// at 1.0 while this is true so a transition can never run under frozen time.</summary>
-        public bool IsTransitioning => _transitioning;
-
         // The canonical forward order. Index lookups keep CanTransition trivial.
         private static readonly MuseumState[] _order =
         {
@@ -200,13 +195,8 @@ namespace Decrypted.Core
         {
             _transitioning = true;
 
-            // A room transition must NEVER run under a non-1 timeScale. There is no
-            // timeScale driver in the project today, but the codebase is written for a
-            // planned "SUPERHOT" time-scaling system (see CountdownPanel/ScreenFader
-            // comments). Forcing 1.0 here self-heals if anything ever lowered it, so a
-            // solve can never stall the advance. This single log lets you verify the
-            // safety is firing once per transition.
-            Debug.Log($"[GameManager] Transition -> {target}: forcing Time.timeScale to 1.0 (was {Time.timeScale:0.###}).");
+            // Defensive: make sure a transition never runs under a slowed timeScale.
+            // Nothing in the project lowers timeScale today, so this is just a guard.
             Time.timeScale = 1f;
 
             // try/finally GUARANTEES we always clear _transitioning, even if the
@@ -270,16 +260,9 @@ namespace Decrypted.Core
 
         private void OnExhibitSolved(ExhibitSolvedEvent e)
         {
-            // Advancing is owned by AutoProgressionController, which is the SINGLE
-            // auto-advance path for both normal play and Demo Mode: it shows the
-            // countdown popup, runs the ScreenFader transition and calls Advance().
-            // GameManager only records the solve (via MarkSolved) here.
-        }
-
-        private IEnumerator AdvanceAfter(float delay, MuseumState room)
-        {
-            yield return new WaitForSecondsRealtime(delay); // unscaled: survives a time freeze
-            if (CurrentState == room) Advance();
+            // Intentionally empty. Solves are recorded in MarkSolved (which raises this
+            // event), and the advance is owned by AutoProgressionController. GameManager
+            // subscribes only so the solve flow stays visible in one place.
         }
     }
 }

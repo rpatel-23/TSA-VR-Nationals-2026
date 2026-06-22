@@ -18,8 +18,8 @@
 //      lerps to zero beyond 2.5 m and below 0.8 m (so it never fills the view
 //      while grabbing). Linear interpolation, no hard cut.
 //
-//  Purely additive: attach it to an object, set the text, done. It never touches
-//  gameplay, hands, time-scaling, or the panel system.
+//  Purely additive: attach it to an object, set the text, done. It only reads the
+//  head transform and renders its own world-space canvas; it never touches gameplay.
 // -----------------------------------------------------------------------------
 
 using TMPro;

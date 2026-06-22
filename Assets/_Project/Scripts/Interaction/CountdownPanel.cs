@@ -8,11 +8,10 @@
 //  advance never feels like a jump cut.
 //
 //  Spawned by AutoProgressionController in front of the player's current head pose
-//  and billboarded to face them. The countdown runs on UNSCALED time so the
-//  SUPERHOT-style time-scaling (which drives timeScale -> 0 when the player is
-//  still) can never freeze it mid-count. When it reaches zero it invokes the
-//  supplied callback (which runs the ScreenFader transition + advance) and then
-//  destroys itself. Styling matches the world-space label/plaque look.
+//  and billboarded to face them. The countdown runs on UNSCALED time so it is
+//  unaffected by Time.timeScale. When it reaches zero it invokes the supplied
+//  callback (which runs the ScreenFader transition + advance) and then destroys
+//  itself. Styling matches the world-space label/plaque look.
 // -----------------------------------------------------------------------------
 
 using System;
@@ -49,7 +48,7 @@ namespace Decrypted.Interaction
             for (int n = _seconds; n >= 1; n--)
             {
                 if (_countLine != null) _countLine.text = "Progressing in " + n;
-                // Unscaled: immune to the time-scaling system pausing scaled time.
+                // Unscaled: independent of Time.timeScale.
                 yield return new WaitForSecondsRealtime(1f);
             }
             Complete();
