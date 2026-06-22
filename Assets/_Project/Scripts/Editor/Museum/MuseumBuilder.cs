@@ -58,6 +58,8 @@ namespace Decrypted.EditorTools
                 case "wwii": return new Style { Floor = "concrete", Wall = "plasterCool", Ceil = "ceiling", Trim = "steel", Accent = "steel", Sconce = "glowWarm", Runner = "carpetBlue", Key = new Color(0.95f, 0.95f, 1f), Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
                 case "vault": return new Style { Floor = "marbleDark", Wall = "plasterCool", Ceil = "ceiling", Trim = "chrome", Accent = "steel", Sconce = "glowCool", Runner = "carpetBlue", Key = new Color(0.7f, 0.9f, 1f), Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
                 case "reveal": return new Style { Floor = "marbleDark", Wall = "marbleDark", Ceil = "ceiling", Trim = "gold", Accent = "gold", Sconce = "glowGold", Runner = "carpetRed", Key = new Color(1f, 0.88f, 0.7f), Intensity = 16f, W = 15f, D = 13f, H = 8f };
+                // Completion hall: warmer, brighter and more open than the puzzle rooms.
+                case "complete": return new Style { Floor = "marbleLight", Wall = "plasterWarm", Ceil = "marbleLight", Trim = "gold", Accent = "brass", Sconce = "glowGold", Runner = "carpetRed", Key = new Color(1f, 0.9f, 0.72f), Intensity = 14f, W = 16f, D = 14f, H = 8.5f };
                 default: return new Style { Floor = "concrete", Wall = "plasterNeutral", Ceil = "ceiling", Trim = "brass", Accent = "brass", Sconce = "glowWarm", Runner = "carpetRed", Key = Color.white, Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
             }
         }
@@ -122,6 +124,21 @@ namespace Decrypted.EditorTools
                 }
             }
             Debug.LogWarning("[Museum] Selection is not a recognised Room_* root.");
+        }
+
+        /// <summary>Build/refresh a single gallery by state (used to stamp the
+        /// completion hall without rebuilding the whole museum). Idempotent.</summary>
+        public static void BuildOne(MuseumState state)
+        {
+            if (Application.isPlaying) { Debug.LogWarning("[Museum] Exit Play Mode first."); return; }
+            MuseumKit.Init();
+            if (!MuseumContent.TryGet(state, out var g)) { Debug.LogWarning($"[Museum] No gallery authored for {state}."); return; }
+            var room = FindRoom(state);
+            if (room == null) { Debug.LogWarning($"[Museum] Room_{state} not found."); return; }
+            BuildGallery(g, room);
+            AssetDatabase.SaveAssets();
+            EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+            Debug.Log($"[Museum] Built Room_{state}.");
         }
 
         // =====================================================================
@@ -406,12 +423,17 @@ namespace Decrypted.EditorTools
                 case "wwii": HeroEnigma(hero.transform, g); break;
                 case "vault": HeroVault(hero.transform, g); break;
                 case "reveal": HeroSculpture(hero.transform, g); break;
+                case "complete": HeroComplete(hero.transform, g); break;
             }
 
             // Hero plaque (near side, facing the visitor) + rope barrier + benches.
             if (g.Key != "entrance")
             {
-                MuseumProps.Plaque(hero.transform, new Vector3(0, 1.15f, -1.5f), 180f, g.HeroTitle, g.HeroPlaque, 0.95f, true);
+                // The completion hall presents the closing plaque on its grand panel
+                // (HeroComplete), so it skips the small near-side plaque to avoid a
+                // duplicate of the same verbatim text.
+                if (g.Key != "complete")
+                    MuseumProps.Plaque(hero.transform, new Vector3(0, 1.15f, -1.5f), 180f, g.HeroTitle, g.HeroPlaque, 0.95f, true);
                 MuseumProps.RopeBarrier(hero.transform, "Hero", new[]
                 {
                     new Vector3(-1.5f, 0, 1.5f), new Vector3(1.5f, 0, 1.5f),
@@ -551,6 +573,27 @@ namespace Decrypted.EditorTools
                 MuseumKit.TextRole.Body, MuseumKit.Cream, TextAlignmentOptions.Center);
             MuseumProps.FloorMedallion(p, new Vector3(0, 0, 1.5f), 1.1f, MuseumContent.MuseumName);
             MuseumProps.Plaque(p, new Vector3(0, 1.1f, 1.9f), 0f, g.HeroTitle, g.HeroPlaque, 0.95f, true);
+        }
+
+        // The payoff centerpiece: a grand freestanding panel carrying the verbatim
+        // closing plaque, on a low wide plinth, with a warm emissive backing fill so
+        // it reads cleanly without any new realtime light. Faces the visitor (-Z).
+        private static void HeroComplete(Transform p, Gallery g)
+        {
+            HeroPlinth(p, 0.35f, "marbleLight");
+
+            var panel = MuseumKit.Group(p, "ClosingPanel", new Vector3(0, 0, 0.1f));
+            MuseumKit.Box(panel.transform, "Back", new Vector3(0, 2.25f, 0.10f), new Vector3(4.4f, 3.3f, 0.18f), "marbleDark");
+            MuseumKit.Box(panel.transform, "FrameOuter", new Vector3(0, 2.25f, 0.02f), new Vector3(4.8f, 3.7f, 0.10f), "gold");
+            MuseumKit.Box(panel.transform, "FrameInner", new Vector3(0, 2.25f, -0.01f), new Vector3(4.3f, 3.2f, 0.08f), "brass");
+            // Warm emissive fill behind the text — a subtle glow, zero light cost.
+            MuseumKit.Box(panel.transform, "WarmFill", new Vector3(0, 2.25f, 0.0f), new Vector3(4.1f, 3.0f, 0.04f), "glowWarm");
+
+            // Museum name + the closing plaque, generously scaled (the payoff moment).
+            MuseumKit.Label(panel.transform, "Title", new Vector3(0, 3.35f, -0.04f), new Vector2(4.0f, 0.7f),
+                "DECRYPTED", MuseumKit.TextRole.Sign, MuseumKit.BrassText, TextAlignmentOptions.Center, new Vector3(0, 180f, 0));
+            MuseumKit.Label(panel.transform, "Plaque", new Vector3(0, 1.95f, -0.04f), new Vector2(3.8f, 2.1f),
+                g.HeroPlaque, MuseumKit.TextRole.Heading, MuseumKit.WarmWhite, TextAlignmentOptions.Center, new Vector3(0, 180f, 0));
         }
 
         // ------------------------------------------------------------- PERIMETER
@@ -698,6 +741,25 @@ namespace Decrypted.EditorTools
         {
             var lights = MuseumKit.Group(p, "Lighting");
             float hw = st.W * 0.5f, hd = st.D * 0.5f, H = st.H;
+
+            // The completion hall is BAKED-ONLY: no new realtime lights. Its glow comes
+            // from the emissive laylight, sconces, clerestory, chandeliers and the warm
+            // panel fill (all zero-cost). We add a light probe group so the dynamic
+            // player and hands pick up the baked bounce. (Bake via Window > Rendering >
+            // Lighting > Generate Lighting for the final look.)
+            if (g.Key == "complete")
+            {
+                var probesGO = MuseumKit.Group(lights.transform, "LightProbes");
+                var lpg = probesGO.AddComponent<LightProbeGroup>();
+                var pts = new List<Vector3>();
+                float pxw = hw - 1.2f, pzd = hd - 1.2f;
+                foreach (float x in new[] { -pxw, -pxw * 0.4f, pxw * 0.4f, pxw })
+                    foreach (float z in new[] { -pzd, 0f, pzd })
+                        foreach (float y in new[] { 0.4f, 1.6f, 3.0f })
+                            pts.Add(new Vector3(x, y, z));
+                lpg.probePositions = pts.ToArray();
+                return;
+            }
 
             // Two hero spots from the ceiling, flanking and aimed at the centerpiece.
             MuseumKit.Spot(lights.transform, "HeroSpotA", new Vector3(-1.4f, H - 0.3f, HeroZ + 1.0f), new Vector3(60, 200, 0), st.Key, st.Intensity, 12f, 42f, false);

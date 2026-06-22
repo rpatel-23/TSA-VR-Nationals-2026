@@ -133,8 +133,13 @@ namespace Decrypted.Core
             if (_hmdCamera != null)
             {
                 Vector3 camOffset = _hmdCamera.transform.position - _xrOrigin.position;
-                camOffset.y = 0f; // keep vertical placement exact
-                _xrOrigin.position = room.playerAnchor.position - camOffset;
+                camOffset.y = 0f; // only recenter horizontally
+                Vector3 placed = room.playerAnchor.position - camOffset;
+                // Respect the rig's configured height (Inspector Y); do NOT snap the
+                // rig down to the anchor's floor Y on every room entry. This is what
+                // previously pushed the camera back to floor level after a transition.
+                placed.y = _xrOrigin.position.y;
+                _xrOrigin.position = placed;
 
                 // Yaw the rig so the player faces the anchor's forward.
                 float yawDelta = room.playerAnchor.eulerAngles.y - _hmdCamera.transform.eulerAngles.y;
@@ -142,7 +147,10 @@ namespace Decrypted.Core
             }
             else
             {
-                _xrOrigin.SetPositionAndRotation(room.playerAnchor.position, room.playerAnchor.rotation);
+                // Preserve the rig's configured height; only place X/Z from the anchor.
+                Vector3 pos = room.playerAnchor.position;
+                pos.y = _xrOrigin.position.y;
+                _xrOrigin.SetPositionAndRotation(pos, room.playerAnchor.rotation);
             }
         }
 

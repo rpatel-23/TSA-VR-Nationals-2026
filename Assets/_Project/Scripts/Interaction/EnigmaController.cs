@@ -346,6 +346,15 @@ namespace Decrypted.Interaction
 
             yield return new WaitForSeconds(0.3f);
             if (pullLever && _lever != null) _lever.ForcePull();
+
+            // DEMO GUARANTEE (demo hook only): the recorded walkthrough must always
+            // commit and advance. If the physical lever path did not fire - e.g. the
+            // lever interactable is absent from the scene, or a sim edge case left it
+            // un-armed - power the machine up directly so the WWII room completes and
+            // MarkSolved fires. This runs only from AutoSolve (Demo Mode); the live
+            // player path (HandleLever) is unchanged.
+            yield return null;
+            if (!_solved) yield return PowerUp();
         }
     }
 }

@@ -70,7 +70,11 @@ namespace Decrypted.Interaction
         private void Face(bool snap)
         {
             if (_player == null) return;
-            Vector3 dir = _player.position - transform.position;   // canvas front (+Z) faces player
+            // A world-space canvas reads correctly when its +Z points the SAME way
+            // the viewer looks (i.e. AWAY from the player), per the standard
+            // "transform.forward = camera.forward" billboard. Pointing +Z toward the
+            // player instead bakes in a 180 deg Y rotation and mirrors the text.
+            Vector3 dir = transform.position - _player.position;   // away from player -> readable, Y~0
             dir.y = 0f;
             if (dir.sqrMagnitude < 1e-5f) return;
             Quaternion target = Quaternion.LookRotation(dir.normalized, Vector3.up);

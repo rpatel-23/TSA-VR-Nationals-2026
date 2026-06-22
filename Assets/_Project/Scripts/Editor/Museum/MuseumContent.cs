@@ -712,10 +712,70 @@ namespace Decrypted.EditorTools
             },
         };
 
+        // ------------------------------------------------------------------ //
+        //  GALLERY 7 — THE HALL OF COMPLETION  (Complete state)
+        // ------------------------------------------------------------------ //
+        private static readonly Gallery Complete = new Gallery
+        {
+            Key = "complete",
+            State = MuseumState.Complete,
+            Name = "THANK YOU",
+            Subtitle = "The Hall of Completion",
+            Intro =
+                "You have walked the whole history of secret writing, from a turning " +
+                "Roman disk to the mathematics that guards the modern world. This final " +
+                "hall gathers the three machines you mastered and the single idea that " +
+                "binds them across three thousand years.",
+            HeroTitle = "THE UNBROKEN THREAD",
+            // Verbatim closing plaque (CLAUDE.md / README). Do not paraphrase.
+            HeroPlaque =
+                "From Caesar's alphabet shifts to modern digital security, cryptography " +
+                "protects information by transforming meaning into secrets only the " +
+                "intended recipient can reveal.",
+            Exhibits = new[]
+            {
+                new Exhibit("recap-caesar", "The Caesar Cipher Disk", "Antiquity",
+                    "You shifted the alphabet three places and watched a dead language " +
+                    "speak again. The simplest idea in cryptology, and the seed of every " +
+                    "cipher that followed.",
+                    "Where the long duel between code and codebreaker began.",
+                    CaseKind.Pedestal, "disk"),
+                new Exhibit("recap-enigma", "The Enigma Machine", "The World Wars",
+                    "You set three rotors to MAC and drew the word VICTORY out of noise. A " +
+                    "machine that rewired the alphabet with every keystroke, and the " +
+                    "codebreakers who beat it anyway.",
+                    "Where breaking codes became an industry, and gave birth to the computer.",
+                    CaseKind.Vitrine, "machine"),
+                new Exhibit("recap-vault", "The Digital Vault", "The Digital Age",
+                    "You spoke the word the Enigma had hidden and the vault opened. Modern " +
+                    "secrets are not buried, they are locked, and only the key can open them " +
+                    "in full view of the world.",
+                    "Where cryptography became the quiet foundation of everyday life.",
+                    CaseKind.Vitrine, "padlock"),
+            },
+            Figures = new Figure[0],
+            Timeline = new[]
+            {
+                new TimelineNode("50 BCE", "Caesar shifts the alphabet"),
+                new TimelineNode("1942", "Enigma meets its match"),
+                new TimelineNode("1977", "Public-key opens the digital age"),
+                new TimelineNode("Today", "The thread is yours to carry"),
+            },
+            Directory = new[]
+            {
+                "THE HALL OF COMPLETION",
+                "",
+                "Centre   The Unbroken Thread",
+                "Wall     Caesar  ·  Enigma  ·  the Vault",
+                "",
+                "Thank you for visiting DECRYPTED.",
+            },
+        };
+
         /// <summary>Every gallery, in walkthrough order.</summary>
         public static readonly Gallery[] Galleries =
         {
-            Entrance, Atrium, Ancient, WWII, Vault, Reveal,
+            Entrance, Atrium, Ancient, WWII, Vault, Reveal, Complete,
         };
 
         /// <summary>Look up the authored gallery for a museum state (or null-ish empty).</summary>
