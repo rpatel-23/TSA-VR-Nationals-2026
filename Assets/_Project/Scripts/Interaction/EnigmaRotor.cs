@@ -63,9 +63,7 @@ namespace Decrypted.Interaction
         public void SetValue(int value, bool animate)
         {
             if (_disk == null) return;
-            // 0.8 s reads as a deliberate, mechanical turn to the key (the old 0.1 s
-            // default looked like a teleport in the recorded demo).
-            if (animate) _disk.AnimateToStep(value, 0.8f);
+            if (animate) _disk.AnimateToStep(value);
             else _disk.SetStep(value, silent: false);
         }
 

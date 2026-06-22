@@ -20,7 +20,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Decrypted.Core;
 using Decrypted.Managers;
-using Decrypted.Util;
 using UnityEngine;
 
 namespace Decrypted.Interaction
@@ -54,9 +53,6 @@ namespace Decrypted.Interaction
         [SerializeField] private Transform _lockingRing;
         [SerializeField] private float _ringSpinDegrees = 220f;
         [SerializeField] private float _ringSpinSeconds = 1.0f;
-        [Tooltip("Curve for the bolt-retract ring spin. BackOut = the ring whips " +
-                 "round and settles back with a mechanical kick.")]
-        [SerializeField] private Ease _ringEase = Ease.BackOut;
 
         [Header("Status lights")]
         [SerializeField] private Renderer[] _statusLights;
@@ -163,9 +159,7 @@ namespace Decrypted.Interaction
             while (t < 1f)
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, _ringSpinSeconds);
-                // Unclamped so overshoot curves (BackOut/Elastic) actually kick past
-                // the target before settling, instead of being clamped flat.
-                VaultAnim.SetRingRotation(Quaternion.SlerpUnclamped(start, end, Easing.Evaluate(_ringEase, t)));
+                VaultAnim.SetRingRotation(Quaternion.Slerp(start, end, Mathf.SmoothStep(0f, 1f, t)));
                 yield return null;
             }
             VaultAnim.SetRingRotation(end);
