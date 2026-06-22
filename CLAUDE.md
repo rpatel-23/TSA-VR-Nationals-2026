@@ -23,24 +23,29 @@ headset.
 
 ---
 
-## 2. Repo layout (resolved Session 9 — was a two-clone mess)
+## 2. Repo layout (single project — was a two-clone mess)
 
-**There is now ONE project**, and it is this folder (Claude's CWD == the Unity
-project Unity opens):
+**There is ONE project**, and it is this folder (Claude's CWD == the Unity project
+Unity opens).
 
-`C:/Users/patel/TSA-VR-Nationals-2026/TSA-VR-Nationals-2026-2026-06-11_11-00-28/`
+- **macOS clone (current CWD this session):** `/Users/neelvangala/TSA-VR-Nationals-2026/`
+- **Original Windows clone (per CLAUDE history):** `C:/Users/patel/TSA-VR-Nationals-2026/TSA-VR-Nationals-2026-2026-06-11_11-00-28/`
+- **Remote:** `https://github.com/rpatel-23/TSA-VR-Nationals-2026.git` (branch `main`).
 
-History: there used to be two clones — an OUTER (`C:/Users/patel/TSA-VR-Nationals-2026/`)
-that Unity opened, and this INNER clone (Claude's CWD). Session 9 consolidated to
-one by gutting the OUTER. The OUTER folder still physically exists as the *parent
-directory* of this one, but its `Assets/`, `ProjectSettings/`, and `.git` were
-deleted; only orphaned Unity junk (`Library/`, `Logs/`, `Temp/`, `Packages/`) may
-linger there. **That leftover junk is NOT the project — ignore it / it can be
-deleted.** Unity should be opened on THIS inner folder.
+The project now lives on more than one machine via the git remote — paths differ
+by machine, so **treat absolute paths in this doc (esp. the `C:\...` Blender/build
+commands in §7–8) as illustrative; translate to the current CWD.** On macOS,
+Blender/Python invocations use the mac binary paths, not the `C:\Program Files` ones.
+
+History: there used to be two clones on the Windows machine — an OUTER
+(`C:/Users/patel/TSA-VR-Nationals-2026/`) that Unity opened, and an INNER clone.
+That was consolidated to one by gutting the OUTER (its `Assets/`, `ProjectSettings/`,
+`.git` deleted; only orphaned `Library/`, `Logs/`, `Temp/`, `Packages/` junk may
+linger). **That leftover junk is NOT the project.**
 
 **Consequence now:** edits here ARE what Unity sees (once Unity is opened on this
-folder). No more cross-clone sync. If you ever see a sibling/parent copy with
-Assets again, it's a mistake — don't edit it.
+folder). If you ever see a sibling/parent copy with Assets again, it's a mistake —
+don't edit it.
 
 ---
 
@@ -51,11 +56,15 @@ loading at runtime (avoids VR hitches). Each "room" is a child hierarchy toggled
 
 **Event-driven, single source of truth for state:**
 
-- `GameManager` (Core/) — the FSM. Owns `MuseumState` (Boot→Splash→Atrium→AncientRoom→WWIIRoom→VaultRoom→RevealChamber→Complete). Forward-only, guarded. Gated rooms (Ancient/WWII/Vault) require their puzzle solved before advancing — **Demo Mode bypasses the gate**. `[DefaultExecutionOrder(-100)]`, a `Singleton`.
+- `GameManager` (Core/) — the FSM. Owns `MuseumState` (Boot→Splash→Atrium→AncientRoom→WWIIRoom→VaultRoom→RevealChamber→Complete). Forward-only via `Advance()`. `[DefaultExecutionOrder(-100)]`, a `Singleton`.
+- `AutoProgressionController` (Core/) — **the single advance path for BOTH normal play and Demo Mode** (newer than DemoDirector's gate model). When a room's win condition fires (`ExhibitSolvedEvent` for puzzle/reveal rooms; a short dwell for Atrium) it shows a brief world-space countdown popup (`CountdownPanel`) and then calls `GameManager.Advance()`. **No hand interaction, door grab, or button press gates progression.** Splash is the only deliberate gate — its PLAY button raises `ExperienceStartedEvent`. Cosmetic `RoomDoor`s auto-open synced to the countdown but never block.
 - `SceneController` (Core/) — physical presentation: activates the target room, deactivates others, places the XR rig at the room's `playerAnchor`, runs the screen fade. Holds the `List<RoomDescriptor>` (per-room: roomRoot, playerAnchor, reflectionProbe, ambientKey, mixer snapshot).
-- `DemoDirector` (Core/) — when `GameManager.DemoMode` is on, scripts the puzzle input for each room with human-paced dwell times. Listens to `RoomEnteredEvent`, calls each exhibit's `AutoSolve()`/`AutoEnter()`/`BeginReveal()`. Auto-resolves exhibit refs via `FindObjectOfType`.
+- `DemoDirector` (Core/) — when `GameManager.DemoMode` is on, scripts the puzzle *input* for each room with human-paced dwell times. Listens to `RoomEnteredEvent`, calls each exhibit's `AutoSolve()`/`AutoEnter()`/`BeginReveal()`. Auto-resolves exhibit refs via `FindObjectOfType`. (The room *advance* itself now flows through AutoProgressionController.)
+- `NarrationController` (Managers/) — passive museum "audio-guide". Listens to `RoomEnteredEvent`/`ExhibitSolvedEvent`; shows caption via `ShowHintEvent` (UIManager toast) and optionally plays a `vo_*` voice key via AudioManager (`_voiceEnabled` OFF until real VO recorded). Never advances or solves — safe alongside Demo Mode. (Note: README still says "no spoken narration"; this adds opt-in VO + captions on top.)
 - `EventBus` (Core/) — static pub/sub. Key events in `GameEvents.cs`: `StateChangedEvent`, `RoomEnteredEvent`, `ExperienceStartedEvent`, `ExhibitSolvedEvent`, `ShowHintEvent`.
 - `SaveSystem` (Core/) — persists furthest state + solved rooms (restore-on-launch is OFF by default).
+
+**VR comfort/presence layer (newer scripts):** `VRHandPoser` (Interaction/) drives stylized low-poly hands as controller puppets with grip/trigger finger-curl, calibration flippable in-Inspector. `PlayerHeightConfig` (Interaction/) trims player height correctly per Tracking Origin Mode (Device → `CameraYOffset`; Floor → Camera Offset child local Y, re-asserted on tracking-origin-updated). `WorldLabel` (Visuals/) is a billboarding TMP title+description label that fades with distance. Comments reference an intended "SUPERHOT-style" time-scaling (timeScale→0 when player is still) — countdown/UI run on **unscaled** time so they survive it.
 
 **Wiring contract (don't break):** `Managers` GameObject holds `SceneController` (needs XR Origin transform, Main Camera, 6 rooms) and `GameManager` (needs SceneController ref, Demo Mode checked). Exhibit wiring is in §6.
 
@@ -63,17 +72,22 @@ loading at runtime (avoids VR hitches). Each "room" is a child hierarchy toggled
 
 ---
 
-## 4. Full script inventory (40 .cs files — corrects the old handoff's "34")
+## 4. Full script inventory (47 .cs files — was 40; +7 new this session)
 
 `Assets/_Project/Scripts/`
 
-- **Core/**: `GameManager`, `SceneController`, `DemoDirector`, `EventBus`, `GameEvents`, `GameState` (MuseumState enum + RoomDescriptor), `SaveSystem`
-- **Interaction/**: `CaesarCipherController`, `EnigmaController`, `EnigmaMachine`, `EnigmaRotor`, `EnigmaKeyboard`, `EnigmaLampboard`, `EnigmaLeverPull`, `VaultController`, `VaultKeypad`, `VaultKeypadButton`, `FinalRevealController`, `XRGrabTwistDisk`, `PokeButton`, `SplashScreenController`, `TutorialCard`
-- **Managers/**: `AudioManager`, `InteractionManager`, `PerformanceManager`, `UIManager`
-- **Visuals/**: `ScreenFader`, `RoomActivator`, `PlaqueController`, `SignalTraceRenderer`, `MuseumAmbience` ⚠️ (this file is in **Visuals/**, NOT Editor/Museum/ as the old handoff said)
+- **Core/**: `GameManager`, `AutoProgressionController` ⬅NEW, `SceneController`, `DemoDirector`, `EventBus`, `GameEvents`, `GameState` (MuseumState enum + RoomDescriptor), `SaveSystem`
+- **Interaction/**: `CaesarCipherController`, `EnigmaController`, `EnigmaMachine`, `EnigmaRotor`, `EnigmaKeyboard`, `EnigmaLampboard`, `EnigmaLeverPull`, `VaultController`, `VaultKeypad`, `VaultKeypadButton`, `FinalRevealController`, `XRGrabTwistDisk`, `PokeButton`, `SplashScreenController`, `TutorialCard`, `CountdownPanel` ⬅NEW, `RoomDoor` ⬅NEW, `VRHandPoser` ⬅NEW, `PlayerHeightConfig` ⬅NEW
+- **Managers/**: `AudioManager`, `InteractionManager`, `PerformanceManager`, `UIManager`, `NarrationController` ⬅NEW
+- **Visuals/**: `ScreenFader`, `RoomActivator`, `PlaqueController`, `SignalTraceRenderer`, `MuseumAmbience` ⚠️ (this file is in **Visuals/**, NOT Editor/Museum/ as the old handoff said), `WorldLabel` ⬅NEW
 - **Util/**: `Singleton`, `AudioSynth`
 - **Editor/**: `BuildConfigurator`, `SceneBuilder`, `EnigmaRebuilder`
 - **Editor/Museum/** (Tejas's system): `MuseumBuilder`, `MuseumContent`, `MuseumKit`, `MuseumProps`
+
+> The 7 NEW scripts (Session 10-ish, latest commit `VR HANDS WORK`): automatic
+> progression + countdown popup + cosmetic doors, VR hand presence, per-mode player
+> height trim, audio-guide narration/captions, and billboarding world labels. See §3
+> for how they interact.
 
 ---
 
@@ -121,10 +135,15 @@ local (0, 1.0, 2.0) where the real interactive exhibit should be centered.
 Output → `Assets/_Project/Art/Generated/*.fbx` (5 files: CipherDisk, Enigma, Vault,
 RevealSculpture, Museum_Architecture).
 
-Regenerate (confirmed working):
+Regenerate (Windows — confirmed working):
 ```
 cd C:\Users\patel\TSA-VR-Nationals-2026\Tooling\Blender
 "C:\Program Files\Blender Foundation\Blender 5.1\blender.exe" --background --python export_all.py
+```
+macOS equivalent (translate the path to this CWD):
+```
+cd "$(git rev-parse --show-toplevel)/Tooling/Blender"
+/Applications/Blender.app/Contents/MacOS/Blender --background --python export_all.py
 ```
 Ends with `[export_all] all assets exported`. "polygons with more than 4 vertices /
 cannot compute tangent space" warnings are harmless.
@@ -244,6 +263,14 @@ models (which build correct URP materials in C#), or failing that rebuild/replac
 them. Diagnosis so far: scene instances are old broken copies (§9) and/or the
 FBX-imported materials aren't set up like Tejas's procedural URP materials. Best
 fixed once the Unity MCP bridge (§11) is connected so the scene can be inspected.
+
+**Done (latest, "VR HANDS WORK" commit):** added 7 new scripts (§4) — fully
+automatic room progression with a world-space countdown popup (`AutoProgressionController`
++ `CountdownPanel`), cosmetic auto-opening `RoomDoor`s, VR hand presence (`VRHandPoser`),
+per-tracking-mode player height trim (`PlayerHeightConfig`), audio-guide
+narration/captions (`NarrationController`), and billboarding `WorldLabel`s. Progression
+is now hands-free for both normal play and Demo Mode (Splash PLAY is the only gate).
+Project also now cloned/working on macOS (this CWD, §2).
 
 **Done (Session 9):** consolidated to a single project (gutted the OUTER clone, §2);
 added the Unity MCP bridge + installed uv; untracked the Burst debug junk.
