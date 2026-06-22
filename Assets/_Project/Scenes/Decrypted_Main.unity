@@ -11018,6 +11018,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d85f02343086a0649afad57efed03af1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 57804338}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d85f02343086a0649afad57efed03af1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 57804339}
     - targetCorrespondingSourceObject: {fileID: -4999529852038418904, guid: d85f02343086a0649afad57efed03af1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 57804337}
@@ -11820,6 +11823,29 @@ MonoBehaviour:
   _mappingLines: []
   _lineColor: {r: 0.95, g: 0.78, b: 0.35, a: 0.9}
   _solveSfxKey: sfx_success_chime
+--- !u!114 &57804339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57804335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8ae96609a5ea1498866c2a766afe65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: Caesar Cipher Disk
+  _description: Turn the inner ring to shift each letter and reveal the message.
+  _font: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  _heightAbove: 0.2
+  _nearZero: 0.4
+  _nearFull: 0.8
+  _farFull: 2.5
+  _farZero: 3.5
+  _titleSize: 40
+  _descSize: 28
+  _outlineWidth: 0.2
 --- !u!1 &58022958
 GameObject:
   m_ObjectHideFlags: 0
@@ -81578,8 +81604,8 @@ MonoBehaviour:
   m_Camera: {fileID: 1775578315}
   m_OriginBaseGameObject: {fileID: 401925910}
   m_CameraFloorOffsetObject: {fileID: 1468478032}
-  m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 1.45
+  m_RequestedTrackingOriginMode: 2
+  m_CameraYOffset: 1.6
 --- !u!114 &401925915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82241,6 +82267,7 @@ GameObject:
   - component: {fileID: 404104021}
   - component: {fileID: 404104028}
   - component: {fileID: 404104029}
+  - component: {fileID: 404104030}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -82480,12 +82507,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 404104019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29da6cf20c770df439a5d38b1d905150, type: 3}
+  m_Script: {fileID: 11500000, guid: fce43fdd1565a6b4ab06b9be9a19b9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _splashSafety: 9
-  _atriumDwell: 8
-  _puzzleGrace: 120
+  _spawnDistance: 1.6
+  _splashDwell: 3
+  _atriumDwell: 4
+  _titleFont: {fileID: 11400000, guid: 7020f8032c061d1438c4e0eff1c51adc, type: 2}
+  _bodyFont: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+--- !u!114 &404104030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404104019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c7fcafc53b11245bbc05d35bb1cfd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rate: 0.9
+  _pitch: 0.85
+  _volume: 1
+  _introDelay: 1.2
+  _preferMaleVoice: 1
 --- !u!1 &405876342
 GameObject:
   m_ObjectHideFlags: 0
@@ -99686,6 +99732,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491991009}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &492126172 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fc96219dc69079c499d8ca8ad0380eda, type: 3}
+  m_PrefabInstance: {fileID: 2121518596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &492711451
 GameObject:
   m_ObjectHideFlags: 0
@@ -207799,6 +207850,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003016999}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1003110912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255190733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8ae96609a5ea1498866c2a766afe65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: The Vault
+  _description: Enter the passphrase on the keypad to open the door.
+  _font: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  _heightAbove: 0.2
+  _nearZero: 0.4
+  _nearFull: 0.8
+  _farFull: 2.5
+  _farZero: 3.5
+  _titleSize: 40
+  _descSize: 28
+  _outlineWidth: 0.2
 --- !u!1 &1003753872
 GameObject:
   m_ObjectHideFlags: 0
@@ -262422,6 +262496,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1255190734}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1003110912}
     - targetCorrespondingSourceObject: {fileID: 8205901306396195594, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 50954227}
@@ -357429,6 +357506,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1692822693}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1692822695}
     - targetCorrespondingSourceObject: {fileID: 5284954391607871470, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 588362419}
@@ -357886,6 +357966,29 @@ MonoBehaviour:
   _holdSeconds: 0.25
   _offSeconds: 0.35
   _lampSfxKey: sfx_lamp_on
+--- !u!114 &1692822695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692822688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8ae96609a5ea1498866c2a766afe65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: Enigma Machine
+  _description: Set the three rotors, then pull the lever to decode the signal.
+  _font: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  _heightAbove: 0.2
+  _nearZero: 0.4
+  _nearFull: 0.8
+  _farFull: 2.5
+  _farZero: 3.5
+  _titleSize: 40
+  _descSize: 28
+  _outlineWidth: 0.2
 --- !u!65 &1692822698
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -445237,13 +445340,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fc96219dc69079c499d8ca8ad0380eda, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2121518598}
   m_SourcePrefab: {fileID: 100100000, guid: fc96219dc69079c499d8ca8ad0380eda, type: 3}
 --- !u!4 &2121518597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fc96219dc69079c499d8ca8ad0380eda, type: 3}
   m_PrefabInstance: {fileID: 2121518596}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2121518598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492126172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d8ae96609a5ea1498866c2a766afe65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: The Reveal
+  _description: One form becomes the next as the eras of cryptography align.
+  _font: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  _heightAbove: 0.22
+  _nearZero: 0.4
+  _nearFull: 0.8
+  _farFull: 2.5
+  _farZero: 3.5
+  _titleSize: 40
+  _descSize: 28
+  _outlineWidth: 0.2
 --- !u!1 &2121551195
 GameObject:
   m_ObjectHideFlags: 0

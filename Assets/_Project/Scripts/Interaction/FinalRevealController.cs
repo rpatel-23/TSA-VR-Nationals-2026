@@ -149,9 +149,11 @@ namespace Decrypted.Interaction
             // Make sure the plaque is fully up even on very short morph times.
             if (!plaqueStarted) yield return FadePlaqueIn();
 
-            // Hold the final tableau briefly, then complete the experience.
+            // Hold the final tableau briefly, then signal the win condition. The
+            // ProgressionGateController shows the "Let's Go" panel; the player
+            // presses it to finish (RevealChamber -> Complete). No auto-advance.
             yield return new WaitForSeconds(2.0f);
-            GameManager.Instance?.Advance(); // RevealChamber -> Complete
+            EventBus.Publish(new ExhibitSolvedEvent(MuseumState.RevealChamber));
         }
 
         /// <summary>Map progress 0..1 onto the three stages (and the blendshapes).

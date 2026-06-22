@@ -224,9 +224,10 @@ namespace Decrypted.Core
 
         private void OnExhibitSolved(ExhibitSolvedEvent e)
         {
-            // Auto-advance shortly after a solve so the player feels rewarded and
-            // the "door opens" beat lines up with the transition. Tunable per room
-            // via the SceneController's per-state exit delay.
+            // Manual play never auto-advances: the ProgressionGateController spawns
+            // a "Let's Go" panel and the player presses it to move on. Only Demo
+            // Mode (the self-playing recording path) still auto-advances on solve.
+            if (!_demoMode) return;
             float delay = _sceneController != null ? _sceneController.GetExitDelay(e.Room) : 2.5f;
             StartCoroutine(AdvanceAfter(delay, e.Room));
         }
