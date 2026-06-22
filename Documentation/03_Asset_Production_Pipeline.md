@@ -26,6 +26,26 @@ Audio is the one place where listening matters more than reading, so it is shipp
 **both** as the synthesis source *and* as **12 pre-baked WAVs** already in
 `Assets/_Project/Audio/`.
 
+## Two artifacts now use IMPORTED models (not the procedural generators)
+
+Two exhibits use third-party models from `Assets/_Project/Art/Imported/` instead of
+their Blender generators (see `ATTRIBUTION.txt` there for authors/licenses):
+
+- **Vault door** (`vault_door`) — the **interactive** vault door in Room_VaultRoom.
+  Its `Gate/Door` slab is wired to `VaultController._door` (swings open on unlock)
+  and the combination wheel `CD.001` to `_lockingRing` (spins) and is grabbable.
+  The **keypad puzzle stays procedural** (`VaultKeypad` + the 28 `VaultKey_*`). The
+  old procedural door + frame are **disabled** (not deleted) under `Room_VaultRoom/Vault`.
+- **Enigma** (`enigma_machine_1934`) — a **decorative backdrop** only in
+  Room_WWIIRoom. The original was ~298K verts (decimated to ~67K via
+  `Tooling/Blender/decimate_enigma.py`) and has no riggable parts, so the **playable
+  Enigma remains the procedural one**; the import is visual-only.
+
+Unity 2022.3 has **no native glTF importer**, so `Tooling/Blender/import_glb_to_fbx.py`
+converts the imported `.glb` to `.fbx` (which Unity reads natively). Re-run it if the
+GLBs change. The cipher disk, reveal sculpture, museum architecture and the Enigma's
+playable parts are still produced by the procedural generators below.
+
 ## Blender pipeline (`Tooling/Blender/`)
 
 Plain Blender Python (3.x/4.x compatible), no add-ons.

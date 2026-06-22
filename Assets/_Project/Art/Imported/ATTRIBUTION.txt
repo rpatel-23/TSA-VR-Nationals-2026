@@ -1,0 +1,37 @@
+DECRYPTED - Imported 3D Model Attribution
+==========================================
+
+Two third-party 3D models are used in this project (converted GLB -> FBX via
+Tooling/Blender/import_glb_to_fbx.py because Unity 2022.3 has no native glTF
+importer). They REPLACE/augment the procedural artifacts:
+
+  * enigma_machine_1934  - decorative backdrop in Room_WWIIRoom (the playable
+                           Enigma puzzle remains the procedural one).
+  * vault_door           - the interactive vault door in Room_VaultRoom (its door
+                           slab + combination wheel are wired to VaultController;
+                           the keypad puzzle remains procedural).
+
+>>> ACTION REQUIRED (the importer must fill these in - Claude did not have the
+    download pages): for each model, record the exact Sketchfab page, author and
+    license. Most free Sketchfab downloads are CC-BY 4.0, which REQUIRES visible
+    attribution.
+
+------------------------------------------------------------------------------
+Model:    enigma_machine_1934.glb / .fbx
+Title:    Enigma Machine 1934           (confirm)
+Author:   <FILL: Sketchfab author name>
+Source:   <FILL: https://sketchfab.com/3d-models/...>
+License:  <FILL: e.g. CC-BY-4.0>        (confirm on the model page)
+
+Model:    vault_door.glb / .fbx
+Title:    Loacker (Vault) Door          (from the model's internal node name)
+Author:   <FILL: Sketchfab author name>
+Source:   <FILL: https://sketchfab.com/3d-models/...>
+License:  <FILL: e.g. CC-BY-4.0>        (confirm on the model page)
+------------------------------------------------------------------------------
+
+If either license is CC-BY (or similar attribution-required), the credit is also
+shown in-experience on the completion room's closing panel (a small line was added
+to Room_Complete). Update that line with the confirmed author names. If a license
+forbids use in this context, remove the model and revert to the procedural artifact
+(disabled, not deleted - see Room_VaultRoom/Vault for the kept procedural parts).
