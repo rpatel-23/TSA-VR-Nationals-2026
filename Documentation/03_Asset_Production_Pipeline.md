@@ -38,16 +38,21 @@ Plain Blender Python (3.x/4.x compatible), no add-ons.
 | `gen_architecture.py` | `Decrypted_Architecture` — six room shells (floor/walls/doorways/ceiling/trim) at the Unity room spacing. |
 | `gen_vault.py` | `Decrypted_Vault` — door, locking ring + wheel/spokes, frame, 28-key pad (`VaultKey_*` incl. `ENTER`/`CLEAR`), status lights, archive shelving + glow. |
 | `gen_reveal_sculpture.py` | `Decrypted_Reveal` — three morph stages (`Reveal_Stage_Roman/Gears/Circuit`) sharing a pivot, **plus** an optional single `Reveal_MorphMesh` with shape keys `toGears` (index 0) and `toCircuit` (index 1). |
-| `export_all.py` | Runs every generator and exports Quest-ready FBX (or GLB with `-- --glb`) to `Assets/_Project/Art/Generated/`. |
+| `export_all.py` | Runs every generator and exports **both FBX and GLB** to `Assets/_Project/Art/Generated/` (GLB is the robust fallback). |
+| `validate_exports.py` | Standalone check (no Blender/Unity): confirms each `.fbx`/`.glb` exists, is over 10 KB, and has the right header. Prints a PASS/FAIL report. |
 
 ### Running it
 
 ```bash
-# Whole set as FBX:
+# Whole set as BOTH .fbx and .glb (default):
 blender --background --python Tooling/Blender/export_all.py
 
-# As GLB instead:
-blender --background --python Tooling/Blender/export_all.py -- --glb
+# Narrow to one format if you want:
+blender --background --python Tooling/Blender/export_all.py -- --glb-only
+blender --background --python Tooling/Blender/export_all.py -- --fbx-only
+
+# Confirm the files are valid (no Blender needed):
+py -3.13 Tooling/Blender/validate_exports.py
 
 # A single asset, interactively (opens it in Blender):
 blender --python Tooling/Blender/gen_enigma.py
@@ -55,8 +60,29 @@ blender --python Tooling/Blender/gen_enigma.py
 
 Each generator calls `reset_scene()` on entry and returns its collection;
 `export_all.py` builds and exports one asset at a time so a single headless session
-produces the entire set. Export uses `axis_forward='-Z', axis_up='Y'` and
-`bake_space_transform=True` to land in Unity with the correct orientation/scale.
+produces the entire set. The exporter converts text/curves to mesh, validates every
+mesh, and wraps the export in a try/except that prints a full traceback on failure
+(no silent broken files).
+
+> **Transform settings (do not "fix" these):** export uses `axis_forward='-Z',
+> axis_up='Y'`, **`bake_space_transform=False`**, and **no** global
+> `transform_apply`. Parenting is done by `parent_keep_world()`, which bakes correct
+> *local* transforms that survive FBX export. Turning `bake_space_transform` on, or
+> applying transforms to every object before export, re-creates the "exploded
+> artifacts" bug fixed in Session 8 (see `CLAUDE.md`). GLB is the recommended format
+> if FBX ever misbehaves.
+
+### Opening / importing the generated files
+
+> The files in `Assets/_Project/Art/Generated/` are **`.fbx` and `.glb`, not Blender
+> `.blend` files.** Double-clicking one does **not** open it in Blender ("not a valid
+> Blender file") — that only works for native `.blend`. To bring one into Blender use
+> **File → Import → FBX** (or **glTF 2.0** for `.glb`). Unity imports both formats
+> natively (no extra package on 2022.3).
+>
+> **After cloning the repo, run `git lfs pull`** before expecting any large binary
+> assets to be present — a fresh clone leaves LFS-tracked files as tiny pointer stubs
+> until then.
 
 ### Import into Unity
 
