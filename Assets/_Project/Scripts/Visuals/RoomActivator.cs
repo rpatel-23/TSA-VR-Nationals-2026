@@ -107,6 +107,10 @@ namespace Decrypted.Visuals
                 if (_emissiveRoutine != null) StopCoroutine(_emissiveRoutine);
                 _emissiveRoutine = StartCoroutine(FadeEmissive(0f, _emissiveTarget, _emissiveFadeSeconds));
             }
+
+            // Per-room music crossfade + narrative voice (both no-op if absent).
+            RoomMusicController.Instance?.OnRoomEntered(_state);
+            RoomNarratorController.Instance?.OnRoomEntered(_state);
         }
 
         /// <summary>

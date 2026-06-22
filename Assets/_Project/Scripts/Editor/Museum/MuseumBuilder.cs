@@ -58,8 +58,10 @@ namespace Decrypted.EditorTools
                 case "wwii": return new Style { Floor = "concrete", Wall = "plasterCool", Ceil = "ceiling", Trim = "steel", Accent = "steel", Sconce = "glowWarm", Runner = "carpetBlue", Key = new Color(0.95f, 0.95f, 1f), Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
                 case "vault": return new Style { Floor = "marbleDark", Wall = "plasterCool", Ceil = "ceiling", Trim = "chrome", Accent = "steel", Sconce = "glowCool", Runner = "carpetBlue", Key = new Color(0.7f, 0.9f, 1f), Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
                 case "reveal": return new Style { Floor = "marbleDark", Wall = "marbleDark", Ceil = "ceiling", Trim = "gold", Accent = "gold", Sconce = "glowGold", Runner = "carpetRed", Key = new Color(1f, 0.88f, 0.7f), Intensity = 16f, W = 15f, D = 13f, H = 8f };
-                // Completion hall: warmer, brighter and more open than the puzzle rooms.
-                case "complete": return new Style { Floor = "marbleLight", Wall = "plasterWarm", Ceil = "marbleLight", Trim = "gold", Accent = "brass", Sconce = "glowGold", Runner = "carpetRed", Key = new Color(1f, 0.9f, 0.72f), Intensity = 14f, W = 16f, D = 14f, H = 8.5f };
+                // Completion hall: warmer than the puzzle rooms. Ceiling height is
+                // intentionally half of the original 8.5 m (= 4.25 m) so the room is
+                // not cavernous; floor footprint is unchanged so props are not crushed.
+                case "complete": return new Style { Floor = "marbleLight", Wall = "plasterWarm", Ceil = "marbleLight", Trim = "gold", Accent = "brass", Sconce = "glowGold", Runner = "carpetRed", Key = new Color(1f, 0.9f, 0.72f), Intensity = 14f, W = 16f, D = 14f, H = 4.25f };
                 default: return new Style { Floor = "concrete", Wall = "plasterNeutral", Ceil = "ceiling", Trim = "brass", Accent = "brass", Sconce = "glowWarm", Runner = "carpetRed", Key = Color.white, Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
             }
         }
@@ -582,17 +584,18 @@ namespace Decrypted.EditorTools
         {
             HeroPlinth(p, 0.35f, "marbleLight");
 
+            // Sized to sit comfortably under the 4.25 m completion-hall ceiling.
             var panel = MuseumKit.Group(p, "ClosingPanel", new Vector3(0, 0, 0.1f));
-            MuseumKit.Box(panel.transform, "Back", new Vector3(0, 2.25f, 0.10f), new Vector3(4.4f, 3.3f, 0.18f), "marbleDark");
-            MuseumKit.Box(panel.transform, "FrameOuter", new Vector3(0, 2.25f, 0.02f), new Vector3(4.8f, 3.7f, 0.10f), "gold");
-            MuseumKit.Box(panel.transform, "FrameInner", new Vector3(0, 2.25f, -0.01f), new Vector3(4.3f, 3.2f, 0.08f), "brass");
+            MuseumKit.Box(panel.transform, "Back", new Vector3(0, 1.7f, 0.10f), new Vector3(4.2f, 2.6f, 0.18f), "marbleDark");
+            MuseumKit.Box(panel.transform, "FrameOuter", new Vector3(0, 1.7f, 0.02f), new Vector3(4.6f, 2.9f, 0.10f), "gold");
+            MuseumKit.Box(panel.transform, "FrameInner", new Vector3(0, 1.7f, -0.01f), new Vector3(4.1f, 2.5f, 0.08f), "brass");
             // Warm emissive fill behind the text — a subtle glow, zero light cost.
-            MuseumKit.Box(panel.transform, "WarmFill", new Vector3(0, 2.25f, 0.0f), new Vector3(4.1f, 3.0f, 0.04f), "glowWarm");
+            MuseumKit.Box(panel.transform, "WarmFill", new Vector3(0, 1.7f, 0.0f), new Vector3(3.9f, 2.3f, 0.04f), "glowWarm");
 
-            // Museum name + the closing plaque, generously scaled (the payoff moment).
-            MuseumKit.Label(panel.transform, "Title", new Vector3(0, 3.35f, -0.04f), new Vector2(4.0f, 0.7f),
+            // Museum name + the closing plaque (the payoff moment).
+            MuseumKit.Label(panel.transform, "Title", new Vector3(0, 2.7f, -0.04f), new Vector2(3.8f, 0.55f),
                 "DECRYPTED", MuseumKit.TextRole.Sign, MuseumKit.BrassText, TextAlignmentOptions.Center, new Vector3(0, 180f, 0));
-            MuseumKit.Label(panel.transform, "Plaque", new Vector3(0, 1.95f, -0.04f), new Vector2(3.8f, 2.1f),
+            MuseumKit.Label(panel.transform, "Plaque", new Vector3(0, 1.5f, -0.04f), new Vector2(3.6f, 1.7f),
                 g.HeroPlaque, MuseumKit.TextRole.Heading, MuseumKit.WarmWhite, TextAlignmentOptions.Center, new Vector3(0, 180f, 0));
         }
 

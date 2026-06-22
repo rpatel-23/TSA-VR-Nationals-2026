@@ -154,8 +154,11 @@ namespace Decrypted.Visuals
             var head = Head;
             if (head == null) return;
 
-            // Billboard: canvas front (+Z) points at the head, kept upright.
-            Vector3 dir = head.position - _ui.position;
+            // Billboard, kept upright. A world-space canvas reads correctly when its
+            // +Z points the SAME way the viewer looks (i.e. AWAY from the player);
+            // pointing +Z toward the player bakes in a 180 deg flip and mirrors the
+            // text. (Same fix as CountdownPanel.)
+            Vector3 dir = _ui.position - head.position;
             dir.y = 0f;
             if (dir.sqrMagnitude > 1e-5f)
                 _ui.rotation = Quaternion.LookRotation(dir.normalized, Vector3.up);
