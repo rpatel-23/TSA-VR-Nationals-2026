@@ -219,14 +219,17 @@ namespace Decrypted.Core
 
         private void OnExperienceStarted(ExperienceStartedEvent _)
         {
-            if (CurrentState == MuseumState.Splash) AdvanceTo(MuseumState.Atrium);
+            // Progression is exclusively the physical RoomDoor system now. The old
+            // PLAY-button path (Splash -> Atrium) is intentionally inert: the
+            // Splash exit door advances instead. Demo Mode still uses this hook.
+            if (_demoMode && CurrentState == MuseumState.Splash) AdvanceTo(MuseumState.Atrium);
         }
 
         private void OnExhibitSolved(ExhibitSolvedEvent e)
         {
-            // Manual play never auto-advances: the ProgressionGateController spawns
-            // a "Let's Go" panel and the player presses it to move on. Only Demo
-            // Mode (the self-playing recording path) still auto-advances on solve.
+            // Manual play never auto-advances: a physical RoomDoor activates on the
+            // win condition and the player opens it to move on. Only Demo Mode (the
+            // self-playing recording path) still auto-advances on solve.
             if (!_demoMode) return;
             float delay = _sceneController != null ? _sceneController.GetExitDelay(e.Room) : 2.5f;
             StartCoroutine(AdvanceAfter(delay, e.Room));
