@@ -96,7 +96,9 @@ namespace Decrypted.Core
 
             switch (e.Room)
             {
-                case MuseumState.Atrium:       StartCoroutine(DoAtrium()); break;
+                // Atrium has no puzzle: AutoProgressionController handles its dwell +
+                // countdown + advance (the same path normal play uses), so the demo
+                // does not advance the Atrium itself.
                 case MuseumState.AncientRoom:  StartCoroutine(DoAncient()); break;
                 case MuseumState.WWIIRoom:     StartCoroutine(DoWWII()); break;
                 case MuseumState.VaultRoom:    StartCoroutine(DoVault()); break;

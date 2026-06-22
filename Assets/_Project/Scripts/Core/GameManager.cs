@@ -226,12 +226,10 @@ namespace Decrypted.Core
 
         private void OnExhibitSolved(ExhibitSolvedEvent e)
         {
-            // Manual play never auto-advances: a physical RoomDoor activates on the
-            // win condition and the player opens it to move on. Only Demo Mode (the
-            // self-playing recording path) still auto-advances on solve.
-            if (!_demoMode) return;
-            float delay = _sceneController != null ? _sceneController.GetExitDelay(e.Room) : 2.5f;
-            StartCoroutine(AdvanceAfter(delay, e.Room));
+            // Advancing is owned by AutoProgressionController, which is the SINGLE
+            // auto-advance path for both normal play and Demo Mode: it shows the
+            // countdown popup, runs the ScreenFader transition and calls Advance().
+            // GameManager only records the solve (via MarkSolved) here.
         }
 
         private IEnumerator AdvanceAfter(float delay, MuseumState room)
