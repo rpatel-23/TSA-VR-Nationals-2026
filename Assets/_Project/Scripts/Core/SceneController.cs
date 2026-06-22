@@ -37,6 +37,15 @@ namespace Decrypted.Core
         [Tooltip("Seconds for fade-out and fade-in halves of a transition.")]
         [SerializeField] private float _fadeDuration = 0.6f;
 
+        [Header("Pre-warm (kills the 'black screen then recovers' hitch)")]
+        [Tooltip("A short while after entering a room, silently make the NEXT room's shaders/" +
+                 "meshes GPU-resident so switching to it later doesn't stall on first render " +
+                 "while the screen is black. Uncheck only if you ever see the upcoming room " +
+                 "flicker into view for a frame.")]
+        [SerializeField] private bool _preWarmNextRoom = true;
+        [Tooltip("Seconds to wait after entering a room before pre-warming the next one.")]
+        [SerializeField] private float _preWarmDelay = 1.5f;
+
         [Header("Pacing")]
         [Tooltip("Default delay between solving an exhibit and the room transition.")]
         [SerializeField] private float _defaultExitDelay = 2.5f;
@@ -101,6 +110,28 @@ namespace Decrypted.Core
             yield return null;
 
             if (_fader != null) yield return _fader.FadeIn(_fadeDuration);
+        }
+
+        /// <summary>Make a room GPU-resident ahead of time WITHOUT fully activating it, so a
+        /// later TransitionTo(target) doesn't stall on first-render shader compile + mesh
+        /// upload while the screen is black (the "black then recovers" hitch on Quest). It
+        /// briefly enables the (off-screen, one-step-away) room root for two frames so the
+        /// renderer submits it once, then disables it again — RoomActivator.PreWarm does NOT
+        /// run OnActivated, so no lights/audio/particles start during the warm-up.</summary>
+        public void PreWarm(MuseumState target)
+        {
+            if (!_preWarmNextRoom) return;
+            if (target == _active) return;
+            if (!_byState.TryGetValue(target, out var room) || room.roomRoot == null) return;
+            if (room.roomRoot.activeSelf) return; // already live; nothing to warm
+            var activator = room.roomRoot.GetComponent<RoomActivator>();
+            if (activator != null) StartCoroutine(PreWarmAfter(activator));
+        }
+
+        private IEnumerator PreWarmAfter(RoomActivator activator)
+        {
+            if (_preWarmDelay > 0f) yield return new WaitForSecondsRealtime(_preWarmDelay);
+            yield return activator.PreWarm();
         }
 
         // --------------------------------------------------------- internals

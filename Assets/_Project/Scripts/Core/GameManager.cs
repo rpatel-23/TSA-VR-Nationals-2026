@@ -109,6 +109,9 @@ namespace Decrypted.Core
                 SetState(MuseumState.Splash, instant: true);
             }
 
+            // Warm the first room the player will enter so the opening transition is smooth.
+            PreWarmNext();
+
             if (_demoMode)
             {
                 // DemoDirector (optional component) listens for this and scripts input.
@@ -219,11 +222,29 @@ namespace Decrypted.Core
 
                 SetState(target, instant: false);
                 EventBus.Publish(new RoomEnteredEvent(target));
+
+                // Now that we're in the new room, warm the NEXT one off-screen so the
+                // following transition doesn't stall on first-render shader compile +
+                // mesh upload (the frozen-frame hitch the player feels after a solve).
+                PreWarmNext();
             }
             finally
             {
                 _transitioning = false;
             }
+        }
+
+        /// <summary>Warm the room the player will enter NEXT so its first render (shader
+        /// compile + mesh upload) happens off-screen now, instead of as a frozen-frame
+        /// hitch when we transition into it. The heavy imported models (the 67K-vertex
+        /// Enigma) make this cold-activation cost the dominant cause of the post-solve
+        /// stall. Pre-warm is a no-op past the last room and skips already-active rooms.</summary>
+        private void PreWarmNext()
+        {
+            if (_sceneController == null) return;
+            int idx = System.Array.IndexOf(_order, CurrentState);
+            if (idx >= 0 && idx < _order.Length - 1)
+                _sceneController.PreWarm(_order[idx + 1]);
         }
 
         private void SetState(MuseumState target, bool instant)

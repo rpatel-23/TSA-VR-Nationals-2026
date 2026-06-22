@@ -33,14 +33,19 @@ namespace Decrypted.Interaction
         [SerializeField] private DoorStyle _style = DoorStyle.Hinged;
         [Tooltip("The door object that moves. For Hinged, this should pivot at its hinge.")]
         [SerializeField] private Transform _door;
+        [Tooltip("Optional EDGE hinge: an empty parent placed at the door's EDGE with the " +
+                 "slab parented under it. If set, the swing rotates THIS, so the door opens " +
+                 "from its edge like a real door instead of spinning about its own centre. " +
+                 "Leave null to rotate the door transform directly. Hinged style only.")]
+        [SerializeField] private Transform _hingePivot;
         [Tooltip("Optional Animator; if set, its 'Open' trigger is fired and the " +
                  "transform tween below is skipped.")]
         [SerializeField] private Animator _doorAnimator;
-        [Tooltip("Hinged: open angle (deg) about local up. Sliding: ignored.")]
-        [SerializeField] private float _openAngle = 105f;
+        [Tooltip("Hinged: open angle (deg) about local Y (the hinge axis). Sliding: ignored.")]
+        [SerializeField] private float _openAngle = 100f;
         [Tooltip("Sliding: local offset to the open position. Hinged: ignored.")]
         [SerializeField] private Vector3 _openOffset = new Vector3(0f, 0f, 2.4f);
-        [SerializeField] private float _openSeconds = 2.4f;
+        [SerializeField] private float _openSeconds = 2.0f;
         [SerializeField] private AnimationCurve _openEase =
             AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
         [Tooltip("When true, drive the door + ring via a Blender FBX Animator (the " +
@@ -169,8 +174,13 @@ namespace Decrypted.Interaction
         {
             StartCoroutine(RevealRoom(_openSeconds));
 
-            Quaternion rotStart = _door.localRotation;
-            Quaternion rotEnd = _doorClosedRot * Quaternion.AngleAxis(_openAngle, Vector3.up);
+            // Swing from the EDGE hinge if one is provided (a real-door swing); otherwise
+            // rotate the door transform about its own pivot. Either way the swing is about
+            // LOCAL Y (the hinge axis), by _openAngle degrees, over _openSeconds, eased
+            // in/out with SmoothStep and interpolated with Quaternion.Slerp.
+            Transform swing = _hingePivot != null ? _hingePivot : _door;
+            Quaternion rotStart = swing.localRotation;
+            Quaternion rotEnd = rotStart * Quaternion.AngleAxis(_openAngle, Vector3.up); // local-Y hinge
             Vector3 posStart = _door.localPosition;
             Vector3 posEnd = _doorClosedPos + _openOffset;
 
@@ -178,14 +188,22 @@ namespace Decrypted.Interaction
             while (t < 1f)
             {
                 t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _openSeconds); // unscaled: survives a time freeze
-                float k = _openEase.Evaluate(Mathf.Clamp01(t));
+                float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t));         // ease-in-out
                 if (_style == DoorStyle.Hinged)
-                    VaultAnim.SetDoorRotation(Quaternion.Slerp(rotStart, rotEnd, k));
+                {
+                    // Rotate the edge hinge directly, or the door via its animator.
+                    if (_hingePivot != null) swing.localRotation = Quaternion.Slerp(rotStart, rotEnd, k);
+                    else VaultAnim.SetDoorRotation(Quaternion.Slerp(rotStart, rotEnd, k));
+                }
                 else
                     VaultAnim.SetDoorPosition(Vector3.Lerp(posStart, posEnd, k));
                 yield return null;
             }
-            if (_style == DoorStyle.Hinged) VaultAnim.SetDoorRotation(rotEnd);
+            if (_style == DoorStyle.Hinged)
+            {
+                if (_hingePivot != null) swing.localRotation = rotEnd;
+                else VaultAnim.SetDoorRotation(rotEnd);
+            }
             else VaultAnim.SetDoorPosition(posEnd);
         }
 

@@ -41,6 +41,13 @@ namespace Decrypted.Interaction
                  "player; try -0.15 to -0.2. (No effect in Device mode.)")]
         [SerializeField] private float _floorHeightOffset = -0.18f;
 
+        [Tooltip("Global vertical raise (metres) added on TOP of the per-mode values above, " +
+                 "in BOTH Device and Floor modes. This is the SINGLE clean lever for nudging " +
+                 "the whole view up/down: do NOT also raise the XR rig root, the Camera Offset " +
+                 "child, or the PlayerAnchors - those either stack into an over-correction or " +
+                 "are ignored/overwritten elsewhere. +0.3 raises the view by 30 cm.")]
+        [SerializeField] private float _extraHeightBoost = 0.3f;
+
         // NOTE: the exact value needs ONE headset test to confirm it feels right
         // relative to the museum exhibit surfaces (disk, keyboard, vault keypad).
 
@@ -71,7 +78,7 @@ namespace Decrypted.Interaction
             // Decide by the CONFIGURED mode (the Inspector field on the XR Origin).
             if (_origin.RequestedTrackingOriginMode == XROrigin.TrackingOriginMode.Device)
             {
-                _origin.CameraYOffset = _cameraYOffset;
+                _origin.CameraYOffset = _cameraYOffset + _extraHeightBoost;
             }
             else // Floor (or "Not Specified" defaulting to floor on Quest)
             {
@@ -79,7 +86,7 @@ namespace Decrypted.Interaction
                 if (off != null)
                 {
                     var p = off.transform.localPosition;
-                    p.y = _floorHeightOffset;   // runtime base in floor mode is 0, so this IS the trim
+                    p.y = _floorHeightOffset + _extraHeightBoost; // runtime base in floor mode is 0, so this IS the trim
                     off.transform.localPosition = p;
                 }
             }

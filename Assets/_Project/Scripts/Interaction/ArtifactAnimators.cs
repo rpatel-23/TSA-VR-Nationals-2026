@@ -29,17 +29,32 @@ namespace Decrypted.Interaction
         void ApplyAngle(float degrees);
     }
 
-    /// <summary>Current behaviour: rotate the transform about its local axis.</summary>
+    /// <summary>Current behaviour: rotate the transform about its local axis, on top of
+    /// the disk's resting pose so it stays flat and only spins.</summary>
     public sealed class ProceduralDiskAnimator : IDiskAnimator
     {
         private readonly Transform _target;
         private readonly Vector3 _axis;
+        private readonly Quaternion _rest;   // the disk's flat resting orientation, captured once
         public ProceduralDiskAnimator(Transform target, Vector3 axis)
-        { _target = target; _axis = axis.normalized; }
+        {
+            _target = target;
+            _axis = axis.normalized;
+            // Capture the authored REST orientation so a twist only ADDS spin about the
+            // constrained axis on top of it - it must never REPLACE the rotation. The old
+            // code set localRotation = AngleAxis(deg, axis), which discarded any resting
+            // tilt and made a flat disk snap upright ("stand up") the instant it was turned.
+            _rest = (target != null) ? target.localRotation : Quaternion.identity;
+        }
 
+        // CONSTRAINED AXIS: the disk spins ONLY about its local _axis (the Caesar disk's
+        // spin axis is local up / Vector3.up, perpendicular to its face). Composing
+        // rest * spin preserves the flat resting pose, so the disk stays horizontal and can
+        // never tip, tilt, or stand up, and its position is never touched (not liftable).
+        // Do NOT change this back to assigning AngleAxis(deg, axis) directly.
         public void ApplyAngle(float degrees)
         {
-            if (_target != null) _target.localRotation = Quaternion.AngleAxis(degrees, _axis);
+            if (_target != null) _target.localRotation = _rest * Quaternion.AngleAxis(degrees, _axis);
         }
     }
 
