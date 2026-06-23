@@ -66,7 +66,9 @@ namespace Decrypted.EditorTools
             var root = MuseumKit.Group(parent, "Label_" + ex.Id, pos);
             root.transform.localEulerAngles = new Vector3(12f, yaw, 0); // slight reading tilt
 
-            MuseumKit.Box(root.transform, "Card", Vector3.zero, new Vector3(width, height, 0.012f), "paperCream");
+            // DARK card + WHITE text: in dim galleries (esp. WWII) the old cream card
+            // with dark ink read as vague "gray text". White-on-slate stays crisp.
+            MuseumKit.Box(root.transform, "Card", Vector3.zero, new Vector3(width, height, 0.012f), "marbleDark");
             MuseumKit.Box(root.transform, "Edge", new Vector3(0, 0, -0.004f), new Vector3(width + 0.012f, height + 0.012f, 0.008f), "brassDark");
 
             float pad = 0.03f;
@@ -74,15 +76,15 @@ namespace Decrypted.EditorTools
             float top = height * 0.5f - pad;
 
             MuseumKit.Label(root.transform, "Title", new Vector3(0, top - 0.03f, 0.009f),
-                new Vector2(innerW, 0.07f), ex.Title, MuseumKit.TextRole.Heading, MuseumKit.Ink,
+                new Vector2(innerW, 0.07f), ex.Title, MuseumKit.TextRole.Heading, MuseumKit.WarmWhite,
                 TextAlignmentOptions.TopLeft);
             MuseumKit.Label(root.transform, "Date", new Vector3(0, top - 0.10f, 0.009f),
                 new Vector2(innerW, 0.04f), "<b>DATE</b>   " + ex.Date, MuseumKit.TextRole.Caption,
-                new Color(0.45f, 0.32f, 0.12f), TextAlignmentOptions.TopLeft);
+                MuseumKit.BrassText, TextAlignmentOptions.TopLeft);
             var body = MuseumKit.Label(root.transform, "Body", new Vector3(0, top - 0.165f, 0.009f),
                 new Vector2(innerW, height - 0.24f),
                 ex.Description + "\n\n<b>SIGNIFICANCE</b>\n" + ex.Significance,
-                MuseumKit.TextRole.Caption, MuseumKit.Ink, TextAlignmentOptions.TopLeft);
+                MuseumKit.TextRole.Caption, MuseumKit.WarmWhite, TextAlignmentOptions.TopLeft);
 
             WireBodyReveal(body.gameObject, body, body.text, false);
             return root;
@@ -128,10 +130,11 @@ namespace Decrypted.EditorTools
             MuseumKit.Box(root.transform, "FrameInner", new Vector3(0, 0, -0.01f), new Vector3(w + 0.04f, h + 0.04f, 0.04f), "woodDark");
             MuseumKit.Box(root.transform, "Canvas", Vector3.zero, new Vector3(w, h, 0.02f), "paperAged");
 
-            // An engraved monogram stands in for the period portrait (tasteful, original).
+            // A small engraved monogram header sits at the TOP of the canvas, leaving
+            // the body of the canvas free for the bio (see below).
             string initials = Initials(fig.Name);
-            MuseumKit.Label(root.transform, "Monogram", new Vector3(0, 0.12f, 0.013f),
-                new Vector2(w * 0.8f, h * 0.5f), initials, MuseumKit.TextRole.Sign,
+            MuseumKit.Label(root.transform, "Monogram", new Vector3(0, 0.31f, 0.013f),
+                new Vector2(w * 0.8f, 0.16f), initials, MuseumKit.TextRole.Sign,
                 new Color(0.40f, 0.30f, 0.16f), TextAlignmentOptions.Center);
 
             // Nameplate
@@ -143,11 +146,13 @@ namespace Decrypted.EditorTools
                 new Vector2(w * 0.86f, 0.04f), fig.Years + "  ·  " + fig.Role, MuseumKit.TextRole.Caption,
                 new Color(0.4f, 0.3f, 0.14f), TextAlignmentOptions.Center);
 
-            // Bio fades in below the frame on approach.
-            var bio = MuseumKit.Label(root.transform, "Bio", new Vector3(0, -h * 0.5f - 0.13f, 0.0f),
-                new Vector2(w + 0.06f, 0.22f), fig.Bio, MuseumKit.TextRole.Caption, MuseumKit.Cream,
+            // Bio sits ON the canvas (in front of it), between the monogram header and
+            // the nameplate - dark ink on the light canvas. Previously it floated below
+            // the frame, so it rendered on the wall behind/under the plaque.
+            var bio = MuseumKit.Label(root.transform, "Bio", new Vector3(0, 0.0f, 0.022f),
+                new Vector2(w * 0.9f, 0.44f), fig.Bio, MuseumKit.TextRole.Caption, MuseumKit.Ink,
                 TextAlignmentOptions.Top);
-            WireBodyReveal(bio.gameObject, bio, fig.Bio, false);
+            WireBodyReveal(bio.gameObject, bio, fig.Bio, true);
             return root;
         }
 
@@ -444,8 +449,10 @@ namespace Decrypted.EditorTools
             MuseumKit.Box(root.transform, "Header", new Vector3(0, 2.13f, 0.06f), new Vector3(1.2f, 0.26f, 0.04f), "brass");
             MuseumKit.Label(root.transform, "Heading", new Vector3(0, 2.13f, 0.09f), new Vector2(1.12f, 0.2f), heading,
                 MuseumKit.TextRole.Heading, MuseumKit.Ink, TextAlignmentOptions.Center);
-            MuseumKit.Label(root.transform, "Lines", new Vector3(0, 1.45f, 0.09f), new Vector2(1.08f, 1.25f),
-                string.Join("\n", lines), MuseumKit.TextRole.Body, MuseumKit.WarmWhite, TextAlignmentOptions.TopLeft);
+            // Sit the list in the MIDDLE of the black board (vertical-centre), clear of
+            // the gold header band at the top - otherwise the first line lands on the gold.
+            MuseumKit.Label(root.transform, "Lines", new Vector3(0, 1.30f, 0.09f), new Vector2(1.08f, 1.00f),
+                string.Join("\n", lines), MuseumKit.TextRole.Body, MuseumKit.WarmWhite, TextAlignmentOptions.Left);
             return root;
         }
 
