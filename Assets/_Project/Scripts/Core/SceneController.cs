@@ -176,6 +176,21 @@ namespace Decrypted.Core
                 pos.y = _xrOrigin.position.y;
                 _xrOrigin.SetPositionAndRotation(pos, room.playerAnchor.rotation);
             }
+
+            // Demo Mode has no headset to supply a standing height, so the camera would
+            // otherwise sit on the floor. Frame it per room: lift the rig until the camera
+            // EYE lands at the anchor's Y (authored ~5% above that room's main artifact).
+            // Interactive (non-demo) play keeps the player's real floor-tracked height.
+            if (GameManager.Instance != null && GameManager.Instance.DemoMode)
+            {
+                float eyeY = room.playerAnchor.position.y;
+                if (_hmdCamera != null)
+                    _xrOrigin.position += new Vector3(0f, eyeY - _hmdCamera.transform.position.y, 0f);
+                else
+                {
+                    var p = _xrOrigin.position; p.y = eyeY; _xrOrigin.position = p;
+                }
+            }
         }
 
         public RoomDescriptor GetDescriptor(MuseumState state)

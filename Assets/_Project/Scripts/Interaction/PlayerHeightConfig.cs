@@ -46,9 +46,9 @@ namespace Decrypted.Interaction
                  "in BOTH Device and Floor modes. This is the SINGLE clean lever for nudging " +
                  "the whole view up/down: do NOT also raise the XR rig root, the Camera Offset " +
                  "child, or the PlayerAnchors - those either stack into an over-correction or " +
-                 "are ignored/overwritten elsewhere. 0.3 = +1 ft, 0.6 = +2 ft, 0.9 = +3 ft " +
-                 "(1 ft = ~0.305 m).")]
-        [SerializeField] private float _extraHeightBoost = 0.3f;
+                 "are ignored/overwritten elsewhere. 0 = real headset/floor height (game " +
+                 "level); +0.3 = +1 ft up, -0.3 = ~1 ft down (1 ft = ~0.305 m).")]
+        [SerializeField] private float _extraHeightBoost = 0.0f;
 
         // NOTE: the exact value needs ONE headset test to confirm it feels right
         // relative to the museum exhibit surfaces (disk, keyboard, vault keypad).

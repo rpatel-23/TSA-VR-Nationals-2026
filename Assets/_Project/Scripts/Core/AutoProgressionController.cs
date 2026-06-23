@@ -132,13 +132,26 @@ namespace Decrypted.Core
             }
             else pos = transform.position + Vector3.forward * _spawnDistance;
 
-            var go = new GameObject("CountdownPanel");
-            _active = go.AddComponent<CountdownPanel>();
-            _active.Show(headline, _countdownSeconds, pos, headT, _titleFont, _bodyFont, () =>
+            System.Action advance = () =>
             {
                 _active = null;
                 if (GameManager.Instance != null) GameManager.Instance.Advance(); // ScreenFader transition + advance
-            });
+            };
+
+            // Demo Mode auto-advances (hands-free showcase recording); normal play shows a
+            // manual "Move to Next Room" button so the player decides when to move on.
+            bool demo = GameManager.Instance != null && GameManager.Instance.DemoMode;
+            if (demo)
+            {
+                var go = new GameObject("CountdownPanel");
+                _active = go.AddComponent<CountdownPanel>();
+                _active.Show(headline, _countdownSeconds, pos, headT, _titleFont, _bodyFont, advance);
+            }
+            else
+            {
+                var go = new GameObject("NextRoomButton");
+                go.AddComponent<NextRoomButton>().Show(headline, pos, headT, _titleFont, _bodyFont, advance);
+            }
         }
     }
 }

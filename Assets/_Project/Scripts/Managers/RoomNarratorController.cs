@@ -119,7 +119,7 @@ namespace Decrypted.Managers
             var rt = go.GetComponent<RectTransform>();
             rt.sizeDelta = new Vector2(1400f, 300f);
             rt.localScale = Vector3.one * 0.001f;
-            rt.localPosition = new Vector3(0f, -0.4f, 2.0f);   // 2 m ahead, 0.4 m below eye
+            rt.localPosition = new Vector3(0f, -0.35f, 1.5f);   // 1.5 m ahead, 0.35 m below eye (pulled closer)
             rt.localRotation = Quaternion.identity;
             _captionGroup = go.AddComponent<CanvasGroup>();
             _captionGroup.alpha = 0f;

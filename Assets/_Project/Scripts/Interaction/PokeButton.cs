@@ -41,6 +41,9 @@ namespace Decrypted.Interaction
         [SerializeField] private Renderer _highlightRenderer;
         [SerializeField] private Color _highlightColor = new Color(0.2f, 1f, 1f, 1f);
         [SerializeField] private float _highlightSeconds = 0.18f;
+        [Tooltip("Steady glow (0-1) shown while a hand or ray is focused on this button, so " +
+                 "the player can see EXACTLY which key they're about to press.")]
+        [SerializeField] private float _hoverGlow = 0.5f;
 
         [Header("Audio")]
         [Tooltip("AudioManager key for the click. Empty = silent.")]
@@ -65,6 +68,7 @@ namespace Decrypted.Interaction
         private Vector3 _capHome;
         private float _lastPress = -999f;
         private Coroutine _anim;
+        private bool _hovered;
 
         protected override void Awake()
         {
@@ -77,6 +81,23 @@ namespace Decrypted.Interaction
         {
             base.OnSelectEntered(args);
             TryPress();
+        }
+
+        // Focus glow: while a hand/poke/ray is hovering this key, keep it lit so the player
+        // knows precisely which key the press will land on (prevents the "big hand hitbox
+        // pressed the wrong key" confusion).
+        protected override void OnHoverEntered(HoverEnterEventArgs args)
+        {
+            base.OnHoverEntered(args);
+            _hovered = true;
+            if (_anim == null) SetHighlight(_hoverGlow);
+        }
+
+        protected override void OnHoverExited(HoverExitEventArgs args)
+        {
+            base.OnHoverExited(args);
+            _hovered = false;
+            if (_anim == null) SetHighlight(0f);
         }
 
         /// <summary>Public so a DemoDirector or test harness can press it directly.</summary>
@@ -117,15 +138,16 @@ namespace Decrypted.Interaction
             }
             if (_cap != null) _cap.localPosition = _capHome;
 
-            // Fade the highlight out.
+            // Fade back down to the hover level if still focused, otherwise off.
+            float endGlow = _hovered ? _hoverGlow : 0f;
             t = 0f;
             while (t < 1f)
             {
                 t += Time.deltaTime / Mathf.Max(0.01f, _highlightSeconds);
-                SetHighlight(1f - t);
+                SetHighlight(Mathf.Lerp(1f, endGlow, t));
                 yield return null;
             }
-            SetHighlight(0f);
+            SetHighlight(endGlow);
         }
 
         private void SetHighlight(float k)

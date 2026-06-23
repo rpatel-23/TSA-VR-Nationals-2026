@@ -59,6 +59,9 @@ namespace Decrypted.Interaction
         [SerializeField] private SignalTraceRenderer[] _traces;
         [Tooltip("Optional running decoded read-out (TextMeshPro).")]
         [SerializeField] private TMP_Text _decodedReadout;
+        [Tooltip("Optional running TYPED-input read-out: shows the letters the player has " +
+                 "keyed so far (the ciphertext), so they can track what they've entered.")]
+        [SerializeField] private TMP_Text _typedReadout;
         [Tooltip("Optional reference plaque showing the encoded message + suggested key.")]
         [SerializeField] private TMP_Text _referenceReadout;
 
@@ -83,6 +86,11 @@ namespace Decrypted.Interaction
         [SerializeField] private string _gearStepKey = "sfx_gear_step";
         [SerializeField] private string _successKey = "sfx_success_chime";
 
+        [Header("Retry")]
+        [Tooltip("After a full word is typed but it's WRONG, show an X for this many seconds, " +
+                 "then clear the typed letters so the player can try again (rotor settings kept).")]
+        [SerializeField] private float _wrongFlashSeconds = 1.1f;
+
         // ---- runtime ---------------------------------------------------------
 
         private readonly System.Text.StringBuilder _typed = new System.Text.StringBuilder(16);
@@ -90,6 +98,7 @@ namespace Decrypted.Interaction
         private MaterialPropertyBlock _mpb;
         private bool _armed;          // lever is live (ready to commit)
         private bool _solved;
+        private bool _evaluating;     // mid wrong-answer flash/reset (ignore input)
         private string _lastDecoded = string.Empty;
 
         // Exit-door motion goes through this swappable animator (procedural slide or
@@ -139,7 +148,7 @@ namespace Decrypted.Interaction
 
         private void HandleKey(char input)
         {
-            if (_solved) return;
+            if (_solved || _evaluating) return;
 
             _typed.Append(input);
             Recompute(lightLast: true);
@@ -154,11 +163,47 @@ namespace Decrypted.Interaction
 
             char output = _lastDecoded.Length > 0 ? _lastDecoded[_lastDecoded.Length - 1] : input;
             EventBus.Publish(new EnigmaKeyPressedEvent(input, output));
+
+            // Once a full word's worth of letters is in, evaluate. A correct entry has
+            // already armed the lever (EvaluateReadiness); a wrong one flashes an X and
+            // resets the typed letters so the player can try again.
+            int targetLen = _machine != null ? _machine.PlaintextWord.Length : 7;
+            if (!_armed && _typed.Length >= targetLen)
+                StartCoroutine(WrongAnswerReset());
+        }
+
+        /// <summary>Wrong full-word entry: show a momentary X, then clear the typed input
+        /// and lamps so the player can retry. Rotor positions are left as the player set
+        /// them. Runs on unscaled time and locks input for the flash.</summary>
+        private IEnumerator WrongAnswerReset()
+        {
+            _evaluating = true;
+            if (_keyboard != null) _keyboard.SetAccepting(false);
+
+            Color prev = _typedReadout != null ? _typedReadout.color : Color.white;
+            if (_typedReadout != null)
+            {
+                _typedReadout.color = new Color(0.95f, 0.25f, 0.20f, 1f);
+                _typedReadout.text = "✗  TRY AGAIN";   // ✗
+            }
+            EventBus.Publish(new ShowHintEvent("Not quite — the board reset. Try again.",
+                                               Mathf.Max(0.5f, _wrongFlashSeconds)));
+
+            yield return new WaitForSecondsRealtime(Mathf.Max(0.2f, _wrongFlashSeconds));
+
+            _typed.Clear();
+            _lastDecoded = string.Empty;
+            if (_lampboard != null) _lampboard.AllOff();
+            if (_typedReadout != null) _typedReadout.color = prev;
+            Recompute(lightLast: false);   // refreshes the read-out to the (now empty) input
+
+            if (_keyboard != null) _keyboard.SetAccepting(true);
+            _evaluating = false;
         }
 
         private void HandleClear()
         {
-            if (_solved) return;
+            if (_solved || _evaluating) return;
             _typed.Clear();
             _lastDecoded = string.Empty;
             if (_lampboard != null) _lampboard.AllOff();
@@ -167,14 +212,14 @@ namespace Decrypted.Interaction
 
         private void HandleRotor(int index, int value)
         {
-            if (_solved) return;
+            if (_solved || _evaluating) return;
             // Turning a dial re-keys the machine; the running decode changes live.
             Recompute(lightLast: false);
         }
 
         private void HandleLever()
         {
-            if (_solved) return;
+            if (_solved || _evaluating) return;
             if (_armed) StartCoroutine(PowerUp());
             else
             {
@@ -209,6 +254,7 @@ namespace Decrypted.Interaction
             _lastDecoded = _machine != null ? _machine.Transform(source, r0, r1, r2) : source;
 
             if (_decodedReadout != null) _decodedReadout.text = _lastDecoded;
+            if (_typedReadout != null) _typedReadout.text = source;
 
             if (lightLast && _lampboard != null && _lastDecoded.Length > 0)
                 _lampboard.Light(_lastDecoded[_lastDecoded.Length - 1]);
