@@ -41,15 +41,18 @@ namespace Decrypted.EditorTools
             MuseumKit.Box(root.transform, "Plate", new Vector3(0, 0, 0), new Vector3(width, h, 0.02f), "brassDark");
             MuseumKit.Box(root.transform, "Bevel", new Vector3(0, 0, -0.006f), new Vector3(width - 0.03f, h - 0.03f, 0.02f), "brass");
 
+            // The plaque plate is a DARK brass ("brassDark") panel, so the title and
+            // body use a warm WHITE for high contrast (dark ink read as illegible
+            // "gray on yellowish" before). Body box widened to fit larger text.
             float ix = -width * 0.5f + 0.04f;
             var titleT = MuseumKit.Label(root.transform, "Title", new Vector3(0, h * 0.5f - 0.07f, 0.013f),
                 new Vector2(width - 0.08f, 0.12f), title, MuseumKit.TextRole.Heading,
-                MuseumKit.Ink, TextAlignmentOptions.TopLeft);
+                MuseumKit.WarmWhite, TextAlignmentOptions.TopLeft);
             titleT.rectTransform.localPosition = new Vector3(ix + (width - 0.08f) * 0.5f, h * 0.5f - 0.06f, 0.013f);
 
             var bodyT = MuseumKit.Label(root.transform, "Body", new Vector3(0, -0.02f, 0.013f),
                 new Vector2(width - 0.08f, h - 0.18f), body, MuseumKit.TextRole.Caption,
-                MuseumKit.Ink, TextAlignmentOptions.TopLeft);
+                MuseumKit.WarmWhite, TextAlignmentOptions.TopLeft);
             bodyT.rectTransform.localPosition = new Vector3(ix + (width - 0.08f) * 0.5f, -0.02f, 0.013f);
 
             WireBodyReveal(bodyT.gameObject, bodyT, body, alwaysBody);
@@ -663,8 +666,10 @@ namespace Decrypted.EditorTools
             var so = new SerializedObject(pc);
             SetObj(so, "_bodyField", body);
             SetStr(so, "_body", copy);
-            SetFloat(so, "_revealRadius", 7f);
-            SetFloat(so, "_fullRadius", 3.2f);
+            // Wider reveal so boards are legible at a normal walking distance instead
+            // of reading as faded "gray" until you are right on top of them.
+            SetFloat(so, "_revealRadius", 14f);
+            SetFloat(so, "_fullRadius", 7f);
             SetBool(so, "_alwaysVisible", always);
             SetBool(so, "_billboardYaw", false);
             SetBool(so, "_fixedFacing", true);

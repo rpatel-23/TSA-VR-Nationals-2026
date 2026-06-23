@@ -702,8 +702,9 @@ namespace Decrypted.EditorTools
             MuseumProps.HangingSign(deco.transform, new Vector3(0, H - 1.0f, -hd + 2.6f), g.Name);
             MuseumProps.WallSign(deco.transform, new Vector3(0, H - 0.9f, hd - 0.14f), 180f, g.Name, g.Subtitle, st.Accent);
 
-            // Orientation plaque flush on the entrance wall.
-            MuseumProps.Plaque(deco.transform, new Vector3(hw - 2.4f, 1.6f, -hd + 0.18f), 0f, "ABOUT THIS GALLERY", g.Intro, 0.95f, true);
+            // Orientation plaque on the entrance wall, lifted into the clear band
+            // ABOVE the 2.0 m wall-slot exhibit boards so it no longer overlaps them.
+            MuseumProps.Plaque(deco.transform, new Vector3(hw - 2.4f, 3.55f, -hd + 0.18f), 0f, "ABOUT THIS GALLERY", g.Intro, 0.95f, true);
 
             // Directory near the entrance, on whichever front corner is free.
             if (g.Directory != null && g.Directory.Length > 0)
