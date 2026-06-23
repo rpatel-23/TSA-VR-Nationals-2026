@@ -42,10 +42,6 @@ def normalize(x, peak=0.97):
     return x * (peak / m) if m > 1e-9 else x
 
 
-def db_to_lin(db):
-    return 10.0 ** (db / 20.0)
-
-
 def mix(*signals):
     """Sum signals of possibly different lengths (zero-padded to the longest)."""
     n = max((s.size for s in signals), default=0)

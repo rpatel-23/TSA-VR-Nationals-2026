@@ -174,13 +174,15 @@ namespace Decrypted.Interaction
         {
             StartCoroutine(RevealRoom(_openSeconds));
 
-            // Swing from the EDGE hinge if one is provided (a real-door swing); otherwise
-            // rotate the door transform about its own pivot. Either way the swing is about
-            // LOCAL Y (the hinge axis), by _openAngle degrees, over _openSeconds, eased
-            // in/out with SmoothStep and interpolated with Quaternion.Slerp.
+            // Swing about WORLD up (true vertical), pivoting about the door's hinge. The
+            // imported door's local axes are NOT world-aligned - its local Y points sideways
+            // (world +Z) because the FBX sits at a 90 deg tilt - so the old local-Y tween
+            // rotated the door about a HORIZONTAL axis and it never looked like it opened.
+            // Rotating the WORLD rotation about Vector3.up is robust to any import orientation.
+            // With _hingePivot set (an edge transform) the door swings from that edge;
+            // otherwise it pivots about its own origin.
             Transform swing = _hingePivot != null ? _hingePivot : _door;
-            Quaternion rotStart = swing.localRotation;
-            Quaternion rotEnd = rotStart * Quaternion.AngleAxis(_openAngle, Vector3.up); // local-Y hinge
+            Quaternion worldStart = swing.rotation;
             Vector3 posStart = _door.localPosition;
             Vector3 posEnd = _doorClosedPos + _openOffset;
 
@@ -190,21 +192,15 @@ namespace Decrypted.Interaction
                 t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _openSeconds); // unscaled time
                 float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t));         // ease-in-out
                 if (_style == DoorStyle.Hinged)
-                {
-                    // Rotate the edge hinge directly, or the door via its animator.
-                    if (_hingePivot != null) swing.localRotation = Quaternion.Slerp(rotStart, rotEnd, k);
-                    else VaultAnim.SetDoorRotation(Quaternion.Slerp(rotStart, rotEnd, k));
-                }
+                    swing.rotation = Quaternion.AngleAxis(_openAngle * k, Vector3.up) * worldStart;
                 else
                     VaultAnim.SetDoorPosition(Vector3.Lerp(posStart, posEnd, k));
                 yield return null;
             }
             if (_style == DoorStyle.Hinged)
-            {
-                if (_hingePivot != null) swing.localRotation = rotEnd;
-                else VaultAnim.SetDoorRotation(rotEnd);
-            }
-            else VaultAnim.SetDoorPosition(posEnd);
+                swing.rotation = Quaternion.AngleAxis(_openAngle, Vector3.up) * worldStart;
+            else
+                VaultAnim.SetDoorPosition(posEnd);
         }
 
         private IEnumerator RevealRoom(float seconds)

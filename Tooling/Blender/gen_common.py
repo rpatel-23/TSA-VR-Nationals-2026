@@ -242,26 +242,6 @@ def add_empty(name, location=(0, 0, 0), col=None, size=0.05):
     return e
 
 
-def parent_all_to_root(col, root_name):
-    """Give a collection a single named ROOT empty at the origin and parent every
-    current top-level object under it (children of children are left alone — they
-    already have their parent).
-
-    Why: each exhibit is exported as its own FBX, but its parts were a flat set of
-    sibling objects with no single handle. After this call the whole exhibit hangs
-    off one root, so in Unity you can grab/position/rotate the entire prop with one
-    transform, and the prefab has a clean single top node. Uses parent_keep_world so
-    nothing shifts and the relationship survives FBX export. Call this LAST in a
-    generator's build(), just before `return col`."""
-    root = add_empty(root_name, location=(0, 0, 0), col=col, size=0.2)
-    # Snapshot the current top-level objects (those with no parent yet), excluding
-    # the root we just made, so we don't reparent mid-iteration.
-    tops = [o for o in list(col.objects) if o.parent is None and o is not root]
-    for o in tops:
-        parent_keep_world(o, root)
-    return root
-
-
 # ------------------------------------------------------------------- helpers
 
 TWO_PI = 2.0 * math.pi

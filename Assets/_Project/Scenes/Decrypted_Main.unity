@@ -13342,7 +13342,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  _localAxis: {x: 0, y: 1, z: 0}
+  _localAxis: {x: 0, y: 0, z: 1}
   _detents: 26
   _invert: 0
   _snapSeconds: 0.12
@@ -13358,7 +13358,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57804334}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 394050714}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -93911,6 +93911,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393786344}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!134 &394050714
+PhysicMaterial:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  dynamicFriction: 0.6
+  staticFriction: 0.6
+  bounciness: 0
+  frictionCombine: 0
+  bounceCombine: 0
 --- !u!1 &394227904
 GameObject:
   m_ObjectHideFlags: 0
@@ -95435,6 +95447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraYOffset: 1.1
   _floorHeightOffset: -1.14
+  _extraHeightBoost: 0.3
 --- !u!1 &402398622
 GameObject:
   m_ObjectHideFlags: 0
@@ -96016,7 +96029,6 @@ MonoBehaviour:
   _vault: {fileID: 0}
   _reveal: {fileID: 0}
   _splashDelay: 2.5
-  _atriumDwell: 5
   _readDwell: 4
   _typeCadence: 0.2
 --- !u!114 &404104022
@@ -96211,8 +96223,6 @@ MonoBehaviour:
   _fadeDuration: 0.6
   _preWarmNextRoom: 1
   _preWarmDelay: 1.5
-  _defaultExitDelay: 2.5
-  _exitDelays: []
 --- !u!114 &404104027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303126,6 +303136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _style: 0
   _door: {fileID: 9138083923338675253}
+  _hingePivot: {fileID: 1618614082}
   _doorAnimator: {fileID: 0}
   _openAngle: 100
   _openOffset: {x: 0, y: 0, z: 2.4}
@@ -392400,6 +392411,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617838360}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1618614081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1618614082}
+  m_Layer: 0
+  m_Name: Vault_Door_Hinge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1618614082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618614081}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -16.533327, y: 0.00000123183, z: -4.547473e-13}
+  m_LocalScale: {x: 10.33334, y: 10.333339, z: 10.333339}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9138083923338675253}
+  m_Father: {fileID: 3035358742838015511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1618616697
 GameObject:
   m_ObjectHideFlags: 0
@@ -521977,8 +522020,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9138083923338675253}
   - {fileID: 7273923317429620329}
+  - {fileID: 1618614082}
   m_Father: {fileID: 6339063786805472019}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3076298198267716896
@@ -526071,9 +526114,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7768236808788171439}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071069, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 1.5999985, y: 0, z: -0.00000011920929}
+  m_LocalScale: {x: 0.096774146, y: 0.09677416, z: 0.09677416}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2666725731749293927}
@@ -526084,7 +526127,7 @@ Transform:
   - {fileID: 6719231951636038516}
   - {fileID: 5882080893789958027}
   - {fileID: 9028752118118047924}
-  m_Father: {fileID: 3035358742838015511}
+  m_Father: {fileID: 1618614082}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9164247930846438707
 MeshFilter:
