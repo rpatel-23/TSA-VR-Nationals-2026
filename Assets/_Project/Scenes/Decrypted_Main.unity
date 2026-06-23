@@ -1123,7 +1123,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -0.0000019073486, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5496278
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1353,7 +1353,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &7680913
 MeshRenderer:
@@ -4155,7 +4155,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -5108,8 +5108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24819190}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19080901, y: 0, z: 0, w: 0.9816272}
-  m_LocalPosition: {x: 0, y: 0.98, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 1.211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5117,7 +5117,7 @@ Transform:
   - {fileID: 387039949}
   - {fileID: 1363531769}
   m_Father: {fileID: 566231451}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &24904420
 GameObject:
   m_ObjectHideFlags: 0
@@ -7351,7 +7351,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.0000076293945, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &36923937
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9460,7 +9460,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &46117246
 MeshRenderer:
@@ -10149,7 +10149,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -10593,8 +10593,7 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 51110734}
   _title: 
-  _body: "Every code ever made has met a mind clever enough to break it \u2014 so
-    far."
+  _body: Every code ever made has met a mind clever enough to break it, so far.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -10623,8 +10622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Every code ever made has met a mind clever enough to break it \u2014 so
-    far."
+  m_text: Every code ever made has met a mind clever enough to break it, so far.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
   m_sharedMaterial: {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
@@ -10874,11 +10872,10 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 51845058}
   _title: 
-  _body: "The oldest secrets were kept with the simplest tools: a staff, a shifted
+  _body: 'The oldest secrets were kept with the simplest tools: a staff, a shifted
     alphabet, a turning disk. Yet within these galleries lies the whole drama of
-    cryptology \u2014 the first cipher, the first break, and the long duel between
-    them. Take the cipher disk at the centre and turn it until the message makes
-    sense."
+    cryptology, the first cipher, the first break, and the long duel between them.
+    Take the cipher disk at the centre and turn it until the message makes sense.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -14580,7 +14577,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.000015258789, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &62840576
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -15099,7 +15096,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &65945933
 MeshRenderer:
@@ -16648,7 +16645,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &73549992
 MeshRenderer:
@@ -18435,11 +18432,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 83064282}
   _title: 
-  _body: "The Renaissance architect Leon Battista Alberti mounted two alphabet rings
-    on a common pin and turned the inner one partway through a message \u2014 so
-    the same plaintext letter enciphered differently each time.\n\n<b>SIGNIFICANCE</b> 
+  _body: 'The Renaissance architect Leon Battista Alberti mounted two alphabet rings
+    on a common pin and turned the inner one partway through a message, so the same
+    plaintext letter enciphered differently each time.
+
+
+    <b>SIGNIFICANCE</b> 
     The first polyalphabetic cipher. By moving the key mid-message, Alberti blunted
-    frequency analysis and reset the duel between code and break."
+    frequency analysis and reset the duel between code and break.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -19491,7 +19491,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &86747594
 MeshRenderer:
@@ -22113,11 +22113,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 96366694}
   _title: 
-  _body: "Charles Bennett and Gilles Brassard found a way to send a key as single
-    particles of light. The laws of quantum physics forbid copying them \u2014 so
-    any eavesdropper unavoidably disturbs the message and is caught.\n\n<b>SIGNIFICANCE</b> 
-    Security guaranteed not by hard mathematics but by the laws of nature themselves.
-    The first quantum-secured bank transfer ran in 2004."
+  _body: 'Charles Bennett and Gilles Brassard found a way to send a key as single
+    particles of light. The laws of quantum physics forbid copying them, so any eavesdropper
+    unavoidably disturbs the message and is caught.
+
+
+    <b>SIGNIFICANCE</b>  Security
+    guaranteed not by hard mathematics but by the laws of nature themselves. The
+    first quantum-secured bank transfer ran in 2004.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -23611,7 +23614,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -24299,11 +24302,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 106215652}
   _title: 
-  _body: "Hitler's high command used the Lorenz cipher, even tougher than Enigma.
-    To break it, engineer Tommy Flowers built Colossus from 1,600 vacuum tubes \u2014
-    the world's first programmable electronic digital computer.\n\n<b>SIGNIFICANCE</b> 
+  _body: 'Hitler''s high command used the Lorenz cipher, even tougher than Enigma.
+    To break it, engineer Tommy Flowers built Colossus from 1,600 vacuum tubes, the
+    world''s first programmable electronic digital computer.
+
+
+    <b>SIGNIFICANCE</b> 
     The secret war gave birth to the computer age. Colossus stayed classified for
-    thirty years, robbing its builders of the credit."
+    thirty years, robbing its builders of the credit.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -25173,7 +25179,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -25764,9 +25770,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &110925844
 MeshRenderer:
@@ -26118,9 +26124,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &111913735
 MeshRenderer:
@@ -26494,7 +26500,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -29880,7 +29886,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &130685404
 MeshRenderer:
@@ -29983,7 +29989,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.50000006
   m_Height: 1.9999999
@@ -31259,7 +31265,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &136551702
 MeshRenderer:
@@ -34070,8 +34076,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &150132294
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41327,12 +41333,17 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 181657702}
   _title: 
-  _body: "A new generation of ciphers builds its locks from mathematical problems
-    \u2014 tangled lattices in high-dimensional space \u2014 that even a quantum
-    computer cannot easily solve. In 2024 the first such standards were published
-    for the world to adopt.\n\n<b>SIGNIFICANCE</b>\nThe next chapter of the three-thousand-year
-    duel, being written right now \u2014 and the cipher that may guard your grandchildren's
-    secrets."
+  _body: 'A new generation of ciphers builds its locks from mathematical problems,
+    tangled lattices in high-dimensional space, that even a quantum computer cannot
+    easily solve. In 2024 the first such standards were published for the world to
+    adopt.
+
+
+    <b>SIGNIFICANCE</b>
+
+    The next chapter of the three-thousand-year
+    duel, being written right now, and the cipher that may guard your grandchildren''s
+    secrets.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -42150,7 +42161,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -42373,10 +42384,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: -0.00000047683716}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &184685435
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -42810,7 +42821,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.50000006
   m_Height: 1.9999999
@@ -44269,7 +44280,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -45411,8 +45422,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &195830117
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -46837,7 +46848,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -50159,7 +50170,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -55395,7 +55406,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.0000001, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &235618963
 MeshRenderer:
@@ -56455,10 +56466,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.00000047683716}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &240324142
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -56977,7 +56988,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &242311963
 MeshRenderer:
@@ -58535,7 +58546,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248817745}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -0.00000004371139}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -58543,7 +58554,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.53999996}
+  m_AnchoredPosition: {x: -0, y: -0.141}
   m_SizeDelta: {x: 0.68, y: 0.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &248817747
@@ -63193,10 +63204,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.00000047683716}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &266782069
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -65292,10 +65303,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.9999999}
-  m_Center: {x: 0.0000009536743, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &276391293
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -65817,7 +65828,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -67045,11 +67056,16 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 285888376}
   _title: 
-  _body: "The U.S. government adopted the Data Encryption Standard so that banks
+  _body: 'The U.S. government adopted the Data Encryption Standard so that banks
     and businesses could all encrypt the same way. Its 56-bit key, controversially
-    short, was finally cracked by brute force in 1998 in just 56 hours.\n\n<b>SIGNIFICANCE</b>\nThe
-    first cipher the whole world shared \u2014 and the moment cryptography became
-    public infrastructure rather than a military secret."
+    short, was finally cracked by brute force in 1998 in just 56 hours.
+
+
+    <b>SIGNIFICANCE</b>
+
+    The
+    first cipher the whole world shared, and the moment cryptography became public
+    infrastructure rather than a military secret.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -67962,11 +67978,13 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 287987322}
   _title: 
-  _body: "Three guarantees underlie every code: Confidentiality, that only the intended
+  _body: 'Three guarantees underlie every code: Confidentiality, that only the intended
     reader can understand; Integrity, that the message was not altered; and Authentication,
-    that the sender is who they claim to be.\n\n<b>SIGNIFICANCE</b>  These three
-    promises are the reason cryptography matters \u2014 in 50 BCE and in your phone
-    tonight."
+    that the sender is who they claim to be.
+
+
+    <b>SIGNIFICANCE</b>  These three
+    promises are the reason cryptography matters, in 50 BCE and in your phone tonight.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -68252,7 +68270,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.0000076293945, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &288334990
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -69501,7 +69519,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -69691,10 +69709,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0.00000047683716}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &293347103
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -71780,11 +71798,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 302501853}
   _title: 
-  _body: "America's own cipher machine stepped its rotors irregularly, driven by
+  _body: 'America''s own cipher machine stepped its rotors irregularly, driven by
     a second bank of rotors, defeating the predictability that doomed Enigma. No
-    wartime adversary is known to have read a single SIGABA message.\n\n<b>SIGNIFICANCE</b> 
-    The quiet hero of Allied security \u2014 a reminder that the best cipher is the
-    one the enemy never even realises they have failed to break."
+    wartime adversary is known to have read a single SIGABA message.
+
+
+    <b>SIGNIFICANCE</b> 
+    The quiet hero of Allied security, a reminder that the best cipher is the one
+    the enemy never even realises they have failed to break.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -79954,9 +79975,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &337866511
 MeshRenderer:
@@ -80177,7 +80198,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -81889,7 +81910,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -85083,7 +85104,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -86162,7 +86183,7 @@ Transform:
   m_GameObject: {fileID: 362498117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.72, z: 0.06}
+  m_LocalPosition: {x: 0, y: -0.759, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -87523,7 +87544,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -89722,7 +89743,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &378562062
 MeshRenderer:
@@ -90227,9 +90248,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &380682335
 MeshRenderer:
@@ -90332,10 +90353,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
-  m_Center: {x: 0.000061035156, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &380712653
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -91897,7 +91918,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -92975,11 +92996,10 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 390155248}
   _title: 
-  _body: "After the war, cryptography left the battlefield for the bank, the browser
+  _body: 'After the war, cryptography left the battlefield for the bank, the browser
     and the phone. It also faced an old paradox: how can two strangers agree on a
     secret key while an eavesdropper listens to every word? The answer rebuilt the
-    world. Recover the passphrase from the Enigma \u2014 VICTORY \u2014 and open
-    the vault."
+    world. Recover the passphrase from the Enigma, TSANLC, and open the vault.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -93011,7 +93031,7 @@ MonoBehaviour:
   m_text: 'After the war, cryptography left the battlefield for the bank, the browser
     and the phone. It also faced an old paradox: how can two strangers agree on a
     secret key while an eavesdropper listens to every word? The answer rebuilt the
-    world. Recover the passphrase from the Enigma, VICTORY, and open the vault.'
+    world. Recover the passphrase from the Enigma, TSANLC, and open the vault.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
   m_sharedMaterial: {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
@@ -93997,7 +94017,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1.45}
+  m_AnchoredPosition: {x: 0, y: 1.334}
   m_SizeDelta: {x: 1.08, y: 1.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394227906
@@ -96280,7 +96300,7 @@ MonoBehaviour:
   _verboseEventLogging: 0
   _requireSolveToAdvance: 1
   _restoreProgressOnLaunch: 0
-  _demoMode: 1
+  _demoMode: 0
 --- !u!114 &404104028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96687,7 +96707,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -97094,7 +97114,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.50000006
   m_Height: 1.9999999
@@ -101107,7 +101127,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &424855900
 MeshRenderer:
@@ -108728,9 +108748,9 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 454619425}
   _title: 
-  _body: "Julius Caesar protected his dispatches by shifting every letter three places
-    down the alphabet \u2014 A became D, B became E. Turn the inner ring until 'FURVV
-    WKH UXELFRQ' resolves. The shift you need is +3."
+  _body: Julius Caesar protected his dispatches by shifting every letter three places
+    down the alphabet, A became D, B became E. Turn the inner ring until 'FURVV WKH
+    UXELFRQ' resolves. The shift you need is +3.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -110620,8 +110640,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &464220165
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -111207,9 +111227,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &466740980
 MeshRenderer:
@@ -112184,7 +112204,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &470142243
 MeshRenderer:
@@ -112372,8 +112392,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: -0.0000076293945, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &470193329
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -112643,12 +112663,17 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 470647345}
   _title: 
-  _body: "Mary, Queen of Scots conspired from prison to overthrow Elizabeth I, her
-    letters enciphered in a substitution alphabet of strange symbols. Elizabeth's
-    spymaster intercepted them, and his codebreaker Thomas Phelippes read every word
-    \u2014 then forged a postscript to expose the plotters.\n\n<b>SIGNIFICANCE</b>\nCryptanalysis
-    as a matter of life and death: the broken cipher sent a queen to the executioner's
-    block in 1587."
+  _body: 'Mary, Queen of Scots conspired from prison to overthrow Elizabeth I, her
+    letters enciphered in a substitution alphabet of strange symbols. Elizabeth''s
+    spymaster intercepted them, and his codebreaker Thomas Phelippes read every word,
+    then forged a postscript to expose the plotters.
+
+
+    <b>SIGNIFICANCE</b>
+
+    Cryptanalysis
+    as a matter of life and death: the broken cipher sent a queen to the executioner''s
+    block in 1587.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -117201,11 +117226,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 493976358}
   _title: 
-  _body: "Mathematician Peter Shor proved that a large enough quantum computer could
-    factor huge numbers with ease \u2014 quietly dissolving the hard problem that
-    RSA and much of today's encryption rely upon.\n\n<b>SIGNIFICANCE</b>  The reason
+  _body: 'Mathematician Peter Shor proved that a large enough quantum computer could
+    factor huge numbers with ease, quietly dissolving the hard problem that RSA and
+    much of today''s encryption rely upon.
+
+
+    <b>SIGNIFICANCE</b>  The reason
     the whole world is now racing to upgrade its cryptography before such a machine
-    is built."
+    is built.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -117910,11 +117938,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 496388294}
   _title: 
-  _body: "When strong encryption reached the public, governments tried to keep a
-    key for themselves \u2014 the Clipper chip \u2014 and treated cipher software
-    as a munition. Cryptographers fought back in court and in code, and the public's
-    right to strong encryption largely prevailed.\n\n<b>SIGNIFICANCE</b>  The unfinished
-    argument over privacy, security and power that still shapes technology law today."
+  _body: 'When strong encryption reached the public, governments tried to keep a
+    key for themselves, the Clipper chip, and treated cipher software as a munition.
+    Cryptographers fought back in court and in code, and the public''s right to strong
+    encryption largely prevailed.
+
+
+    <b>SIGNIFICANCE</b>  The unfinished argument
+    over privacy, security and power that still shapes technology law today.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -119898,7 +119929,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -127864,6 +127895,177 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531354282}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &531680217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531680218}
+  - component: {fileID: 531680220}
+  - component: {fileID: 531680219}
+  m_Layer: 0
+  m_Name: KeyLabel_DEL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &531680218
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531680217}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.018000005}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1835827901}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000002332605, y: -0.0000000358201}
+  m_SizeDelta: {x: 1.2, y: 0.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &531680219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531680217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: DEL
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  m_sharedMaterial: {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 2
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0.1
+  m_fontSizeMax: 2
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 531680220}
+  m_maskType: 0
+--- !u!23 &531680220
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531680217}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &532802242
 GameObject:
   m_ObjectHideFlags: 0
@@ -129573,8 +129775,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000023841858, y: 0, z: -0.0000038146973}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &537910909
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -130965,7 +131167,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -131236,7 +131438,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.50000006
   m_Height: 1.9999999
@@ -132947,7 +133149,7 @@ Transform:
   m_GameObject: {fileID: 550770647}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: 0.317, y: 1.3206, z: -0.22}
+  m_LocalPosition: {x: -0.293, y: 1.3206, z: -0.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -135088,8 +135290,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &561307723
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -135274,7 +135476,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -137601,9 +137803,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &571247239
 MeshRenderer:
@@ -138307,9 +138509,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &575565199
 MeshRenderer:
@@ -143364,7 +143566,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -145652,7 +145854,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -147740,7 +147942,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &613562016
 MeshRenderer:
@@ -148094,8 +148296,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000071525574, y: 0, z: -0.0000038146973}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &614493391
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -149914,9 +150116,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &621097886
 MeshRenderer:
@@ -157687,6 +157889,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647219137}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &647255698 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2934551820272370939, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+  m_PrefabInstance: {fileID: 1692822685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &647255702
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647255698}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.08, y: 0.08, z: 0.299}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &647664193
 GameObject:
   m_ObjectHideFlags: 0
@@ -158922,7 +159150,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -159446,9 +159674,9 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 655086405}
   _title: 
-  _body: "Whitfield Diffie and Martin Hellman published the key-exchange that made
-    secure communication possible between strangers \u2014 and shared the 2015 Turing
-    Award for it."
+  _body: Whitfield Diffie and Martin Hellman published the key-exchange that made
+    secure communication possible between strangers, and shared the 2015 Turing Award
+    for it.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -160093,8 +160321,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &657114081
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -160826,10 +161054,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
-  m_Center: {x: 0.0000076293945, y: 0, z: -0.00000047683716}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &658948764
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -161263,9 +161491,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &663157498
 MeshRenderer:
@@ -165565,7 +165793,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &679131637
 MeshRenderer:
@@ -165670,7 +165898,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &679826392
 MeshRenderer:
@@ -167274,8 +167502,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &686523459
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -170177,7 +170405,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &700738518
 MeshRenderer:
@@ -171425,7 +171653,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -173782,8 +174010,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: -0.000015258789, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &713416859
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -174464,8 +174692,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &715779644
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -176575,7 +176803,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &722654065
 MeshRenderer:
@@ -176864,7 +177092,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &723531380
 MeshRenderer:
@@ -178118,7 +178346,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -179641,7 +179869,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -186883,7 +187111,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &771628536
 MeshRenderer:
@@ -189133,7 +189361,7 @@ Transform:
   m_GameObject: {fileID: 782886478}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.03}
+  m_LocalPosition: {x: 0, y: 0.124, z: -0.03}
   m_LocalScale: {x: 1.1, y: 1.1, z: 0.04}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -192117,10 +192345,10 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 797201477}
   _title: 
-  _body: "Roman stele, clockwork rotor, circuit lattice \u2014 one form flowing into
-    the next. From Caesar's alphabet to modern security, cryptography protects information
+  _body: Roman stele, clockwork rotor, circuit lattice, one form flowing into the
+    next. From Caesar's alphabet to modern security, cryptography protects information
     by transforming meaning into secrets only the intended recipient can reveal.
-    The thread is unbroken. Now it is yours to carry."
+    The thread is unbroken. Now it is yours to carry.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -192651,7 +192879,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &802013353
 MeshRenderer:
@@ -192754,10 +192982,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.00000047683716}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &802063835
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -193296,10 +193524,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: -0.00000047683716}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &803446373
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -196964,10 +197192,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.0000009536743}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &816112635
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -198657,11 +198885,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 824425442}
   _title: 
-  _body: "U.S. Marines in the Pacific transmitted orders in Navajo, a language almost
+  _body: 'U.S. Marines in the Pacific transmitted orders in Navajo, a language almost
     unwritten and spoken by few outside the Nation. Layered with a code of its own,
-    it carried messages in seconds that machines needed hours to encipher.\n\n<b>SIGNIFICANCE</b> 
-    The only major military code of the war that the enemy never broke \u2014 spoken
-    by the very people America had tried to silence."
+    it carried messages in seconds that machines needed hours to encipher.
+
+
+    <b>SIGNIFICANCE</b> 
+    The only major military code of the war that the enemy never broke, spoken by
+    the very people America had tried to silence.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -199548,7 +199779,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &826530687
 MeshRenderer:
@@ -200155,10 +200386,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000023841858, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &829275278
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -201326,10 +201557,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: -0.0000076293945, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &834131550
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -202214,8 +202445,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &839348676
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -202929,8 +203160,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &842577090
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -203721,7 +203952,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.000015258789, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &845493726
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -204557,8 +204788,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &847505482
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -213982,10 +214213,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.00000047683716}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &885238763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -214170,7 +214401,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -217153,9 +217384,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &902541018
 MeshRenderer:
@@ -217676,7 +217907,7 @@ MonoBehaviour:
   _bodyField: {fileID: 904751284}
   _title: 
   _body: "The computing pioneer secretly broke the Vigen\xE8re cipher around 1854,
-    but never published \u2014 the credit went to Kasiski nine years later."
+    but never published, the credit went to Kasiski nine years later."
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -217873,8 +218104,8 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 904947933}
   _title: 
-  _body: "Reach out and press the seal to enter the museum. No reading list, no audio
-    wand \u2014 everything here is learned by doing."
+  _body: Reach out and press the seal to enter the museum. No reading list, no audio
+    wand, everything here is learned by doing.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -219264,7 +219495,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -219759,10 +219990,10 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 914597883}
   _title: 
-  _body: "Germany trusted its most vital orders to the Enigma \u2014 three spinning
-    rotors that re-wired the alphabet with every keystroke, offering more settings
-    than there are atoms in your body. Set the rotors to MAC, type ZLDFDQO, and watch
-    the word VICTORY emerge."
+  _body: Germany trusted its most vital orders to the Enigma, three spinning rotors
+    that re-wired the alphabet with every keystroke, offering more settings than
+    there are atoms in your body. Set the rotors to MAC, type XJQBVK, and watch the
+    word TSANLC emerge.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -219793,8 +220024,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Germany trusted its most vital orders to the Enigma, three spinning rotors
     that re-wired the alphabet with every keystroke, offering more settings than
-    there are atoms in your body. Set the rotors to MAC, type ZLDFDQO, and watch
-    the word VICTORY emerge.
+    there are atoms in your body. Set the rotors to MAC, type XJQBVK, and watch the
+    word TSANLC emerge.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
   m_sharedMaterial: {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
@@ -220581,7 +220812,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &916194947
 MeshRenderer:
@@ -220885,7 +221116,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -222199,11 +222430,13 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 920894376}
   _title: 
-  _body: "Rejewski's electro-mechanical 'bomba' searched Enigma settings automatically.
+  _body: 'Rejewski''s electro-mechanical ''bomba'' searched Enigma settings automatically.
     At Bletchley Park, Alan Turing and Gordon Welchman rebuilt the idea as the Bombe,
-    ranks of spinning drums testing thousands of wirings an hour.\n\n<b>SIGNIFICANCE</b> 
-    Machines built to defeat machines \u2014 the first great triumph of automated
-    codebreaking."
+    ranks of spinning drums testing thousands of wirings an hour.
+
+
+    <b>SIGNIFICANCE</b> 
+    Machines built to defeat machines, the first great triumph of automated codebreaking.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -227903,8 +228136,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &947529495
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -231211,10 +231444,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.00000047683716}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &961222019
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -232283,10 +232516,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0.00000047683716}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &964971572
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -241625,11 +241858,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1007699509}
   _title: 
-  _body: "Every time a padlock appears in your address bar, your device and a distant
+  _body: 'Every time a padlock appears in your address bar, your device and a distant
     server have performed a key exchange, agreed on a fresh secret, and switched
-    to a fast cipher like AES \u2014 all in a fraction of a second.\n\n<b>SIGNIFICANCE</b> 
+    to a fast cipher like AES, all in a fraction of a second.
+
+
+    <b>SIGNIFICANCE</b> 
     The quiet ceremony, called TLS, that secures trillions of dollars and billions
-    of conversations every single day."
+    of conversations every single day.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -241865,10 +242101,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
-  m_Center: {x: 0, y: 0, z: -0.000030517578}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1008270231
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -243722,7 +243958,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -243831,8 +244067,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: -0.000015258789, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1016330431
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -244017,9 +244253,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1016978266
 MeshRenderer:
@@ -244617,10 +244853,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.0000076293945}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1020232328
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -244888,10 +245124,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
-  m_Center: {x: 0, y: 0, z: 0.0000076293945}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1022556694
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -247503,7 +247739,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -255496,7 +255732,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -261833,11 +262069,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1091983186}
   _title: 
-  _body: "Rivest, Shamir and Adleman gave everyone two keys: a public one that anyone
+  _body: 'Rivest, Shamir and Adleman gave everyone two keys: a public one that anyone
     can use to lock a message, and a private one that only you can use to unlock
-    it. Its security rests on the difficulty of factoring enormous numbers.\n\n<b>SIGNIFICANCE</b> 
-    The padlock of the internet. RSA lets total strangers exchange secrets safely
-    \u2014 the foundation of e-commerce, email and secure login."
+    it. Its security rests on the difficulty of factoring enormous numbers.
+
+
+    <b>SIGNIFICANCE</b> 
+    The padlock of the internet. RSA lets total strangers exchange secrets safely,
+    the foundation of e-commerce, email and secure login.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -262325,7 +262564,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1093553329
 MeshRenderer:
@@ -263666,7 +263905,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.0000001, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1097800820
 MeshRenderer:
@@ -270621,8 +270860,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: 0.000030517578, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1123391671
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -271786,7 +272025,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1129440424
 MeshRenderer:
@@ -273094,7 +273333,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -276511,7 +276750,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1147341731
 MeshRenderer:
@@ -276951,7 +277190,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -278769,9 +279008,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1153895616
 MeshRenderer:
@@ -281928,7 +282167,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.50000006
   m_Height: 1.9999999
@@ -285200,9 +285439,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1178600017
 MeshRenderer:
@@ -285785,6 +286024,177 @@ Transform:
   - {fileID: 265158448}
   m_Father: {fileID: 320081711}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1181863011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181863012}
+  - component: {fileID: 1181863014}
+  - component: {fileID: 1181863013}
+  m_Layer: 0
+  m_Name: Vault_ScreenText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1181863012
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181863011}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -1.2625028}
+  m_LocalScale: {x: 1.2499996, y: 1.25, z: 1.2499996}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1255190730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.3000002, y: 1.5875}
+  m_SizeDelta: {x: 0.36, y: 0.11}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1181863013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181863011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: ENTER PASSPHRASE
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  m_sharedMaterial: {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967193
+  m_fontColor: {r: 0.6, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.12
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0.02
+  m_fontSizeMax: 0.12
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 1181863014}
+  m_maskType: 0
+--- !u!23 &1181863014
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181863011}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1181990839
 GameObject:
   m_ObjectHideFlags: 0
@@ -285919,9 +286329,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1182708090
 MeshRenderer:
@@ -286565,10 +286975,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
-  m_Center: {x: 0.000061035156, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1184209631
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -288482,8 +288892,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: 0.000030517578, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1191151100
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -289602,8 +290012,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1196395886
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -289978,9 +290388,9 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1197630685}
   _title: 
-  _body: "A modern secret is not hidden \u2014 it is locked, and only the holder
-    of the key can open it, even in full view of the world. Enter the word you recovered
-    next door, VICTORY, on the keypad to release the lock."
+  _body: A modern secret is not hidden, it is locked, and only the holder of the
+    key can open it, even in full view of the world. Enter the word you recovered
+    next door, TSANLC, on the keypad to release the lock.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -290011,7 +290421,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: A modern secret is not hidden, it is locked, and only the holder of the
     key can open it, even in full view of the world. Enter the word you recovered
-    next door, VICTORY, on the keypad to release the lock.
+    next door, TSANLC, on the keypad to release the lock.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
   m_sharedMaterial: {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
@@ -292868,7 +293278,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -294836,7 +295246,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1221460981
 MeshRenderer:
@@ -297329,9 +297739,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1229021519
 MeshRenderer:
@@ -297849,7 +298259,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -300854,7 +301264,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -301265,7 +301675,7 @@ Transform:
   m_GameObject: {fileID: 1247984269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.12}
+  m_LocalPosition: {x: 0, y: 0.124, z: 0.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -301578,9 +301988,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1249693305
 MeshRenderer:
@@ -302521,7 +302931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -9005751937024807050, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.185
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8681940806842418849, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -302593,8 +303003,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8421333508191027783, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.185
+      value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: -8329089121332159163, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: -8215316304612790824, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: -8207507687928577365, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -302663,17 +303081,89 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5921138450692648166, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -5921138450692648166, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -5921138450692648166, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -5921138450692648166, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5921138450692648166, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: -5711226345270308251, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e67a824c22e24c64e9a778d0bc959681, type: 2}
+    - target: {fileID: -5646033130201449075, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: -5627955014956135247, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: -5483933770037201931, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: -5420491641066593287, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f5a03037dc80d7d4fa34e58887e5a18a, type: 2}
+    - target: {fileID: -5260486351340018196, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -5260486351340018196, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -5260486351340018196, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -5260486351340018196, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5260486351340018196, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5221674594209009355, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
     - target: {fileID: -5221674594209009355, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0192
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5221674594209009355, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -5221674594209009355, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -5221674594209009355, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5221674594209009355, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -5212756473331508412, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -302688,9 +303178,53 @@ PrefabInstance:
       value: -1.19
       objectReference: {fileID: 0}
     - target: {fileID: -4840978430758354313, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0192
+      propertyPath: m_LocalPosition.x
+      value: -0.02
       objectReference: {fileID: 0}
+    - target: {fileID: -4840978430758354313, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4840978430758354313, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -4840978430758354313, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -4840978430758354313, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4840978430758354313, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4433416543364432975, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -4433416543364432975, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -4433416543364432975, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -4433416543364432975, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4433416543364432975, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4309261765062827033, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: -4303776816852877142, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.209
@@ -302731,13 +303265,57 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.256
       objectReference: {fileID: 0}
+    - target: {fileID: -3845796369942908624, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: -3652047728585282504, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
     - target: {fileID: -3652047728585282504, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0192
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3652047728585282504, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -3652047728585282504, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -3652047728585282504, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3652047728585282504, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3646692103641925359, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: -3646692103641925359, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0192
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3646692103641925359, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -3646692103641925359, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -3646692103641925359, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3646692103641925359, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -3385972917116826791, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_IsActive
@@ -302751,6 +303329,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.322
       objectReference: {fileID: 0}
+    - target: {fileID: -3054319886750446013, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -3054319886750446013, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -3054319886750446013, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -3054319886750446013, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -3054319886750446013, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: -2647998108926383568, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.16400011
@@ -302762,6 +303360,30 @@ PrefabInstance:
     - target: {fileID: -2647998108926383568, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.06999992
+      objectReference: {fileID: 0}
+    - target: {fileID: -2441718152188964927, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: -2346351056831115264, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -2346351056831115264, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -2346351056831115264, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -2346351056831115264, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -2346351056831115264, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -1893356275037205334, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -302803,6 +303425,46 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f5a03037dc80d7d4fa34e58887e5a18a, type: 2}
+    - target: {fileID: -1625989842952368414, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -1625989842952368414, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -1625989842952368414, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -1625989842952368414, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1625989842952368414, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1499275544403673094, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -1499275544403673094, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -1499275544403673094, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -1499275544403673094, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1499275544403673094, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: -1190404217474220845, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.005
@@ -302839,6 +303501,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -1084308805130924507, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -1084308805130924507, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -1084308805130924507, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -1084308805130924507, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1084308805130924507, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: -969915223893076550, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28499544
@@ -302856,32 +303538,76 @@ PrefabInstance:
       value: -1.454
       objectReference: {fileID: 0}
     - target: {fileID: -815628795689732597, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0192
+      propertyPath: m_LocalPosition.x
+      value: -0.02
       objectReference: {fileID: 0}
+    - target: {fileID: -815628795689732597, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -815628795689732597, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -815628795689732597, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -815628795689732597, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -815628795689732597, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -608046827690543224, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: -604891017861242044, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: -403785253945629599, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0192
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -403785253945629599, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -403785253945629599, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: -403785253945629599, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -403785253945629599, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -141288282336920722, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0192
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: -141288282336920722, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: -0.50000006
       objectReference: {fileID: 0}
     - target: {fileID: -141288282336920722, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.50000006
       objectReference: {fileID: 0}
     - target: {fileID: -141288282336920722, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -141288282336920722, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -141288282336920722, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -302899,6 +303625,30 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.454
       objectReference: {fileID: 0}
+    - target: {fileID: 37246086890057815, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 37246086890057815, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 37246086890057815, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 37246086890057815, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 37246086890057815, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 350207906297000778, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 488678944354989105, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.57
@@ -302907,6 +303657,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e67a824c22e24c64e9a778d0bc959681, type: 2}
+    - target: {fileID: 692712558388389410, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 746509542842268537, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28499544
@@ -302927,14 +303681,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vault
       objectReference: {fileID: 0}
+    - target: {fileID: 937422478536154310, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 999035714124604996, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.31
       objectReference: {fileID: 0}
     - target: {fileID: 999035714124604996, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.185
+      value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 1339507000931819209, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 1375678482974950588, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.7071068
@@ -302953,7 +303715,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1469961185637686876, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0192
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469961185637686876, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469961185637686876, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469961185637686876, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469961185637686876, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1472406172081529914, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -302991,6 +303769,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1503283535606087899, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503283535606087899, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503283535606087899, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503283535606087899, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503283535606087899, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655188353641515177, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655188353641515177, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655188353641515177, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655188353641515177, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655188353641515177, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1968233761219797752, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28499544
@@ -303001,23 +303819,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2286309721959060498, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0192
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2286309721959060498, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2286309721959060498, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2286309721959060498, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: -0.50000006
       objectReference: {fileID: 0}
     - target: {fileID: 2286309721959060498, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.5
+      value: -0.50000006
       objectReference: {fileID: 0}
     - target: {fileID: 2286309721959060498, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalRotation.y
@@ -303039,6 +303857,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2439939874909480830, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 2527044496283011469, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28499544
@@ -303099,10 +303921,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.999
       objectReference: {fileID: 0}
+    - target: {fileID: 3161654333251933613, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: 3225634599333290367, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 3726323419125779135, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f5a03037dc80d7d4fa34e58887e5a18a, type: 2}
+    - target: {fileID: 3727239736844096000, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727239736844096000, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727239736844096000, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727239736844096000, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3727239736844096000, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3752402300962460385, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.005
@@ -303147,6 +303997,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.19
       objectReference: {fileID: 0}
+    - target: {fileID: 3879983678830649412, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 3913619341682308963, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -303163,17 +304017,125 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.106
       objectReference: {fileID: 0}
+    - target: {fileID: 4193965902722310966, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193965902722310966, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193965902722310966, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193965902722310966, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4193965902722310966, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4197126528941792739, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: 4241726741533629542, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241726741533629542, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241726741533629542, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241726741533629542, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4241726741533629542, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4547109078718094481, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.095
       objectReference: {fileID: 0}
+    - target: {fileID: 4627157408722091776, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627157408722091776, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627157408722091776, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627157408722091776, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627157408722091776, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707387333815258840, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: 4835548701226687014, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: 5049185524727491631, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 5049185524727491631, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0192
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049185524727491631, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049185524727491631, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049185524727491631, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049185524727491631, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5183877012498057413, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0192
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183877012498057413, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183877012498057413, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183877012498057413, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183877012498057413, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5510228614866359686, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -303183,6 +304145,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.19
       objectReference: {fileID: 0}
+    - target: {fileID: 5517920384552103508, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 5666422971020650558, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.179
@@ -303239,6 +304205,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6694120212460211267, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 6711847185739780313, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28499544
@@ -303259,6 +304229,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e67a824c22e24c64e9a778d0bc959681, type: 2}
+    - target: {fileID: 7223055898803964096, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 7230900732938540642, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28499544
@@ -303287,6 +304261,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f5a03037dc80d7d4fa34e58887e5a18a, type: 2}
+    - target: {fileID: 7803314439712306396, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 7805808483268171676, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28499544
@@ -303295,6 +304273,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.322
       objectReference: {fileID: 0}
+    - target: {fileID: 7990266925491489478, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 79cec5ef3498d514a8136d4bb54c652c, type: 2}
+    - target: {fileID: 8065584636367509582, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 8381815772088705352, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.005
@@ -303335,6 +304321,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 8564681910015858564, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
     - target: {fileID: 8592651528047648391, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28499544
@@ -303359,9 +304349,56 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.388
       objectReference: {fileID: 0}
+    - target: {fileID: 9019321675087408607, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019321675087408607, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019321675087408607, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019321675087408607, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9019321675087408607, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138392101328344666, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 88bac5406c0ae2e4891d3c5d93d7ce8d, type: 2}
+    - target: {fileID: 9182688557705918192, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182688557705918192, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182688557705918192, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182688557705918192, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182688557705918192, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1181863012}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4f9e94d66245aa44fae4b26ee84aa36b, type: 3}
       insertIndex: -1
@@ -303635,7 +304672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e4d01f0e558d8647a1741f2db11d7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _passphrase: VICTORY
+  _passphrase: TSANLC
   _sourceFromEnigma: {fileID: 1692822692}
   _maxLength: 12
   _letterKeys:
@@ -303667,7 +304704,7 @@ MonoBehaviour:
   - {fileID: 422523411}
   _enterKey: {fileID: 1629801087}
   _clearKey: {fileID: 1688811266}
-  _display: {fileID: 0}
+  _display: {fileID: 1181863013}
   _neutralColor: {r: 0.6, g: 1, b: 1, a: 1}
   _acceptColor: {r: 0.45, g: 1, b: 0.55, a: 1}
   _rejectColor: {r: 1, g: 0.4, b: 0.4, a: 1}
@@ -304229,7 +305266,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -308002,11 +309039,11 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1271322387}
   _title: 
-  _body: "Cryptology is the science of two opposing arts: cryptography, the making
+  _body: 'Cryptology is the science of two opposing arts: cryptography, the making
     of codes, and cryptanalysis, the breaking of them. For most of history they have
-    raced each other \u2014 every unbreakable cipher eventually meets a mind clever
-    enough to crack it. Walk the timeline on these walls, then choose a doorway and
-    step into the story."
+    raced each other, every unbreakable cipher eventually meets a mind clever enough
+    to crack it. Walk the timeline on these walls, then choose a doorway and step
+    into the story.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -309346,7 +310383,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -310612,7 +311649,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1283143638
 MeshRenderer:
@@ -310966,10 +312003,15 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1284942047}
   _title: 
-  _body: "Sparta, Rome, Baghdad, Florence, Paris, Bletchley, Stanford, Geneva \u2014
-    the art of the cipher belongs to no single nation. Each pin on this map marks
-    a place where the history of secrecy turned.\n\n<b>SIGNIFICANCE</b>\nCryptology
-    is one of humanity's truly global inheritances."
+  _body: 'Sparta, Rome, Baghdad, Florence, Paris, Bletchley, Stanford, Geneva, the
+    art of the cipher belongs to no single nation. Each pin on this map marks a place
+    where the history of secrecy turned.
+
+
+    <b>SIGNIFICANCE</b>
+
+    Cryptology
+    is one of humanity''s truly global inheritances.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -311339,7 +312381,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1288018251
 MeshRenderer:
@@ -314051,7 +315093,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -319940,7 +320982,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -320981,7 +322023,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -325900,7 +326942,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -326649,11 +327691,16 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1357635834}
   _title: 
-  _body: "In the House of Wisdom in Baghdad, the polymath Al-Kindi noticed that every
+  _body: 'In the House of Wisdom in Baghdad, the polymath Al-Kindi noticed that every
     language uses some letters more than others. Count the symbols, match the most
-    common to 'E' or its equivalent, and any simple substitution unravels.\n\n<b>SIGNIFICANCE</b>\nFrequency
-    analysis \u2014 the birth of cryptanalysis. For 600 years it made every monalphabetic
-    cipher readable to a patient mind."
+    common to ''E'' or its equivalent, and any simple substitution unravels.
+
+
+    <b>SIGNIFICANCE</b>
+
+    Frequency
+    analysis, the birth of cryptanalysis. For 600 years it made every monalphabetic
+    cipher readable to a patient mind.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -328235,11 +329282,16 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1364097769}
   _title: 
-  _body: "The abbot Johannes Trithemius published a square table of twenty-six alphabets,
-    each shifted one further than the last, and stepped through them letter by letter
-    \u2014 a new cipher alphabet for every position.\n\n<b>SIGNIFICANCE</b>\nThe
+  _body: 'The abbot Johannes Trithemius published a square table of twenty-six alphabets,
+    each shifted one further than the last, and stepped through them letter by letter,
+    a new cipher alphabet for every position.
+
+
+    <b>SIGNIFICANCE</b>
+
+    The
     table at the heart of nearly every Renaissance polyalphabetic cipher, including
-    the one that would baffle Europe for three centuries."
+    the one that would baffle Europe for three centuries.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -328978,11 +330030,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1366554196}
   _title: 
-  _body: "In a Victorian mansion north of London, nearly ten thousand people \u2014
-    two-thirds of them women \u2014 intercepted, sorted and broke Axis ciphers around
-    the clock, sworn to a silence many kept for the rest of their lives.\n\n<b>SIGNIFICANCE</b> 
+  _body: 'In a Victorian mansion north of London, nearly ten thousand people, two-thirds
+    of them women, intercepted, sorted and broke Axis ciphers around the clock, sworn
+    to a silence many kept for the rest of their lives.
+
+
+    <b>SIGNIFICANCE</b> 
     Historians credit the work here with shortening the war by up to two years and
-    saving countless lives."
+    saving countless lives.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -331238,8 +332293,7 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1378499869}
   _title: 
-  _body: "Every code ever made has met a mind clever enough to break it \u2014 so
-    far."
+  _body: Every code ever made has met a mind clever enough to break it, so far.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -334774,7 +335828,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -334966,8 +336020,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.0000001, z: 1}
-  m_Center: {x: -0.000015258789, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1391827730
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -338279,8 +339333,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: 0.000030517578, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1405747990
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -339768,10 +340822,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: -0.00000047683716}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1411700004
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -340200,8 +341254,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 0.99999994, z: 1}
-  m_Center: {x: -0.0000076293945, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1414081378
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -341536,9 +342590,9 @@ MonoBehaviour:
   _bodyField: {fileID: 1416282090}
   _title: 
   _body: "Father-and-son cryptographers Antoine and Bonaventure Rossignol built a
-    code of 587 numbers for the Sun King \u2014 some standing for syllables, some
-    for letters, some as traps that deleted the previous symbol.\n\n<b>SIGNIFICANCE</b>\nSo
-    strong that captured dispatches sat unread for 200 years, until \xC9tienne Bazeries
+    code of 587 numbers for the Sun King, some standing for syllables, some for letters,
+    some as traps that deleted the previous symbol.\n\n<b>SIGNIFICANCE</b>\nSo strong
+    that captured dispatches sat unread for 200 years, until \xC9tienne Bazeries
     finally solved it in the 1890s."
   _group: {fileID: 0}
   _revealRadius: 7
@@ -345012,7 +346066,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -0.0000019073486, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1432120001
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -347401,7 +348455,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -349893,11 +350947,16 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1450026874}
   _title: 
-  _body: "Gilbert Vernam and Joseph Mauborgne combined each letter with a key of
+  _body: 'Gilbert Vernam and Joseph Mauborgne combined each letter with a key of
     pure random characters, used exactly once and never repeated. Decades later Claude
-    Shannon proved it mathematically unbreakable.\n\n<b>SIGNIFICANCE</b>\nThe only
-    cipher in history proven to offer perfect secrecy \u2014 at the brutal cost of
-    a key as long as every message you will ever send."
+    Shannon proved it mathematically unbreakable.
+
+
+    <b>SIGNIFICANCE</b>
+
+    The
+    only cipher in history proven to offer perfect secrecy, at the brutal cost of
+    a key as long as every message you will ever send.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -351627,8 +352686,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: -0.0000076293945, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1456525819
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -351981,11 +353040,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1457477232}
   _title: 
-  _body: "Run public-key cryptography in reverse and you can sign instead of hide:
+  _body: 'Run public-key cryptography in reverse and you can sign instead of hide:
     only your private key could have produced the mark, but anyone with your public
-    key can verify it. The signature breaks if the document is altered.\n\n<b>SIGNIFICANCE</b> 
-    Proof of who sent a message and that no one changed it \u2014 the backbone of
-    software updates, contracts and digital identity."
+    key can verify it. The signature breaks if the document is altered.
+
+
+    <b>SIGNIFICANCE</b> 
+    Proof of who sent a message and that no one changed it, the backbone of software
+    updates, contracts and digital identity.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -352850,7 +353912,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -360767,6 +361829,121 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494802537}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1494810282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2485215705564477576, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+  m_PrefabInstance: {fileID: 1692822685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1494810284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494810282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60dae2caeb26ed041985602bdaf63b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  _hingeAxis: {x: 1, y: 0, z: 0}
+  _restAngle: 0
+  _pulledAngle: -70
+  _pullThreshold: 0.85
+  _returnSeconds: 0.25
+  _latchWhenPulled: 1
+  _pullSfxKey: sfx_lever_pull
+  _pullVolume: 1
 --- !u!1 &1494973555
 GameObject:
   m_ObjectHideFlags: 0
@@ -361027,9 +362204,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1495778144
 MeshRenderer:
@@ -362842,7 +364019,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -362985,7 +364162,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -0.000015258789, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1502164330
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -365297,10 +366474,10 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1512421609}
   _title: 
-  _body: "Welcome to the Museum of Cryptology. Your journey runs forward in time,
-    one gallery at a time \u2014 Antiquity, the World Wars, the Digital Age, and
-    the Quantum Future. Each room holds a code for you to break with your own hands.
-    When you are ready, step onto the seal and begin."
+  _body: Welcome to the Museum of Cryptology. Your journey runs forward in time,
+    one gallery at a time, Antiquity, the World Wars, the Digital Age, and the Quantum
+    Future. Each room holds a code for you to break with your own hands. When you
+    are ready, step onto the seal and begin.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -368188,7 +369365,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1525991192
 MeshRenderer:
@@ -371101,8 +372278,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1537216697
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -373112,10 +374289,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
-  m_Center: {x: -0.0000009536743, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1545250924
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -373220,7 +374397,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: -0.000015258789, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1545663835
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -373718,7 +374895,7 @@ Transform:
   m_GameObject: {fileID: 1546677813}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -0.293, y: 1.3206, z: -0.2193}
+  m_LocalPosition: {x: 0.317, y: 1.3206, z: -0.2193}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -374579,7 +375756,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.0000001, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1550241344
 MeshRenderer:
@@ -375366,7 +376543,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -376391,10 +377568,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
-  m_Center: {x: 0.0000076293945, y: 0, z: 0.00000047683716}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1557625111
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -379916,7 +381093,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.0000001, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1569032611
 MeshRenderer:
@@ -380021,7 +381198,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1570216135
 MeshRenderer:
@@ -380909,7 +382086,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1574594601
 MeshRenderer:
@@ -381178,7 +382355,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -382827,7 +384004,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1581430677
 MeshRenderer:
@@ -383987,8 +385164,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1586986270
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -386487,7 +387664,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1598204898
 MeshRenderer:
@@ -387621,7 +388798,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.0000001, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1602944431
 MeshRenderer:
@@ -388146,7 +389323,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1.0000001, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1603710270
 MeshRenderer:
@@ -390071,10 +391248,10 @@ MonoBehaviour:
   _title: 
   _body: "A keyword chooses a different alphabet from Trithemius' table for each
     letter of the message, then repeats. Misattributed to Blaise de Vigen\xE8re,
-    it was so resistant to frequency analysis that Europe called it 'le chiffre ind\xE9chiffrable'
-    \u2014 the unbreakable cipher.\n\n<b>SIGNIFICANCE</b>\nFor 300 years it was the
-    gold standard of secrecy, until Charles Babbage and Friedrich Kasiski found the
-    crack in its repeating key."
+    it was so resistant to frequency analysis that Europe called it 'le chiffre ind\xE9chiffrable',
+    the unbreakable cipher.\n\n<b>SIGNIFICANCE</b>\nFor 300 years it was the gold
+    standard of secrecy, until Charles Babbage and Friedrich Kasiski found the crack
+    in its repeating key."
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -392386,8 +393563,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000023841858, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1616202072
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -393629,7 +394806,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1622108036
 MeshRenderer:
@@ -394058,9 +395235,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.99999994, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1623573114
 MeshRenderer:
@@ -395479,7 +396656,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1630926014
 MeshRenderer:
@@ -395667,11 +396844,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1631953749}
   _title: 
-  _body: "Polish mathematician Marian Rejewski attacked Enigma not with linguistics
+  _body: 'Polish mathematician Marian Rejewski attacked Enigma not with linguistics
     but with the theory of permutations, reconstructing its secret wiring from intercepted
-    traffic alone.\n\n<b>SIGNIFICANCE</b>  The first break of the military Enigma
-    \u2014 achieved years before the war, and handed to Britain and France in 1939
-    as the tanks rolled in."
+    traffic alone.
+
+
+    <b>SIGNIFICANCE</b>  The first break of the military Enigma,
+    achieved years before the war, and handed to Britain and France in 1939 as the
+    tanks rolled in.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -401396,7 +402576,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1649440704
 MeshRenderer:
@@ -405640,7 +406820,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -406471,8 +407651,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0.000015258789}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1667737211
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -406576,8 +407756,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1667867190
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -407988,8 +409168,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000071525574, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1673252748
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -408347,8 +409527,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1673917978
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -411590,7 +412770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8663063742504150864, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.425
+      value: -0.47597694
       objectReference: {fileID: 0}
     - target: {fileID: -8663063742504150864, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -411598,7 +412778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8663063742504150864, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: -8623782982962344720, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -411662,7 +412842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8508367449994755257, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31875
+      value: -0.35697693
       objectReference: {fileID: 0}
     - target: {fileID: -8508367449994755257, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -411670,7 +412850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8508367449994755257, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: -8329953951351167975, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -411856,6 +413036,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7170562862231926547, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.008
+      objectReference: {fileID: 0}
     - target: {fileID: -6955644902490936047, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3
@@ -411866,7 +413050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6955644902490936047, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.16000001
+      value: -0.17917694
       objectReference: {fileID: 0}
     - target: {fileID: -6955644902490936047, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -411874,7 +413058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6955644902490936047, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.122999996
+      value: 0.10975961
       objectReference: {fileID: 0}
     - target: {fileID: -6874714524080873079, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -412074,7 +413258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6244045678483895981, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.000023076902
       objectReference: {fileID: 0}
     - target: {fileID: -6244045678483895981, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -412082,7 +413266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6244045678483895981, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: -6181528322790638527, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_IsActive
@@ -412174,7 +413358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5769556604880519022, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.05375
+      value: -0.060176924
       objectReference: {fileID: 0}
     - target: {fileID: -5769556604880519022, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -412182,7 +413366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5769556604880519022, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.122999996
+      value: 0.10975961
       objectReference: {fileID: 0}
     - target: {fileID: -5610354242785863444, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -412394,7 +413578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5110084121754473435, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2125
+      value: -0.23797692
       objectReference: {fileID: 0}
     - target: {fileID: -5110084121754473435, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -412402,7 +413586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5110084121754473435, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: -5001094481885548723, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -412574,7 +413758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4939082671396588800, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.425
+      value: 0.47602308
       objectReference: {fileID: 0}
     - target: {fileID: -4939082671396588800, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -412582,7 +413766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4939082671396588800, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: -4892878997159834885, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -412714,7 +413898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4656453123341898661, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.31
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: -4656453123341898661, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -412846,7 +414030,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4309243634252066660, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3725
+      value: -0.41717693
       objectReference: {fileID: 0}
     - target: {fileID: -4309243634252066660, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -412854,7 +414038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4309243634252066660, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.122999996
+      value: 0.10975961
       objectReference: {fileID: 0}
     - target: {fileID: -4145613860527823684, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -412978,7 +414162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3764202156977481534, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: -3764202156977481534, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -413118,7 +414302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3501852535452512113, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2125
+      value: -0.23797692
       objectReference: {fileID: 0}
     - target: {fileID: -3501852535452512113, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -413126,7 +414310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3501852535452512113, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: -3231622427695328995, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -413202,7 +414386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3090386668505706579, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.10625
+      value: -0.11897693
       objectReference: {fileID: 0}
     - target: {fileID: -3090386668505706579, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -413210,11 +414394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3090386668505706579, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: -3088300340202902487, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.293
+      value: 0.317
       objectReference: {fileID: 0}
     - target: {fileID: -3088300340202902487, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -413558,7 +414742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1244042836796923816, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.31875
+      value: -0.35697693
       objectReference: {fileID: 0}
     - target: {fileID: -1244042836796923816, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -413566,7 +414750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1244042836796923816, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: -1211819677861642235, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -413766,7 +414950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 172115485807858325, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.15875
+      value: 0.17782308
       objectReference: {fileID: 0}
     - target: {fileID: 172115485807858325, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -413774,7 +414958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 172115485807858325, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.122999996
+      value: 0.10975961
       objectReference: {fileID: 0}
     - target: {fileID: 190248765878038894, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -413826,7 +415010,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416407783340705443, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.10625
+      value: -0.11897693
       objectReference: {fileID: 0}
     - target: {fileID: 416407783340705443, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -413834,7 +415018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416407783340705443, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: 470313658702234312, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -414026,7 +415210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1392402206210142874, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.425
+      value: 0.47602308
       objectReference: {fileID: 0}
     - target: {fileID: 1392402206210142874, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414034,7 +415218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1392402206210142874, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: 1539156277236034938, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -414114,7 +415298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1822145113729552722, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.37124997
+      value: 0.41582304
       objectReference: {fileID: 0}
     - target: {fileID: 1822145113729552722, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414122,7 +415306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1822145113729552722, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.122999996
+      value: 0.10975961
       objectReference: {fileID: 0}
     - target: {fileID: 1842001759103279063, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -414166,7 +415350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1869475065291349099, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.317
+      value: -0.293
       objectReference: {fileID: 0}
     - target: {fileID: 1869475065291349099, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414242,7 +415426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1948365070936307880, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.265
+      value: 0.29682305
       objectReference: {fileID: 0}
     - target: {fileID: 1948365070936307880, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414250,7 +415434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1948365070936307880, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.122999996
+      value: 0.10975961
       objectReference: {fileID: 0}
     - target: {fileID: 2288582821503094976, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -414350,7 +415534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2506623599725413748, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.10625
+      value: 0.11902308
       objectReference: {fileID: 0}
     - target: {fileID: 2506623599725413748, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414358,7 +415542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2506623599725413748, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: 2509779500099135152, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -414382,7 +415566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2531693656840712683, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2125
+      value: 0.23802309
       objectReference: {fileID: 0}
     - target: {fileID: 2531693656840712683, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414390,7 +415574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2531693656840712683, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: 2851636343690568672, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -414414,7 +415598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2862152831971269425, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.31875
+      value: 0.35702306
       objectReference: {fileID: 0}
     - target: {fileID: 2862152831971269425, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414422,7 +415606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2862152831971269425, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3355
+      value: 0.3477596
       objectReference: {fileID: 0}
     - target: {fileID: 2925093385664793825, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -414654,7 +415838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4035947978422375640, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0525
+      value: 0.058823075
       objectReference: {fileID: 0}
     - target: {fileID: 4035947978422375640, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414662,7 +415846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4035947978422375640, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.122999996
+      value: 0.10975961
       objectReference: {fileID: 0}
     - target: {fileID: 4046548068826638054, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -414674,7 +415858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4046548068826638054, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.31875
+      value: 0.35702306
       objectReference: {fileID: 0}
     - target: {fileID: 4046548068826638054, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -414682,7 +415866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4046548068826638054, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: 4080381189006388865, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -415006,7 +416190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5166253222612170021, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.425
+      value: -0.47597694
       objectReference: {fileID: 0}
     - target: {fileID: 5166253222612170021, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -415014,7 +416198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5166253222612170021, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: 5256869038748956565, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -415404,6 +416588,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4640da78a74d843489431ed4c4936228, type: 2}
+    - target: {fileID: 7050674818982386620, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7050674818982386620, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 7067240597639044535, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -415430,7 +416622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7070871958884631758, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.000023076902
       objectReference: {fileID: 0}
     - target: {fileID: 7070871958884631758, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -415438,7 +416630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7070871958884631758, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: 7147029536955575517, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -415490,7 +416682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7270591985361403464, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2125
+      value: 0.23802309
       objectReference: {fileID: 0}
     - target: {fileID: 7270591985361403464, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -415498,7 +416690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7270591985361403464, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: 7327039318067476083, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
@@ -415522,7 +416714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7371018526337405866, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.26625
+      value: -0.29817694
       objectReference: {fileID: 0}
     - target: {fileID: 7371018526337405866, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -415530,7 +416722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7371018526337405866, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.122999996
+      value: 0.10975961
       objectReference: {fileID: 0}
     - target: {fileID: 7430676931760390396, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalScale.x
@@ -415966,7 +417158,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8798341250083276951, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.10625
+      value: 0.11902308
       objectReference: {fileID: 0}
     - target: {fileID: 8798341250083276951, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.y
@@ -415974,7 +417166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8798341250083276951, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22925001
+      value: 0.22875963
       objectReference: {fileID: 0}
     - target: {fileID: 8878105102360812934, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       propertyPath: m_IsActive
@@ -416135,6 +417327,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 550770648}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1835827901}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       insertIndex: -1
@@ -416307,6 +417502,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5500394674770588783, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 775248310}
+    - targetCorrespondingSourceObject: {fileID: -2485215705564477576, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494810284}
+    - targetCorrespondingSourceObject: {fileID: -2934551820272370939, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 647255702}
     - targetCorrespondingSourceObject: {fileID: 9138253304238914117, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1692822690}
@@ -416495,7 +417696,7 @@ MonoBehaviour:
   - {fileID: 1919261575}
   _keyboard: {fileID: 1692822693}
   _lampboard: {fileID: 1692822694}
-  _lever: {fileID: 0}
+  _lever: {fileID: 1494810284}
   _traces: []
   _decodedReadout: {fileID: 0}
   _typedReadout: {fileID: 1838629800}
@@ -416525,8 +417726,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _solutionKey: MAC
-  _plaintextWord: VICTORY
-  _cipherWord: ZLDFDQO
+  _plaintextWord: TSANLC
+  _cipherWord: XJQBVK
 --- !u!114 &1692822693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416567,6 +417768,7 @@ MonoBehaviour:
   - {fileID: 1186106628}
   - {fileID: 775248310}
   _clearKey: {fileID: 0}
+  _deleteKey: {fileID: 1835827899}
   _keyClackKey: sfx_key_clack
 --- !u!114 &1692822694
 MonoBehaviour:
@@ -422429,7 +423631,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -425545,8 +426747,7 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1730531801}
   _title: 
-  _body: "Every code ever made has met a mind clever enough to break it \u2014 so
-    far."
+  _body: Every code ever made has met a mind clever enough to break it, so far.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -426179,10 +427380,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1.0000001}
-  m_Center: {x: 0, y: 0, z: -0.000030517578}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1733125772
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -432718,7 +433919,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -433110,7 +434311,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1767510703
 MeshRenderer:
@@ -434934,7 +436135,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1775666871
 MeshRenderer:
@@ -439531,7 +440732,7 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1791828127}
   _title: 
-  _body: 'You set three rotors to MAC and drew the word VICTORY out of noise. A machine
+  _body: 'You set three rotors to MAC and drew the word TSANLC out of noise. A machine
     that rewired the alphabet with every keystroke, and the codebreakers who beat
     it anyway.
 
@@ -439568,15 +440769,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You set three rotors to MAC and drew the word VICTORY out of noise. A
-    machine that rewired the alphabet with every keystroke, and the codebreakers
-    who beat it anyway.
+  m_text: 'You set three rotors to MAC and drew the word TSANLC out of noise. A machine
+    that rewired the alphabet with every keystroke, and the codebreakers who beat
+    it anyway.
 
 
     <b>SIGNIFICANCE</b>
 
-    Where breaking codes became
-    an industry, and gave birth to the computer.'
+    Where breaking codes became an industry,
+    and gave birth to the computer.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
   m_sharedMaterial: {fileID: -552309519897597912, guid: 5e9d7d68cbd93ac44a660ebe7a8b1231, type: 2}
@@ -446802,8 +448003,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1820145997
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -449392,7 +450593,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.50000006
   m_Height: 1.9999999
@@ -449501,10 +450702,13 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1833623032}
   _title: 
-  _body: "Please explore at your own pace. Lean in to read a label and it will brighten
-    for you. Reach out to touch anything that invites your hand \u2014 the disks
-    turn, the keys press, the doors open.\n\n<b>SIGNIFICANCE</b>  Every exhibit in
-    this museum is hands-on. Curiosity is the only ticket."
+  _body: 'Please explore at your own pace. Lean in to read a label and it will brighten
+    for you. Reach out to touch anything that invites your hand, the disks turn,
+    the keys press, the doors open.
+
+
+    <b>SIGNIFICANCE</b>  Every exhibit in this
+    museum is hands-on. Curiosity is the only ticket.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -450239,6 +451443,228 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835806982}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1835827898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1835827901}
+  - component: {fileID: 1835827903}
+  - component: {fileID: 1835827900}
+  - component: {fileID: 1835827902}
+  - component: {fileID: 1835827899}
+  m_Layer: 0
+  m_Name: KeyCap_DEL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1835827899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835827898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84cf79b808905fc44bf029526daaa6fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders: []
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_InteractionLayers:
+    m_Bits: 1
+  m_DistanceCalculationMode: 1
+  m_SelectMode: 0
+  m_FocusMode: 1
+  m_CustomReticle: {fileID: 0}
+  m_AllowGazeInteraction: 0
+  m_AllowGazeSelect: 0
+  m_OverrideGazeTimeToSelect: 0
+  m_GazeTimeToSelect: 0.5
+  m_OverrideTimeToAutoDeselectGaze: 0
+  m_TimeToAutoDeselectGaze: 3
+  m_AllowGazeAssistance: 0
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FirstFocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastFocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FocusExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_StartingHoverFilters: []
+  m_StartingSelectFilters: []
+  m_StartingInteractionStrengthFilters: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
+  _cap: {fileID: 1835827901}
+  _travel: 0.006
+  _pressSeconds: 0.06
+  _highlightRenderer: {fileID: 1835827900}
+  _highlightColor: {r: 0.2, g: 1, b: 1, a: 1}
+  _highlightSeconds: 0.18
+  _hoverGlow: 0.5
+  _clickSfxKey: sfx_brass_click
+  _debounce: 0.12
+  _value: DEL
+  Pressed:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!23 &1835827900
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835827898}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: bdc69e4e6a84bf74596c28be9179275a, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!4 &1835827901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835827898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.38, y: 1.078, z: 0.426}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 531680218}
+  m_Father: {fileID: 1692822686}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1835827902
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835827898}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.06, y: 0.06, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &1835827903
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835827898}
+  m_Mesh: {fileID: -4264337438516251411, guid: d0c96ee3283a64b44a0823ff44a73290, type: 3}
 --- !u!1 &1836015862
 GameObject:
   m_ObjectHideFlags: 0
@@ -450290,10 +451716,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.9999999}
-  m_Center: {x: 0.00000023841858, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1836015865
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -451827,11 +453253,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1840661132}
   _title: 
-  _body: "Whitfield Diffie and Martin Hellman solved the impossible: two people shouting
+  _body: 'Whitfield Diffie and Martin Hellman solved the impossible: two people shouting
     across a crowded room can mix their colours of paint so that each ends with the
-    same secret blend, while no listener can un-mix it.\n\n<b>SIGNIFICANCE</b>  The
-    first public-key idea ever published \u2014 'New Directions in Cryptography'
-    ended four thousand years of needing to share a key in advance."
+    same secret blend, while no listener can un-mix it.
+
+
+    <b>SIGNIFICANCE</b> 
+    The first public-key idea ever published, ''New Directions in Cryptography''
+    ended four thousand years of needing to share a key in advance.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -452935,11 +454364,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1845537531}
   _title: 
-  _body: "A hash function crushes any file \u2014 a word or a library \u2014 into
-    a short fingerprint. Change a single comma and the fingerprint changes utterly,
-    yet you can never run it backwards to recover the original.\n\n<b>SIGNIFICANCE</b> 
-    How your password is stored without being kept, and how the world checks that
-    a file has not been tampered with."
+  _body: 'A hash function crushes any file, a word or a library, into a short fingerprint.
+    Change a single comma and the fingerprint changes utterly, yet you can never
+    run it backwards to recover the original.
+
+
+    <b>SIGNIFICANCE</b>  How your
+    password is stored without being kept, and how the world checks that a file has
+    not been tampered with.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -456449,11 +457881,10 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1856554928}
   _title: 
-  _body: "You have travelled from a shifted alphabet to the mathematics that guards
-    the world. The duel is not over. A new kind of machine \u2014 the quantum computer
-    \u2014 threatens today's locks, even as quantum physics offers a key that physics
-    itself protects. The sculpture before you holds all three eras at once. Watch
-    it change."
+  _body: You have travelled from a shifted alphabet to the mathematics that guards
+    the world. The duel is not over. A new kind of machine, the quantum computer,
+    threatens today's locks, even as quantum physics offers a key that physics itself
+    protects. The sculpture before you holds all three eras at once. Watch it change.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -458567,10 +459998,10 @@ MonoBehaviour:
   _bodyField: {fileID: 1863699909}
   _title: 
   _body: "The Greek historian Polybius arranged the alphabet in a 5\xD75 grid, so
-    every letter became a pair of numbers \u2014 its row and column. Signalled with
-    torches, it let messages cross valleys letter by letter.\n\n<b>SIGNIFICANCE</b>\nIt
-    turned letters into numbers two thousand years before computers did the same,
-    and underlies many later ciphers."
+    every letter became a pair of numbers, its row and column. Signalled with torches,
+    it let messages cross valleys letter by letter.\n\n<b>SIGNIFICANCE</b>\nIt turned
+    letters into numbers two thousand years before computers did the same, and underlies
+    many later ciphers."
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -460045,11 +461476,16 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1871720809}
   _title: 
-  _body: "Britain's Room 40 intercepted a coded German cable offering Mexico the
+  _body: 'Britain''s Room 40 intercepted a coded German cable offering Mexico the
     American Southwest if it would join the war. The codebreakers read it, then disguised
-    how \u2014 and handed it to Washington.\n\n<b>SIGNIFICANCE</b>\nA single decrypted
+    how, and handed it to Washington.
+
+
+    <b>SIGNIFICANCE</b>
+
+    A single decrypted
     telegram helped bring the United States into the First World War. Codebreaking
-    changed the map of the world."
+    changed the map of the world.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -462034,11 +463470,16 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1878110250}
   _title: 
-  _body: "When DES grew weak, the world held an open contest. The winner, a Belgian
-    design called Rijndael, became the Advanced Encryption Standard \u2014 fast,
-    elegant, and approved to protect even top-secret information.\n\n<b>SIGNIFICANCE</b>\nThe
+  _body: 'When DES grew weak, the world held an open contest. The winner, a Belgian
+    design called Rijndael, became the Advanced Encryption Standard, fast, elegant,
+    and approved to protect even top-secret information.
+
+
+    <b>SIGNIFICANCE</b>
+
+    The
     cipher running quietly inside your phone, your wifi and your messages right now.
-    No practical break is known."
+    No practical break is known.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -465800,7 +467241,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -466106,10 +467547,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.00000047683716}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1897537763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -468860,7 +470301,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -469590,7 +471031,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -470193,7 +471634,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -470805,8 +472246,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: 0.00000047683716, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1918973690
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -473563,15 +475004,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: deee8035857aaaa4d9e7c22480a6076c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.2
+      value: -5.582
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: deee8035857aaaa4d9e7c22480a6076c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.652
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: deee8035857aaaa4d9e7c22480a6076c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 4.166
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: deee8035857aaaa4d9e7c22480a6076c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -475172,7 +476613,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1932520299
 MeshRenderer:
@@ -475758,7 +477199,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -481270,11 +482711,16 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 1961693573}
   _title: 
-  _body: "William Friedman's U.S. Army team reconstructed Japan's diplomatic cipher
+  _body: 'William Friedman''s U.S. Army team reconstructed Japan''s diplomatic cipher
     machine without ever seeing one, building a working analogue from intercepts
-    alone. The intelligence was codenamed MAGIC.\n\n<b>SIGNIFICANCE</b>\nProof that
-    a machine's secrets could be inferred from its output \u2014 a feat of pure reasoning
-    that shaped the war in the Pacific."
+    alone. The intelligence was codenamed MAGIC.
+
+
+    <b>SIGNIFICANCE</b>
+
+    Proof
+    that a machine''s secrets could be inferred from its output, a feat of pure reasoning
+    that shaped the war in the Pacific.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -481648,7 +483094,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -482417,7 +483863,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -483639,7 +485085,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -484570,7 +486016,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.50000006
   m_Height: 1.9999999
@@ -487113,7 +488559,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1984584851
 MeshRenderer:
@@ -490104,7 +491550,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -493253,10 +494699,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.000015258789}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2011461403
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -493496,7 +494942,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2012130723
 MeshRenderer:
@@ -493684,8 +495130,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000002, y: 1, z: 1.0000002}
-  m_Center: {x: -0.00000047683716, y: 0, z: 0.000015258789}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2012629918
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -493953,7 +495399,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -494344,10 +495790,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
-  m_Center: {x: 0.000015258789, y: 0, z: -0.000015258789}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2016365265
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -494734,7 +496180,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -495045,7 +496491,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2019529002
 MeshRenderer:
@@ -496486,7 +497932,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2029311070
 MeshRenderer:
@@ -496672,7 +498118,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -496860,7 +498306,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -497133,11 +498579,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 2032522390}
   _title: 
-  _body: "A strip of parchment wound around a wooden rod of an exact diameter. Written
+  _body: 'A strip of parchment wound around a wooden rod of an exact diameter. Written
     along the staff, then unwound, the letters scatter into nonsense; only a rod
-    of the matching thickness lines them up again.\n\n<b>SIGNIFICANCE</b>  The earliest
-    known military cipher \u2014 and the first transposition, hiding a message by
-    reordering it rather than replacing its letters."
+    of the matching thickness lines them up again.
+
+
+    <b>SIGNIFICANCE</b>  The
+    earliest known military cipher, and the first transposition, hiding a message
+    by reordering it rather than replacing its letters.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -503953,7 +505402,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2060181935
 MeshRenderer:
@@ -504840,8 +506289,7 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 2062875732}
   _title: 
-  _body: "Every code ever made has met a mind clever enough to break it \u2014 so
-    far."
+  _body: Every code ever made has met a mind clever enough to break it, so far.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -510303,8 +511751,7 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 2085920557}
   _title: 
-  _body: "Every code ever made has met a mind clever enough to break it \u2014 so
-    far."
+  _body: Every code ever made has met a mind clever enough to break it, so far.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -511703,9 +513150,9 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2092508724
 MeshRenderer:
@@ -513501,10 +514948,15 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 2102278802}
   _title: 
-  _body: "A 240-page codex written in an unknown script, illustrated with impossible
+  _body: 'A 240-page codex written in an unknown script, illustrated with impossible
     plants and astronomical charts. Codebreakers from both World Wars have tried;
-    no one has read a single confirmed word.\n\n<b>SIGNIFICANCE</b>\nCryptology's
-    greatest open mystery \u2014 proof that some secrets keep themselves."
+    no one has read a single confirmed word.
+
+
+    <b>SIGNIFICANCE</b>
+
+    Cryptology''s
+    greatest open mystery, proof that some secrets keep themselves.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -515628,7 +517080,7 @@ Transform:
   m_GameObject: {fileID: 2110263166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.62, z: 0.14}
+  m_LocalPosition: {x: 0, y: 0.763, z: 0.14}
   m_LocalScale: {x: 0.5, y: 0.03, z: 0.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -516819,7 +518271,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2
@@ -517177,11 +518629,14 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 2117565961}
   _title: 
-  _body: "Dutch linguist Auguste Kerckhoffs argued that a cipher should stay secure
-    even if the enemy knows everything about the system \u2014 except the key. \"The
-    design is not a secret,\" he wrote; \"the key is.\"\n\n<b>SIGNIFICANCE</b>  The
-    founding rule of modern security: never rely on a secret method, only on a secret
-    key. Every cipher in this museum is judged by it."
+  _body: 'Dutch linguist Auguste Kerckhoffs argued that a cipher should stay secure
+    even if the enemy knows everything about the system, except the key. "The design
+    is not a secret," he wrote; "the key is."
+
+
+    <b>SIGNIFICANCE</b>  The founding
+    rule of modern security: never rely on a secret method, only on a secret key.
+    Every cipher in this museum is judged by it.'
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -520753,7 +522208,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -521236,8 +522691,8 @@ MonoBehaviour:
   _titleField: {fileID: 0}
   _bodyField: {fileID: 2136186556}
   _title: 
-  _body: "His 1994 algorithm showed that a quantum computer could break the ciphers
-    guarding the internet \u2014 a warning that reshaped the field."
+  _body: His 1994 algorithm showed that a quantum computer could break the ciphers
+    guarding the internet, a warning that reshaped the field.
   _group: {fileID: 0}
   _revealRadius: 7
   _fullRadius: 3.2
@@ -521432,7 +522887,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -523128,7 +524583,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5000001
   m_Height: 2

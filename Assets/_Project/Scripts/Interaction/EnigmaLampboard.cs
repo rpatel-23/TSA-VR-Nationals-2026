@@ -63,6 +63,11 @@ namespace Decrypted.Interaction
 
         public void AllOff()
         {
+            // Stop any in-flight flash coroutines first, otherwise a running Flash would
+            // keep re-lighting the lamp after we zero it (the "lamp still glows" bug).
+            if (_routines != null)
+                for (int i = 0; i < _routines.Length; i++)
+                    if (_routines[i] != null) { StopCoroutine(_routines[i]); _routines[i] = null; }
             for (int i = 0; i < _lamps.Length; i++) SetLamp(i, 0f);
         }
 

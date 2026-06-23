@@ -124,6 +124,7 @@ namespace Decrypted.Interaction
             {
                 _keyboard.OnKeyPressed += HandleKey;
                 _keyboard.OnClear += HandleClear;
+                _keyboard.OnDelete += HandleBackspace;
             }
             foreach (var r in _rotors) if (r != null) r.OnValueChanged += HandleRotor;
             if (_lever != null) { _lever.OnPulled += HandleLever; _lever.Armed = false; }
@@ -137,6 +138,7 @@ namespace Decrypted.Interaction
             {
                 _keyboard.OnKeyPressed -= HandleKey;
                 _keyboard.OnClear -= HandleClear;
+                _keyboard.OnDelete -= HandleBackspace;
             }
             foreach (var r in _rotors) if (r != null) r.OnValueChanged -= HandleRotor;
             if (_lever != null) _lever.OnPulled -= HandleLever;
@@ -179,6 +181,7 @@ namespace Decrypted.Interaction
         {
             _evaluating = true;
             if (_keyboard != null) _keyboard.SetAccepting(false);
+            if (_lampboard != null) _lampboard.AllOff();   // kill any lit lamp immediately so nothing glows during the reset
 
             Color prev = _typedReadout != null ? _typedReadout.color : Color.white;
             if (_typedReadout != null)
@@ -186,7 +189,7 @@ namespace Decrypted.Interaction
                 _typedReadout.color = new Color(0.95f, 0.25f, 0.20f, 1f);
                 _typedReadout.text = "✗  TRY AGAIN";   // ✗
             }
-            EventBus.Publish(new ShowHintEvent("Not quite — the board reset. Try again.",
+            EventBus.Publish(new ShowHintEvent("Not quite, the board reset. Try again.",
                                                Mathf.Max(0.5f, _wrongFlashSeconds)));
 
             yield return new WaitForSecondsRealtime(Mathf.Max(0.2f, _wrongFlashSeconds));
@@ -206,6 +209,17 @@ namespace Decrypted.Interaction
             if (_solved || _evaluating) return;
             _typed.Clear();
             _lastDecoded = string.Empty;
+            if (_lampboard != null) _lampboard.AllOff();
+            Recompute(lightLast: false);
+        }
+
+        // DELETE / backspace: drop just the last typed letter (lets the player fix a typo
+        // instead of clearing the whole attempt).
+        private void HandleBackspace()
+        {
+            if (_solved || _evaluating) return;
+            if (_typed.Length == 0) return;
+            _typed.Length--;
             if (_lampboard != null) _lampboard.AllOff();
             Recompute(lightLast: false);
         }

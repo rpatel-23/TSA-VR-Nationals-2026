@@ -32,7 +32,7 @@ namespace Decrypted.Interaction
         [Header("Passphrase")]
         [Tooltip("The accepted passphrase. If 'Source From Enigma' is set, this is " +
                  "overwritten at runtime with the Enigma plaintext word.")]
-        [SerializeField] private string _passphrase = "VICTORY";
+        [SerializeField] private string _passphrase = "TSANLC";
         [Tooltip("Pull the passphrase from the Enigma machine so the exhibits stay in sync.")]
         [SerializeField] private EnigmaMachine _sourceFromEnigma;
         [Tooltip("Max characters the player can enter before it auto-trims.")]
@@ -111,9 +111,18 @@ namespace Decrypted.Interaction
             // Single letter.
             char c = char.ToUpperInvariant(value[0]);
             if (c < 'A' || c > 'Z') return;
-            if (_entered.Length >= _maxLength) _entered.Remove(0, 1); // sliding window
+            if (_entered.Length >= _maxLength) _entered.Remove(0, 1); // safety cap
             _entered.Append(c);
             RenderDisplay(_neutralColor);
+
+            // Once a full passphrase's worth (or more) is entered and it does NOT match,
+            // flash a "REDO" message and reset, instead of letting the entry overrun.
+            if (_entered.Length >= _passphrase.Length &&
+                !string.Equals(_entered.ToString(), _passphrase, System.StringComparison.Ordinal))
+            {
+                if (_flash != null) StopCoroutine(_flash);
+                _flash = StartCoroutine(RedoReset());
+            }
         }
 
         private void Submit()
@@ -155,6 +164,21 @@ namespace Decrypted.Interaction
             _flash = null;
         }
 
+        // Auto-reset when the player has typed a full (or over-) length entry that is wrong:
+        // show a "REDO" message, lock input briefly, then clear so they can try again.
+        private IEnumerator RedoReset()
+        {
+            _accepting = false;
+            if (!string.IsNullOrEmpty(_rejectSfxKey) && AudioManager.Instance != null)
+                AudioManager.Instance.Play(_rejectSfxKey, transform.position, true, 0.9f, 0.7f);
+            RenderDisplay(_rejectColor, "WRONG, REDO");
+            yield return new WaitForSecondsRealtime(1.1f);
+            _entered.Clear();
+            RenderDisplay(_neutralColor);
+            if (!_solved) _accepting = true;
+            _flash = null;
+        }
+
         // ------------------------------------------------------------- display
 
         private void RenderDisplay(Color color, string overrideText = null)
@@ -167,14 +191,14 @@ namespace Decrypted.Interaction
 
         private static string Normalise(string s)
         {
-            if (string.IsNullOrEmpty(s)) return "VICTORY";
+            if (string.IsNullOrEmpty(s)) return "TSANLC";
             var sb = new System.Text.StringBuilder();
             foreach (char c in s)
             {
                 char up = char.ToUpperInvariant(c);
                 if (up >= 'A' && up <= 'Z') sb.Append(up);
             }
-            return sb.Length == 0 ? "VICTORY" : sb.ToString();
+            return sb.Length == 0 ? "TSANLC" : sb.ToString();
         }
 
         // ----------------------------------------------------------- demo hook

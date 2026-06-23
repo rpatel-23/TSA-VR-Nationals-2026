@@ -18,8 +18,8 @@
 //    Splash  → press PLAY                                   → Atrium
 //    Atrium  → dwell, then advance                          → Ancient Room
 //    Ancient → rotate Caesar disk to +3 (CROSS THE RUBICON) → auto-advance
-//    WWII    → key MAC, type ZLDFDQO → VICTORY, pull lever   → auto-advance
-//    Vault   → type VICTORY, ENTER, door opens              → auto-advance
+//    WWII    → key MAC, type XJQBVK → TSANLC, pull lever    → auto-advance
+//    Vault   → type TSANLC, ENTER, door opens               → auto-advance
 //    Reveal  → sculpture morphs, conclusion fades, Complete
 // -----------------------------------------------------------------------------
 

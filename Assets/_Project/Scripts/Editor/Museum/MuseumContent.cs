@@ -1,9 +1,9 @@
 // -----------------------------------------------------------------------------
 //  MuseumContent.cs   (Editor)
-//  DECRYPTED — A Walk Through the History of Secret Writing
+//  DECRYPTED, A Walk Through the History of Secret Writing
 //
 //  The EDUCATIONAL HEART of the expanded museum. This is a single, reviewable
-//  source of truth for every word the visitor reads — gallery identities, dozens
+//  source of truth for every word the visitor reads, gallery identities, dozens
 //  of secondary exhibits, codebreaker biographies, wall timelines and wayfinding
 //  copy. Every entry is original, historically grounded museum-label prose
 //  (Title / Date / Description / Significance). There is no placeholder text and
@@ -12,7 +12,7 @@
 //  MuseumBuilder reads this database and stamps it into the scene as display
 //  cases, pedestals, framed panels, portraits and plaques. Keeping the copy here
 //  (data, not scene YAML) means the entire curatorial script can be diffed,
-//  proof-read and regenerated — exactly the "assets-as-code" ethos of the rest
+//  proof-read and regenerated, exactly the "assets-as-code" ethos of the rest
 //  of the project.
 // -----------------------------------------------------------------------------
 
@@ -93,14 +93,14 @@ namespace Decrypted.EditorTools
         public const string MuseumName = "THE DECRYPTED";
         public const string MuseumTagline = "MUSEUM OF CRYPTOLOGY";
         public const string Mission =
-            "For three thousand years, people have hidden meaning in plain sight — " +
+            "For three thousand years, people have hidden meaning in plain sight, " +
             "to protect a battle plan, a love letter, a fortune, a faith. This museum " +
             "follows that unbroken thread, from the first scrambled alphabets of the " +
             "ancient world to the mathematics that guards every message you send today. " +
             "Touch the machines. Break the codes. Decrypt history.";
 
         // ------------------------------------------------------------------ //
-        //  GALLERY 1 — ENTRANCE / WELCOME PAVILION  (Splash state)
+        //  GALLERY 1, ENTRANCE / WELCOME PAVILION  (Splash state)
         // ------------------------------------------------------------------ //
         private static readonly Gallery Entrance = new Gallery
         {
@@ -110,18 +110,18 @@ namespace Decrypted.EditorTools
             Subtitle = "Main Entrance & Visitor Pavilion",
             Intro =
                 "Welcome to the Museum of Cryptology. Your journey runs forward in time, " +
-                "one gallery at a time — Antiquity, the World Wars, the Digital Age, and " +
+                "one gallery at a time, Antiquity, the World Wars, the Digital Age, and " +
                 "the Quantum Future. Each room holds a code for you to break with your own " +
                 "hands. When you are ready, step onto the seal and begin.",
             HeroTitle = "BEGIN YOUR JOURNEY",
             HeroPlaque =
                 "Reach out and press the seal to enter the museum. No reading list, no " +
-                "audio wand — everything here is learned by doing.",
+                "audio wand, everything here is learned by doing.",
             Exhibits = new[]
             {
                 new Exhibit("etiquette", "Visitor Guide", "Today",
                     "Please explore at your own pace. Lean in to read a label and it will " +
-                    "brighten for you. Reach out to touch anything that invites your hand — " +
+                    "brighten for you. Reach out to touch anything that invites your hand, " +
                     "the disks turn, the keys press, the doors open.",
                     "Every exhibit in this museum is hands-on. Curiosity is the only ticket.",
                     CaseKind.WallPanel, "panel"),
@@ -145,7 +145,7 @@ namespace Decrypted.EditorTools
         };
 
         // ------------------------------------------------------------------ //
-        //  GALLERY 2 — ORIENTATION ROTUNDA  (Atrium state)
+        //  GALLERY 2, ORIENTATION ROTUNDA  (Atrium state)
         // ------------------------------------------------------------------ //
         private static readonly Gallery Atrium = new Gallery
         {
@@ -156,7 +156,7 @@ namespace Decrypted.EditorTools
             Intro =
                 "Cryptology is the science of two opposing arts: cryptography, the making " +
                 "of codes, and cryptanalysis, the breaking of them. For most of history " +
-                "they have raced each other — every unbreakable cipher eventually meets a " +
+                "they have raced each other, every unbreakable cipher eventually meets a " +
                 "mind clever enough to crack it. Walk the timeline on these walls, then " +
                 "choose a doorway and step into the story.",
             HeroTitle = "THE GRAND TIMELINE",
@@ -168,7 +168,7 @@ namespace Decrypted.EditorTools
             {
                 new Exhibit("kerckhoffs", "Kerckhoffs's Principle", "1883",
                     "Dutch linguist Auguste Kerckhoffs argued that a cipher should stay " +
-                    "secure even if the enemy knows everything about the system — except " +
+                    "secure even if the enemy knows everything about the system, except " +
                     "the key. \"The design is not a secret,\" he wrote; \"the key is.\"",
                     "The founding rule of modern security: never rely on a secret method, " +
                     "only on a secret key. Every cipher in this museum is judged by it.",
@@ -177,7 +177,7 @@ namespace Decrypted.EditorTools
                     "Three guarantees underlie every code: Confidentiality, that only the " +
                     "intended reader can understand; Integrity, that the message was not " +
                     "altered; and Authentication, that the sender is who they claim to be.",
-                    "These three promises are the reason cryptography matters — in 50 BCE " +
+                    "These three promises are the reason cryptography matters, in 50 BCE " +
                     "and in your phone tonight.",
                     CaseKind.WallPanel, "panel"),
                 new Exhibit("cipher-vs-code", "Codes vs. Ciphers", "Definitions",
@@ -188,7 +188,7 @@ namespace Decrypted.EditorTools
                     "Knowing the difference is the first tool of the codebreaker.",
                     CaseKind.WallPanel, "panel"),
                 new Exhibit("globe", "Where Secrets Were Kept", "Worldwide",
-                    "Sparta, Rome, Baghdad, Florence, Paris, Bletchley, Stanford, Geneva — " +
+                    "Sparta, Rome, Baghdad, Florence, Paris, Bletchley, Stanford, Geneva, " +
                     "the art of the cipher belongs to no single nation. Each pin on this map " +
                     "marks a place where the history of secrecy turned.",
                     "Cryptology is one of humanity's truly global inheritances.",
@@ -197,17 +197,17 @@ namespace Decrypted.EditorTools
             Figures = new Figure[0],
             Timeline = new[]
             {
-                new TimelineNode("1900 BCE", "Non-standard hieroglyphs — Egypt's first hidden writing"),
-                new TimelineNode("600 BCE", "Atbash — Hebrew scribes reverse the alphabet"),
+                new TimelineNode("1900 BCE", "Non-standard hieroglyphs, Egypt's first hidden writing"),
+                new TimelineNode("600 BCE", "Atbash, Hebrew scribes reverse the alphabet"),
                 new TimelineNode("500 BCE", "The Spartan scytale wraps a message around a staff"),
                 new TimelineNode("50 BCE", "Julius Caesar shifts the alphabet by three"),
                 new TimelineNode("850 CE", "Al-Kindi invents frequency analysis in Baghdad"),
                 new TimelineNode("1467", "Alberti builds the first polyalphabetic cipher disk"),
-                new TimelineNode("1586", "The Vigenère cipher — 'le chiffre indéchiffrable'"),
+                new TimelineNode("1586", "The Vigenère cipher, 'le chiffre indéchiffrable'"),
                 new TimelineNode("1863", "Kasiski finally breaks Vigenère"),
                 new TimelineNode("1917", "The Zimmermann Telegram is decrypted"),
                 new TimelineNode("1932", "Rejewski's mathematics cracks Enigma"),
-                new TimelineNode("1943", "Colossus — the first programmable electronic computer"),
+                new TimelineNode("1943", "Colossus, the first programmable electronic computer"),
                 new TimelineNode("1976", "Diffie & Hellman publish public-key cryptography"),
                 new TimelineNode("1977", "RSA turns the idea into a usable cipher"),
                 new TimelineNode("2001", "AES is adopted as the world standard"),
@@ -228,7 +228,7 @@ namespace Decrypted.EditorTools
         };
 
         // ------------------------------------------------------------------ //
-        //  GALLERY 3 — ANTIQUITY  (AncientRoom state, Caesar disk hero)
+        //  GALLERY 3, ANTIQUITY  (AncientRoom state, Caesar disk hero)
         // ------------------------------------------------------------------ //
         private static readonly Gallery Ancient = new Gallery
         {
@@ -239,13 +239,13 @@ namespace Decrypted.EditorTools
             Intro =
                 "The oldest secrets were kept with the simplest tools: a staff, a shifted " +
                 "alphabet, a turning disk. Yet within these galleries lies the whole drama " +
-                "of cryptology — the first cipher, the first break, and the long duel " +
+                "of cryptology, the first cipher, the first break, and the long duel " +
                 "between them. Take the cipher disk at the centre and turn it until the " +
                 "message makes sense.",
             HeroTitle = "THE CAESAR CIPHER DISK",
             HeroPlaque =
                 "Julius Caesar protected his dispatches by shifting every letter three " +
-                "places down the alphabet — A became D, B became E. Turn the inner ring " +
+                "places down the alphabet, A became D, B became E. Turn the inner ring " +
                 "until 'FURVV WKH UXELFRQ' resolves. The shift you need is +3.",
             Exhibits = new[]
             {
@@ -253,10 +253,10 @@ namespace Decrypted.EditorTools
                     "A strip of parchment wound around a wooden rod of an exact diameter. " +
                     "Written along the staff, then unwound, the letters scatter into " +
                     "nonsense; only a rod of the matching thickness lines them up again.",
-                    "The earliest known military cipher — and the first transposition, " +
+                    "The earliest known military cipher, and the first transposition, " +
                     "hiding a message by reordering it rather than replacing its letters.",
                     CaseKind.Pedestal, "rod"),
-                new Exhibit("atbash", "Atbash — The Mirror Alphabet", "c. 600 BCE",
+                new Exhibit("atbash", "Atbash, The Mirror Alphabet", "c. 600 BCE",
                     "Hebrew scribes folded the alphabet against itself: the first letter " +
                     "for the last, the second for the second-last. The system appears " +
                     "hidden inside the Book of Jeremiah, where 'Sheshach' conceals 'Babel'.",
@@ -265,7 +265,7 @@ namespace Decrypted.EditorTools
                     CaseKind.Vitrine, "tablet"),
                 new Exhibit("polybius", "The Polybius Square", "c. 150 BCE",
                     "The Greek historian Polybius arranged the alphabet in a 5×5 grid, so " +
-                    "every letter became a pair of numbers — its row and column. Signalled " +
+                    "every letter became a pair of numbers, its row and column. Signalled " +
                     "with torches, it let messages cross valleys letter by letter.",
                     "It turned letters into numbers two thousand years before computers did " +
                     "the same, and underlies many later ciphers.",
@@ -282,20 +282,20 @@ namespace Decrypted.EditorTools
                     "every language uses some letters more than others. Count the symbols, " +
                     "match the most common to 'E' or its equivalent, and any simple " +
                     "substitution unravels.",
-                    "Frequency analysis — the birth of cryptanalysis. For 600 years it made " +
+                    "Frequency analysis, the birth of cryptanalysis. For 600 years it made " +
                     "every monalphabetic cipher readable to a patient mind.",
                     CaseKind.Tablet, "manuscript"),
                 new Exhibit("alberti", "The Alberti Cipher Disk", "1467",
                     "The Renaissance architect Leon Battista Alberti mounted two alphabet " +
                     "rings on a common pin and turned the inner one partway through a " +
-                    "message — so the same plaintext letter enciphered differently each time.",
+                    "message, so the same plaintext letter enciphered differently each time.",
                     "The first polyalphabetic cipher. By moving the key mid-message, Alberti " +
                     "blunted frequency analysis and reset the duel between code and break.",
                     CaseKind.Pedestal, "disk"),
                 new Exhibit("trithemius", "Trithemius' Tabula Recta", "1508",
                     "The abbot Johannes Trithemius published a square table of twenty-six " +
                     "alphabets, each shifted one further than the last, and stepped through " +
-                    "them letter by letter — a new cipher alphabet for every position.",
+                    "them letter by letter, a new cipher alphabet for every position.",
                     "The table at the heart of nearly every Renaissance polyalphabetic " +
                     "cipher, including the one that would baffle Europe for three centuries.",
                     CaseKind.Vitrine, "book"),
@@ -303,7 +303,7 @@ namespace Decrypted.EditorTools
                     "A keyword chooses a different alphabet from Trithemius' table for each " +
                     "letter of the message, then repeats. Misattributed to Blaise de " +
                     "Vigenère, it was so resistant to frequency analysis that Europe called " +
-                    "it 'le chiffre indéchiffrable' — the unbreakable cipher.",
+                    "it 'le chiffre indéchiffrable', the unbreakable cipher.",
                     "For 300 years it was the gold standard of secrecy, until Charles " +
                     "Babbage and Friedrich Kasiski found the crack in its repeating key.",
                     CaseKind.Vitrine, "tablet"),
@@ -311,13 +311,13 @@ namespace Decrypted.EditorTools
                     "Mary, Queen of Scots conspired from prison to overthrow Elizabeth I, " +
                     "her letters enciphered in a substitution alphabet of strange symbols. " +
                     "Elizabeth's spymaster intercepted them, and his codebreaker Thomas " +
-                    "Phelippes read every word — then forged a postscript to expose the plotters.",
+                    "Phelippes read every word, then forged a postscript to expose the plotters.",
                     "Cryptanalysis as a matter of life and death: the broken cipher sent a " +
                     "queen to the executioner's block in 1587.",
                     CaseKind.Tablet, "letter"),
                 new Exhibit("greatcipher", "The Great Cipher of Louis XIV", "c. 1690",
                     "Father-and-son cryptographers Antoine and Bonaventure Rossignol built a " +
-                    "code of 587 numbers for the Sun King — some standing for syllables, " +
+                    "code of 587 numbers for the Sun King, some standing for syllables, " +
                     "some for letters, some as traps that deleted the previous symbol.",
                     "So strong that captured dispatches sat unread for 200 years, until " +
                     "Étienne Bazeries finally solved it in the 1890s.",
@@ -326,7 +326,7 @@ namespace Decrypted.EditorTools
                     "A 240-page codex written in an unknown script, illustrated with " +
                     "impossible plants and astronomical charts. Codebreakers from both World " +
                     "Wars have tried; no one has read a single confirmed word.",
-                    "Cryptology's greatest open mystery — proof that some secrets keep " +
+                    "Cryptology's greatest open mystery, proof that some secrets keep " +
                     "themselves.",
                     CaseKind.Tablet, "codex"),
             },
@@ -342,7 +342,7 @@ namespace Decrypted.EditorTools
                     "centuries."),
                 new Figure("Charles Babbage", "1791–1871", "The Quiet Codebreaker",
                     "The computing pioneer secretly broke the Vigenère cipher around 1854, " +
-                    "but never published — the credit went to Kasiski nine years later."),
+                    "but never published, the credit went to Kasiski nine years later."),
             },
             Timeline = new[]
             {
@@ -367,7 +367,7 @@ namespace Decrypted.EditorTools
         };
 
         // ------------------------------------------------------------------ //
-        //  GALLERY 4 — THE WORLD WARS  (WWIIRoom state, Enigma hero)
+        //  GALLERY 4, THE WORLD WARS  (WWIIRoom state, Enigma hero)
         // ------------------------------------------------------------------ //
         private static readonly Gallery WWII = new Gallery
         {
@@ -382,16 +382,16 @@ namespace Decrypted.EditorTools
                 "rotors of the Enigma to MAC and read the message it was built to hide.",
             HeroTitle = "THE ENIGMA MACHINE",
             HeroPlaque =
-                "Germany trusted its most vital orders to the Enigma — three spinning " +
+                "Germany trusted its most vital orders to the Enigma, three spinning " +
                 "rotors that re-wired the alphabet with every keystroke, offering more " +
                 "settings than there are atoms in your body. Set the rotors to MAC, type " +
-                "ZLDFDQO, and watch the word VICTORY emerge.",
+                "XJQBVK, and watch the word TSANLC emerge.",
             Exhibits = new[]
             {
                 new Exhibit("zimmermann", "The Zimmermann Telegram", "1917",
                     "Britain's Room 40 intercepted a coded German cable offering Mexico the " +
                     "American Southwest if it would join the war. The codebreakers read it, " +
-                    "then disguised how — and handed it to Washington.",
+                    "then disguised how, and handed it to Washington.",
                     "A single decrypted telegram helped bring the United States into the " +
                     "First World War. Codebreaking changed the map of the world.",
                     CaseKind.Tablet, "telegram"),
@@ -399,14 +399,14 @@ namespace Decrypted.EditorTools
                     "Gilbert Vernam and Joseph Mauborgne combined each letter with a key of " +
                     "pure random characters, used exactly once and never repeated. Decades " +
                     "later Claude Shannon proved it mathematically unbreakable.",
-                    "The only cipher in history proven to offer perfect secrecy — at the " +
+                    "The only cipher in history proven to offer perfect secrecy, at the " +
                     "brutal cost of a key as long as every message you will ever send.",
                     CaseKind.Vitrine, "pad"),
                 new Exhibit("rejewski", "Rejewski Breaks Enigma", "1932",
                     "Polish mathematician Marian Rejewski attacked Enigma not with " +
                     "linguistics but with the theory of permutations, reconstructing its " +
                     "secret wiring from intercepted traffic alone.",
-                    "The first break of the military Enigma — achieved years before the war, " +
+                    "The first break of the military Enigma, achieved years before the war, " +
                     "and handed to Britain and France in 1939 as the tanks rolled in.",
                     CaseKind.Pedestal, "rotor"),
                 new Exhibit("bomba", "The Bomba & the Bombe", "1938–1940",
@@ -414,12 +414,12 @@ namespace Decrypted.EditorTools
                     "automatically. At Bletchley Park, Alan Turing and Gordon Welchman " +
                     "rebuilt the idea as the Bombe, ranks of spinning drums testing " +
                     "thousands of wirings an hour.",
-                    "Machines built to defeat machines — the first great triumph of " +
+                    "Machines built to defeat machines, the first great triumph of " +
                     "automated codebreaking.",
                     CaseKind.Relief, "drums"),
-                new Exhibit("bletchley", "Bletchley Park — Station X", "1939–1945",
-                    "In a Victorian mansion north of London, nearly ten thousand people — " +
-                    "two-thirds of them women — intercepted, sorted and broke Axis ciphers " +
+                new Exhibit("bletchley", "Bletchley Park, Station X", "1939–1945",
+                    "In a Victorian mansion north of London, nearly ten thousand people, " +
+                    "two-thirds of them women, intercepted, sorted and broke Axis ciphers " +
                     "around the clock, sworn to a silence many kept for the rest of their lives.",
                     "Historians credit the work here with shortening the war by up to two " +
                     "years and saving countless lives.",
@@ -427,7 +427,7 @@ namespace Decrypted.EditorTools
                 new Exhibit("lorenz", "Lorenz & Colossus", "1943",
                     "Hitler's high command used the Lorenz cipher, even tougher than Enigma. " +
                     "To break it, engineer Tommy Flowers built Colossus from 1,600 vacuum " +
-                    "tubes — the world's first programmable electronic digital computer.",
+                    "tubes, the world's first programmable electronic digital computer.",
                     "The secret war gave birth to the computer age. Colossus stayed " +
                     "classified for thirty years, robbing its builders of the credit.",
                     CaseKind.Relief, "rack"),
@@ -436,21 +436,21 @@ namespace Decrypted.EditorTools
                     "almost unwritten and spoken by few outside the Nation. Layered with a " +
                     "code of its own, it carried messages in seconds that machines needed " +
                     "hours to encipher.",
-                    "The only major military code of the war that the enemy never broke — " +
+                    "The only major military code of the war that the enemy never broke, " +
                     "spoken by the very people America had tried to silence.",
                     CaseKind.Pedestal, "handset"),
-                new Exhibit("purple", "PURPLE — Breaking Japan's Cipher", "1940",
+                new Exhibit("purple", "PURPLE, Breaking Japan's Cipher", "1940",
                     "William Friedman's U.S. Army team reconstructed Japan's diplomatic " +
                     "cipher machine without ever seeing one, building a working analogue " +
                     "from intercepts alone. The intelligence was codenamed MAGIC.",
-                    "Proof that a machine's secrets could be inferred from its output — a " +
+                    "Proof that a machine's secrets could be inferred from its output, a " +
                     "feat of pure reasoning that shaped the war in the Pacific.",
                     CaseKind.Vitrine, "machine"),
-                new Exhibit("sigaba", "SIGABA — The Unbroken Cipher", "1940s",
+                new Exhibit("sigaba", "SIGABA, The Unbroken Cipher", "1940s",
                     "America's own cipher machine stepped its rotors irregularly, driven by " +
                     "a second bank of rotors, defeating the predictability that doomed " +
                     "Enigma. No wartime adversary is known to have read a single SIGABA message.",
-                    "The quiet hero of Allied security — a reminder that the best cipher is " +
+                    "The quiet hero of Allied security, a reminder that the best cipher is " +
                     "the one the enemy never even realises they have failed to break.",
                     CaseKind.Pedestal, "machine"),
             },
@@ -496,7 +496,7 @@ namespace Decrypted.EditorTools
         };
 
         // ------------------------------------------------------------------ //
-        //  GALLERY 5 — THE DIGITAL AGE  (VaultRoom state, Vault hero)
+        //  GALLERY 5, THE DIGITAL AGE  (VaultRoom state, Vault hero)
         // ------------------------------------------------------------------ //
         private static readonly Gallery Vault = new Gallery
         {
@@ -508,13 +508,13 @@ namespace Decrypted.EditorTools
                 "After the war, cryptography left the battlefield for the bank, the " +
                 "browser and the phone. It also faced an old paradox: how can two strangers " +
                 "agree on a secret key while an eavesdropper listens to every word? The " +
-                "answer rebuilt the world. Recover the passphrase from the Enigma — VICTORY " +
-                "— and open the vault.",
+                "answer rebuilt the world. Recover the passphrase from the Enigma, TSANLC, " +
+                "and open the vault.",
             HeroTitle = "THE DIGITAL SECURITY VAULT",
             HeroPlaque =
-                "A modern secret is not hidden — it is locked, and only the holder of the " +
+                "A modern secret is not hidden, it is locked, and only the holder of the " +
                 "key can open it, even in full view of the world. Enter the word you " +
-                "recovered next door, VICTORY, on the keypad to release the lock.",
+                "recovered next door, TSANLC, on the keypad to release the lock.",
             Exhibits = new[]
             {
                 new Exhibit("shannon", "Shannon's Information Theory", "1948–1949",
@@ -525,28 +525,28 @@ namespace Decrypted.EditorTools
                     "The birth of the information age. Every cipher since is measured " +
                     "against the limits Shannon set.",
                     CaseKind.WallPanel, "panel"),
-                new Exhibit("des", "DES — The First Public Standard", "1977",
+                new Exhibit("des", "DES, The First Public Standard", "1977",
                     "The U.S. government adopted the Data Encryption Standard so that banks " +
                     "and businesses could all encrypt the same way. Its 56-bit key, " +
                     "controversially short, was finally cracked by brute force in 1998 in " +
                     "just 56 hours.",
-                    "The first cipher the whole world shared — and the moment cryptography " +
+                    "The first cipher the whole world shared, and the moment cryptography " +
                     "became public infrastructure rather than a military secret.",
                     CaseKind.Vitrine, "chip"),
                 new Exhibit("diffiehellman", "Diffie–Hellman Key Exchange", "1976",
                     "Whitfield Diffie and Martin Hellman solved the impossible: two people " +
                     "shouting across a crowded room can mix their colours of paint so that " +
                     "each ends with the same secret blend, while no listener can un-mix it.",
-                    "The first public-key idea ever published — 'New Directions in " +
+                    "The first public-key idea ever published, 'New Directions in " +
                     "Cryptography' ended four thousand years of needing to share a key in advance.",
                     CaseKind.Pedestal, "keys"),
-                new Exhibit("rsa", "RSA — Public-Key Cryptography", "1977",
+                new Exhibit("rsa", "RSA, Public-Key Cryptography", "1977",
                     "Rivest, Shamir and Adleman gave everyone two keys: a public one that " +
                     "anyone can use to lock a message, and a private one that only you can " +
                     "use to unlock it. Its security rests on the difficulty of factoring " +
                     "enormous numbers.",
                     "The padlock of the internet. RSA lets total strangers exchange secrets " +
-                    "safely — the foundation of e-commerce, email and secure login.",
+                    "safely, the foundation of e-commerce, email and secure login.",
                     CaseKind.Pedestal, "padlock"),
                 new Exhibit("publickey", "The Locked Mailbox", "Concept",
                     "Imagine a mailbox with a slot: anyone can drop a letter in (the public " +
@@ -555,15 +555,15 @@ namespace Decrypted.EditorTools
                     "This single metaphor explains why you can shop and bank online with " +
                     "people you have never met.",
                     CaseKind.WallPanel, "panel"),
-                new Exhibit("aes", "AES — The World Standard", "2001",
+                new Exhibit("aes", "AES, The World Standard", "2001",
                     "When DES grew weak, the world held an open contest. The winner, a " +
                     "Belgian design called Rijndael, became the Advanced Encryption Standard " +
-                    "— fast, elegant, and approved to protect even top-secret information.",
+                    ", fast, elegant, and approved to protect even top-secret information.",
                     "The cipher running quietly inside your phone, your wifi and your " +
                     "messages right now. No practical break is known.",
                     CaseKind.Vitrine, "chip"),
                 new Exhibit("hash", "Hash Functions & Fingerprints", "1990s",
-                    "A hash function crushes any file — a word or a library — into a short " +
+                    "A hash function crushes any file, a word or a library, into a short " +
                     "fingerprint. Change a single comma and the fingerprint changes utterly, " +
                     "yet you can never run it backwards to recover the original.",
                     "How your password is stored without being kept, and how the world " +
@@ -574,19 +574,19 @@ namespace Decrypted.EditorTools
                     "hide: only your private key could have produced the mark, but anyone " +
                     "with your public key can verify it. The signature breaks if the " +
                     "document is altered.",
-                    "Proof of who sent a message and that no one changed it — the backbone " +
+                    "Proof of who sent a message and that no one changed it, the backbone " +
                     "of software updates, contracts and digital identity.",
                     CaseKind.WallPanel, "panel"),
                 new Exhibit("tls", "The Padlock in Your Browser", "1994–today",
                     "Every time a padlock appears in your address bar, your device and a " +
                     "distant server have performed a key exchange, agreed on a fresh secret, " +
-                    "and switched to a fast cipher like AES — all in a fraction of a second.",
+                    "and switched to a fast cipher like AES, all in a fraction of a second.",
                     "The quiet ceremony, called TLS, that secures trillions of dollars and " +
                     "billions of conversations every single day.",
                     CaseKind.Relief, "padlock"),
                 new Exhibit("cryptowars", "The Crypto Wars", "1990s",
                     "When strong encryption reached the public, governments tried to keep a " +
-                    "key for themselves — the Clipper chip — and treated cipher software as " +
+                    "key for themselves, the Clipper chip, and treated cipher software as " +
                     "a munition. Cryptographers fought back in court and in code, and the " +
                     "public's right to strong encryption largely prevailed.",
                     "The unfinished argument over privacy, security and power that still " +
@@ -601,7 +601,7 @@ namespace Decrypted.EditorTools
                     "art into a science."),
                 new Figure("Diffie & Hellman", "fl. 1976", "Public-Key Pioneers",
                     "Whitfield Diffie and Martin Hellman published the key-exchange that " +
-                    "made secure communication possible between strangers — and shared the " +
+                    "made secure communication possible between strangers, and shared the " +
                     "2015 Turing Award for it."),
                 new Figure("Rivest · Shamir · Adleman", "fl. 1977", "The R, S and A of RSA",
                     "Three MIT researchers who turned the public-key dream into a working " +
@@ -630,7 +630,7 @@ namespace Decrypted.EditorTools
         };
 
         // ------------------------------------------------------------------ //
-        //  GALLERY 6 — THE QUANTUM FUTURE / SYNTHESIS  (RevealChamber state)
+        //  GALLERY 6, THE QUANTUM FUTURE / SYNTHESIS  (RevealChamber state)
         // ------------------------------------------------------------------ //
         private static readonly Gallery Reveal = new Gallery
         {
@@ -640,13 +640,13 @@ namespace Decrypted.EditorTools
             Subtitle = "Synthesis Hall & the Quantum Horizon",
             Intro =
                 "You have travelled from a shifted alphabet to the mathematics that guards " +
-                "the world. The duel is not over. A new kind of machine — the quantum " +
-                "computer — threatens today's locks, even as quantum physics offers a key " +
+                "the world. The duel is not over. A new kind of machine, the quantum " +
+                "computer, threatens today's locks, even as quantum physics offers a key " +
                 "that physics itself protects. The sculpture before you holds all three " +
                 "eras at once. Watch it change.",
             HeroTitle = "THE SYNTHESIS",
             HeroPlaque =
-                "Roman stele, clockwork rotor, circuit lattice — one form flowing into the " +
+                "Roman stele, clockwork rotor, circuit lattice, one form flowing into the " +
                 "next. From Caesar's alphabet to modern security, cryptography protects " +
                 "information by transforming meaning into secrets only the intended " +
                 "recipient can reveal. The thread is unbroken. Now it is yours to carry.",
@@ -655,24 +655,24 @@ namespace Decrypted.EditorTools
                 new Exhibit("qkd", "Quantum Key Distribution", "1984",
                     "Charles Bennett and Gilles Brassard found a way to send a key as " +
                     "single particles of light. The laws of quantum physics forbid copying " +
-                    "them — so any eavesdropper unavoidably disturbs the message and is caught.",
+                    "them, so any eavesdropper unavoidably disturbs the message and is caught.",
                     "Security guaranteed not by hard mathematics but by the laws of nature " +
                     "themselves. The first quantum-secured bank transfer ran in 2004.",
                     CaseKind.Pedestal, "photon"),
                 new Exhibit("shor", "The Quantum Threat", "1994",
                     "Mathematician Peter Shor proved that a large enough quantum computer " +
-                    "could factor huge numbers with ease — quietly dissolving the hard " +
+                    "could factor huge numbers with ease, quietly dissolving the hard " +
                     "problem that RSA and much of today's encryption rely upon.",
                     "The reason the whole world is now racing to upgrade its cryptography " +
                     "before such a machine is built.",
                     CaseKind.WallPanel, "panel"),
                 new Exhibit("postquantum", "Post-Quantum Cryptography", "2024",
                     "A new generation of ciphers builds its locks from mathematical problems " +
-                    "— tangled lattices in high-dimensional space — that even a quantum " +
+                    ", tangled lattices in high-dimensional space, that even a quantum " +
                     "computer cannot easily solve. In 2024 the first such standards were " +
                     "published for the world to adopt.",
                     "The next chapter of the three-thousand-year duel, being written right " +
-                    "now — and the cipher that may guard your grandchildren's secrets.",
+                    "now, and the cipher that may guard your grandchildren's secrets.",
                     CaseKind.Vitrine, "lattice"),
                 new Exhibit("privacy", "The Right to a Whisper", "Today",
                     "Encryption is no longer only a tool of generals and spies. It protects " +
@@ -690,7 +690,7 @@ namespace Decrypted.EditorTools
                     "an unbreakable key, opening the field of quantum cryptography."),
                 new Figure("Peter Shor", "b. 1959", "The Quantum Disruptor",
                     "His 1994 algorithm showed that a quantum computer could break the " +
-                    "ciphers guarding the internet — a warning that reshaped the field."),
+                    "ciphers guarding the internet, a warning that reshaped the field."),
             },
             Timeline = new[]
             {
@@ -713,7 +713,7 @@ namespace Decrypted.EditorTools
         };
 
         // ------------------------------------------------------------------ //
-        //  GALLERY 7 — THE HALL OF COMPLETION  (Complete state)
+        //  GALLERY 7, THE HALL OF COMPLETION  (Complete state)
         // ------------------------------------------------------------------ //
         private static readonly Gallery Complete = new Gallery
         {
@@ -741,7 +741,7 @@ namespace Decrypted.EditorTools
                     "Where the long duel between code and codebreaker began.",
                     CaseKind.Pedestal, "disk"),
                 new Exhibit("recap-enigma", "The Enigma Machine", "The World Wars",
-                    "You set three rotors to MAC and drew the word VICTORY out of noise. A " +
+                    "You set three rotors to MAC and drew the word TSANLC out of noise. A " +
                     "machine that rewired the alphabet with every keystroke, and the " +
                     "codebreakers who beat it anyway.",
                     "Where breaking codes became an industry, and gave birth to the computer.",

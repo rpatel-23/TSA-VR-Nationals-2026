@@ -74,7 +74,7 @@ namespace Decrypted.Managers
             { MuseumState.AncientRoom,
                 "Decoded: CROSS THE RUBICON. Caesar's most famous order. The die is cast." },
             { MuseumState.WWIIRoom,
-                "Decoded: VICTORY. The signal is broken, and with it, the tide of the war." },
+                "Decoded: TSANLC. The signal is broken, and the hidden message stands revealed." },
             { MuseumState.VaultRoom,
                 "Access granted. A secret is only ever as safe as the key that guards it." },
         };
