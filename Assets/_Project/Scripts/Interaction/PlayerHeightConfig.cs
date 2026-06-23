@@ -38,14 +38,16 @@ namespace Decrypted.Interaction
 
         [Tooltip("FLOOR tracking only. Vertical trim (metres) applied to the Camera " +
                  "Offset child on top of the real tracked height. NEGATIVE lowers the " +
-                 "player; try -0.15 to -0.2. (No effect in Device mode.)")]
-        [SerializeField] private float _floorHeightOffset = -0.18f;
+                 "player. Keep this 0 and use Extra Height Boost as the one lever. " +
+                 "(No effect in Device mode.)")]
+        [SerializeField] private float _floorHeightOffset = 0f;
 
         [Tooltip("Global vertical raise (metres) added on TOP of the per-mode values above, " +
                  "in BOTH Device and Floor modes. This is the SINGLE clean lever for nudging " +
                  "the whole view up/down: do NOT also raise the XR rig root, the Camera Offset " +
                  "child, or the PlayerAnchors - those either stack into an over-correction or " +
-                 "are ignored/overwritten elsewhere. +0.3 raises the view by 30 cm.")]
+                 "are ignored/overwritten elsewhere. 0.3 = +1 ft, 0.6 = +2 ft, 0.9 = +3 ft " +
+                 "(1 ft = ~0.305 m).")]
         [SerializeField] private float _extraHeightBoost = 0.3f;
 
         // NOTE: the exact value needs ONE headset test to confirm it feels right
