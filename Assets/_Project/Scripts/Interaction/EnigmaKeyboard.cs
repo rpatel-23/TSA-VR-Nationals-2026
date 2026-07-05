@@ -28,6 +28,8 @@ namespace Decrypted.Interaction
         [SerializeField] private List<PokeButton> _keys = new List<PokeButton>();
         [Tooltip("Optional CLEAR key to reset the current attempt.")]
         [SerializeField] private PokeButton _clearKey;
+        [Tooltip("Optional DELETE/backspace key to remove the last typed letter.")]
+        [SerializeField] private PokeButton _deleteKey;
 
         [Header("Audio")]
         [SerializeField] private string _keyClackKey = "sfx_key_clack";
@@ -36,6 +38,8 @@ namespace Decrypted.Interaction
         public event Action<char> OnKeyPressed;
         /// <summary>Raised when the CLEAR key is pressed.</summary>
         public event Action OnClear;
+        /// <summary>Raised when the DELETE/backspace key is pressed.</summary>
+        public event Action OnDelete;
 
         private bool _accepting = true;
 
@@ -55,12 +59,14 @@ namespace Decrypted.Interaction
         {
             foreach (var key in _keys) if (key != null) key.OnPressed += HandleKey;
             if (_clearKey != null) _clearKey.OnPressed += HandleClear;
+            if (_deleteKey != null) _deleteKey.OnPressed += HandleDelete;
         }
 
         private void OnDisable()
         {
             foreach (var key in _keys) if (key != null) key.OnPressed -= HandleKey;
             if (_clearKey != null) _clearKey.OnPressed -= HandleClear;
+            if (_deleteKey != null) _deleteKey.OnPressed -= HandleDelete;
         }
 
         /// <summary>Enable/disable input (e.g. lock once the puzzle is solved).</summary>
@@ -83,6 +89,14 @@ namespace Decrypted.Interaction
         {
             if (!_accepting) return;
             OnClear?.Invoke();
+        }
+
+        private void HandleDelete(string _)
+        {
+            if (!_accepting) return;
+            if (!string.IsNullOrEmpty(_keyClackKey) && AudioManager.Instance != null)
+                AudioManager.Instance.Play(_keyClackKey, transform.position, true, 0.85f, 0.92f);
+            OnDelete?.Invoke();
         }
     }
 }

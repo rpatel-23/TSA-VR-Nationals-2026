@@ -160,7 +160,7 @@ namespace Decrypted.Visuals
                 float t = 0f;
                 while (t < 1f)
                 {
-                    t += Time.unscaledDeltaTime / seconds; // unscaled: time-scale safe
+                    t += Time.unscaledDeltaTime / seconds; // unscaled: independent of Time.timeScale
                     _alpha = Mathf.Lerp(start, target, Mathf.SmoothStep(0f, 1f, t));
                     ApplyAlpha(_alpha);
                     yield return null;

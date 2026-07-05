@@ -242,26 +242,6 @@ def add_empty(name, location=(0, 0, 0), col=None, size=0.05):
     return e
 
 
-def parent_all_to_root(col, root_name):
-    """Give a collection a single named ROOT empty at the origin and parent every
-    current top-level object under it (children of children are left alone — they
-    already have their parent).
-
-    Why: each exhibit is exported as its own FBX, but its parts were a flat set of
-    sibling objects with no single handle. After this call the whole exhibit hangs
-    off one root, so in Unity you can grab/position/rotate the entire prop with one
-    transform, and the prefab has a clean single top node. Uses parent_keep_world so
-    nothing shifts and the relationship survives FBX export. Call this LAST in a
-    generator's build(), just before `return col`."""
-    root = add_empty(root_name, location=(0, 0, 0), col=col, size=0.2)
-    # Snapshot the current top-level objects (those with no parent yet), excluding
-    # the root we just made, so we don't reparent mid-iteration.
-    tops = [o for o in list(col.objects) if o.parent is None and o is not root]
-    for o in tops:
-        parent_keep_world(o, root)
-    return root
-
-
 # ------------------------------------------------------------------- helpers
 
 TWO_PI = 2.0 * math.pi
@@ -344,21 +324,79 @@ def letters():
 
 # -------------------------------------------------------------------- export
 
+def _convert_nonmesh_to_mesh(col):
+    """Convert FONT / CURVE / SURFACE / META objects in the collection to real
+    meshes. Non-mesh objects (especially text/curves) are a known cause of FBX
+    export crashes, and exporting them is unreliable across importers; converting
+    keeps the text labels as solid mesh geometry while making the export mesh-only."""
+    if bpy is None:
+        return
+    bpy.ops.object.select_all(action='DESELECT')
+    targets = [o for o in col.all_objects if o.type in {'FONT', 'CURVE', 'SURFACE', 'META'}]
+    if not targets:
+        return
+    for o in targets:
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = targets[0]
+    try:
+        bpy.ops.object.convert(target='MESH')
+    except RuntimeError as e:
+        print(f"[gen_common] convert-to-mesh skipped: {e}")
+
+
+def _validate_meshes(col):
+    """Repair/report broken geometry and bad UVs before export so the exporter does
+    not fail silently on an invalid mesh."""
+    if bpy is None:
+        return
+    for obj in col.all_objects:
+        if obj.type == 'MESH' and obj.data is not None:
+            obj.data.validate(verbose=True)
+
+
 def export_collection(col, out_path, fmt='FBX'):
-    """Export a single collection to FBX or glTF with Quest-friendly settings."""
+    """Export a single collection to FBX or glTF (GLB) with Quest-friendly settings.
+
+    Returns True on success. The export is wrapped in try/except so a failure prints
+    a full traceback instead of leaving a silent / broken file on disk. Non-mesh
+    objects are converted to mesh and all meshes are validated first.
+
+    TRANSFORMS - intentional: this pipeline does NOT run a global transform_apply and
+    keeps bake_space_transform=False. Part parenting is handled by parent_keep_world(),
+    which already bakes correct LOCAL transforms that survive FBX export. Re-adding
+    transform_apply on every object + bake_space_transform=True is exactly what caused
+    the historical 'exploded artifacts' bug (CLAUDE.md, Session 8), so they are left
+    off here on purpose.
+    """
+    import traceback
+    out_path = os.path.abspath(out_path)            # absolute (relative paths silently fail on some systems)
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
+
+    _convert_nonmesh_to_mesh(col)                   # text/curves -> mesh (no non-mesh in the export)
+    _validate_meshes(col)                           # repair/report bad geometry first
+
     bpy.ops.object.select_all(action='DESELECT')
     for o in col.all_objects:
         o.select_set(True)
-    if fmt.upper() == 'FBX':
-        bpy.ops.export_scene.fbx(
-            filepath=out_path, use_selection=True, apply_unit_scale=True,
-            apply_scale_options='FBX_SCALE_ALL', bake_space_transform=False,
-            mesh_smooth_type='FACE', use_mesh_modifiers=True, use_tspace=True,
-            add_leaf_bones=False, path_mode='COPY', embed_textures=False,
-            axis_forward='-Z', axis_up='Y')             # Unity axis convention
-    else:
-        bpy.ops.export_scene.gltf(
-            filepath=out_path, use_selection=True, export_format='GLB',
-            export_apply=True, export_yup=True)
-    print(f"[gen_common] exported {col.name} -> {out_path}")
+
+    try:
+        if fmt.upper() == 'FBX':
+            bpy.ops.export_scene.fbx(
+                filepath=out_path, use_selection=True, apply_unit_scale=True,
+                apply_scale_options='FBX_SCALE_ALL', bake_space_transform=False,
+                mesh_smooth_type='FACE', use_mesh_modifiers=True, use_tspace=True,
+                add_leaf_bones=False, path_mode='COPY', embed_textures=False,
+                # Mesh-only export. LIGHT / CAMERA / OTHER are excluded (a known FBX
+                # crash cause); reset_scene() already removed the default light/camera.
+                object_types={'MESH', 'EMPTY', 'ARMATURE'},
+                axis_forward='-Z', axis_up='Y')             # Unity axis convention
+        else:
+            bpy.ops.export_scene.gltf(
+                filepath=out_path, use_selection=True, export_format='GLB',
+                export_apply=True, export_yup=True)
+        print(f"SUCCESS: exported {col.name} -> {out_path}")
+        return True
+    except Exception as e:
+        print(f"FAILED: {out_path}  ({e})")
+        traceback.print_exc()
+        return False

@@ -22,7 +22,7 @@ This repository is a **complete, real Unity project tree** — every C# system, 
 shader, the full audio toolchain, and the full 3D asset toolchain — plus a
 documentation set. A few deliberate, senior-engineering choices about *form*:
 
-- **All gameplay/runtime code is included in full** — 32 C# scripts, no stubs, no
+- **All gameplay/runtime code is included in full** — 52 C# scripts, no stubs, no
   placeholders, no "TODO" bodies. Drop them into a Unity project and they compile
   and wire together through a single event bus.
 - **3D assets are delivered as procedural generators** (Blender Python under
@@ -75,20 +75,23 @@ audio. See `Documentation/03_Asset_Production_Pipeline.md` for the full rational
 Decrypted-VR/
 ├── Assets/_Project/
 │   ├── Scripts/
-│   │   ├── Core/         GameManager, SceneController, EventBus, GameEvents,
-│   │   │                 GameState, SaveSystem, DemoDirector
-│   │   ├── Managers/     AudioManager, PerformanceManager, InteractionManager, UIManager
-│   │   ├── Interaction/  Caesar disk, full Enigma rig, vault, final reveal,
-│   │   │                 PokeButton, XRGrabTwistDisk, splash + tutorial
-│   │   ├── Visuals/      ScreenFader, RoomActivator, PlaqueController, SignalTraceRenderer
+│   │   ├── Core/         GameManager, AutoProgressionController, SceneController,
+│   │   │                 DemoDirector, EventBus, GameEvents, GameState, SaveSystem
+│   │   ├── Managers/     AudioManager, PerformanceManager, InteractionManager, UIManager,
+│   │   │                 NarrationController, RoomNarratorController, RoomMusicController
+│   │   ├── Interaction/  Caesar disk, full Enigma rig, vault, final reveal, splash +
+│   │   │                 tutorial, PokeButton/RoomButton, RoomDoor, CountdownPanel,
+│   │   │                 VRHandPoser, PlayerHeightConfig, ArtifactAnimators, XRGrabTwistDisk
+│   │   ├── Visuals/      ScreenFader, RoomActivator, PlaqueController, SignalTraceRenderer,
+│   │   │                 MuseumAmbience, WorldLabel
 │   │   ├── Util/         Singleton, AudioSynth (runtime fallback synthesis)
-│   │   └── Editor/       BuildConfigurator, SceneBuilder
+│   │   └── Editor/       BuildConfigurator, SceneBuilder, EnigmaRebuilder, Museum/ toolkit
 │   ├── Shaders/          Hologram_URP, EnergyScanline_URP
 │   └── Audio/            SFX/ + Ambient/  (12 pre-baked WAVs)
 ├── Tooling/
-│   ├── Blender/          gen_common + 5 generators + export_all
+│   ├── Blender/          gen_common + 5 generators + export_all (+ validate/import helpers)
 │   └── Audio/            synth_engine + generate_all_audio
-└── Documentation/        00–06 guides (overview → setup → art → audio → optimisation → storyboard)
+└── Documentation/        00–08 guides (overview → setup → art → audio → optimisation → storyboard → museum → animation)
 ```
 
 ## Documentation index
@@ -103,6 +106,8 @@ Decrypted-VR/
 | `05_Optimization.md`            | The 72 FPS budget and every technique used to hold it |
 | `06_Storyboard_and_Recording.md`| Minute-by-minute walkthrough + capture workflow |
 | `07_Museum_Expansion.md`        | The procedural museum-dressing toolkit: dense galleries, exhibits, plaques, signage and decor built from one menu command |
+| `08_Animation_Pipeline.md`      | Blender-baked artifact animations and the C# animator routing (`ArtifactAnimators`) |
+| `08_Fix_Log_and_On_Device_Verification.md` | Running log of fixes and on-Quest verification notes |
 
 ## The puzzle chain (one source of truth)
 

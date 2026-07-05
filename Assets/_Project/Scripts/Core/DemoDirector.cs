@@ -18,8 +18,8 @@
 //    Splash  → press PLAY                                   → Atrium
 //    Atrium  → dwell, then advance                          → Ancient Room
 //    Ancient → rotate Caesar disk to +3 (CROSS THE RUBICON) → auto-advance
-//    WWII    → key MAC, type ZLDFDQO → VICTORY, pull lever   → auto-advance
-//    Vault   → type VICTORY, ENTER, door opens              → auto-advance
+//    WWII    → key MAC, type XJQBVK → TSANLC, pull lever    → auto-advance
+//    Vault   → type TSANLC, ENTER, door opens               → auto-advance
 //    Reveal  → sculpture morphs, conclusion fades, Complete
 // -----------------------------------------------------------------------------
 
@@ -43,8 +43,6 @@ namespace Decrypted.Core
         [Header("Pacing (seconds)")]
         [Tooltip("Delay on the splash screen before pressing PLAY.")]
         [SerializeField] private float _splashDelay = 2.5f;
-        [Tooltip("Time spent taking in the atrium before walking to the first exhibit.")]
-        [SerializeField] private float _atriumDwell = 5f;
         [Tooltip("Time to read an exhibit's plaque before starting to solve it.")]
         [SerializeField] private float _readDwell = 4f;
         [Tooltip("Per-keypress cadence while typing on the Enigma / vault.")]
@@ -96,7 +94,9 @@ namespace Decrypted.Core
 
             switch (e.Room)
             {
-                case MuseumState.Atrium:       StartCoroutine(DoAtrium()); break;
+                // Atrium has no puzzle: AutoProgressionController handles its dwell +
+                // countdown + advance (the same path normal play uses), so the demo
+                // does not advance the Atrium itself.
                 case MuseumState.AncientRoom:  StartCoroutine(DoAncient()); break;
                 case MuseumState.WWIIRoom:     StartCoroutine(DoWWII()); break;
                 case MuseumState.VaultRoom:    StartCoroutine(DoVault()); break;
@@ -109,32 +109,26 @@ namespace Decrypted.Core
         private IEnumerator PressPlayAfterDelay()
         {
             _handled.Add(MuseumState.Splash);
-            yield return new WaitForSeconds(_splashDelay);
+            yield return new WaitForSecondsRealtime(_splashDelay);
             EventBus.Publish(new ExperienceStartedEvent()); // Splash -> Atrium
-        }
-
-        private IEnumerator DoAtrium()
-        {
-            yield return new WaitForSeconds(_atriumDwell);
-            if (_gm != null) _gm.Advance(); // Atrium -> Ancient Room
         }
 
         private IEnumerator DoAncient()
         {
-            yield return new WaitForSeconds(_readDwell);
+            yield return new WaitForSecondsRealtime(_readDwell);
             if (_caesar != null) _caesar.AutoSolve(); // solve -> GameManager auto-advances
         }
 
         private IEnumerator DoWWII()
         {
-            yield return new WaitForSeconds(_readDwell);
+            yield return new WaitForSecondsRealtime(_readDwell);
             if (_enigma != null)
                 yield return _enigma.AutoSolve(_typeCadence, pullLever: true); // -> auto-advances
         }
 
         private IEnumerator DoVault()
         {
-            yield return new WaitForSeconds(_readDwell);
+            yield return new WaitForSecondsRealtime(_readDwell);
             if (_vault != null)
                 yield return _vault.AutoEnter(_typeCadence); // unlock -> auto-advances
         }
@@ -143,7 +137,7 @@ namespace Decrypted.Core
         {
             // The reveal controller auto-starts on RoomEntered; calling BeginReveal
             // here is a harmless idempotent safety in case auto-start is disabled.
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSecondsRealtime(0.5f);
             if (_reveal != null) _reveal.BeginReveal();
         }
 

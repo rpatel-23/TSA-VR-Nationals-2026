@@ -66,8 +66,5 @@ namespace Decrypted.Core
                 catch (Exception e) { Debug.LogError($"[EventBus] handler for {typeof(TEvent).Name} threw: {e}"); }
             }
         }
-
-        /// <summary>Wipe all subscriptions. Called on full reset / app teardown.</summary>
-        public static void Clear() => _handlers.Clear();
     }
 }

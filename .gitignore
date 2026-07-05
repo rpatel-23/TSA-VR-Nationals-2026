@@ -120,3 +120,19 @@ sszip/
 # Claude Code local working files (CLAUDE.md itself is kept tracked on purpose)
 .claude/
 !CLAUDE.md
+
+# --- Credentials / secrets (NEVER commit) -------------------------------------
+# A Personal Access Token must never live in a tracked file or a committed remote
+# URL. Keep tokens in a credential manager (git credential helper), not in-repo.
+# See Documentation/08_Fix_Log_and_On_Device_Verification.md (Security).
+.lfsconfig
+.netrc
+*.pat
+*.token
+*.secret
+*.secrets
+secrets.*
+**/credentials*
+**/*credentials*
+*.pem
+*.key

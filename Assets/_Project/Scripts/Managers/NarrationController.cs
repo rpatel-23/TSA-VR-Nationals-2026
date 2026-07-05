@@ -31,6 +31,10 @@ namespace Decrypted.Managers
                  "real voice clips are added to the AudioManager library (avoids " +
                  "'clip not found' warnings with placeholder keys).")]
         [SerializeField] private bool _voiceEnabled = false;
+        [Tooltip("Room-ENTRY intro captions. OFF by default: RoomNarratorController now owns " +
+                 "per-room narration, so leaving this on would double up the caption on every " +
+                 "room entry. Solved-stinger captions and gameplay hint toasts are unaffected.")]
+        [SerializeField] private bool _roomIntroCaptionsEnabled = false;
 
         [Header("Timing")]
         [Tooltip("Seconds a room-intro caption stays on screen.")]
@@ -70,7 +74,7 @@ namespace Decrypted.Managers
             { MuseumState.AncientRoom,
                 "Decoded: CROSS THE RUBICON. Caesar's most famous order. The die is cast." },
             { MuseumState.WWIIRoom,
-                "Decoded: VICTORY. The signal is broken, and with it, the tide of the war." },
+                "Decoded: TSANLC. The signal is broken, and the hidden message stands revealed." },
             { MuseumState.VaultRoom,
                 "Access granted. A secret is only ever as safe as the key that guards it." },
         };
@@ -95,6 +99,7 @@ namespace Decrypted.Managers
 
         private void OnStateChanged(StateChangedEvent e)
         {
+            if (!_roomIntroCaptionsEnabled) return;
             if (e.Current == MuseumState.Splash && !_splashSpoken && Intro.TryGetValue(MuseumState.Splash, out var line))
             {
                 _splashSpoken = true;
@@ -104,6 +109,7 @@ namespace Decrypted.Managers
 
         private void OnRoomEntered(RoomEnteredEvent e)
         {
+            if (!_roomIntroCaptionsEnabled) return;
             if (Intro.TryGetValue(e.Room, out var line))
                 StartCoroutine(SpeakAfter(_introDelay, line, _introCaptionSeconds, "vo_intro_" + e.Room));
         }
@@ -116,7 +122,7 @@ namespace Decrypted.Managers
 
         private System.Collections.IEnumerator SpeakAfter(float delay, string line, float hold, string voKey)
         {
-            if (delay > 0f) yield return new WaitForSeconds(delay);
+            if (delay > 0f) yield return new WaitForSecondsRealtime(delay); // unscaled: independent of Time.timeScale
             Speak(line, hold, voKey);
         }
 

@@ -262,8 +262,10 @@ namespace Decrypted.EditorTools
             tmp.raycastTarget = false;
 
             // Auto-size inside a metre-accurate box → legibility without guessing pt.
+            // Min raised from 0.04 → 0.09 so small captions/bodies stay readable in VR
+            // (0.04 let long copy shrink to an unreadable size on the wall boards).
             tmp.enableAutoSizing = true;
-            tmp.fontSizeMin = 0.04f;
+            tmp.fontSizeMin = 0.09f;
             tmp.fontSizeMax = MaxSize(role);
             tmp.margin = new Vector4(0.02f, 0.01f, 0.02f, 0.01f);
             if (role == TextRole.Sign || role == TextRole.Title)
@@ -297,9 +299,9 @@ namespace Decrypted.EditorTools
             {
                 case TextRole.Sign: return 2.4f;
                 case TextRole.Title: return 1.2f;
-                case TextRole.Heading: return 0.7f;
-                case TextRole.Body: return 0.42f;
-                case TextRole.Caption: return 0.3f;
+                case TextRole.Heading: return 0.85f;
+                case TextRole.Body: return 0.58f;
+                case TextRole.Caption: return 0.42f;
                 case TextRole.Mono: return 0.6f;
                 default: return 0.5f;
             }

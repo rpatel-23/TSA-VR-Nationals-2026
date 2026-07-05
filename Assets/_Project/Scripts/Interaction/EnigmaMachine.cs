@@ -43,9 +43,9 @@ namespace Decrypted.Interaction
         [Tooltip("Rotor key that decodes the scripted message (3 letters).")]
         [SerializeField] private string _solutionKey = "MAC";
         [Tooltip("Plaintext word the exhibit teaches.")]
-        [SerializeField] private string _plaintextWord = "VICTORY";
+        [SerializeField] private string _plaintextWord = "TSANLC";
         [Tooltip("Ciphertext that decodes to the plaintext at the solution key.")]
-        [SerializeField] private string _cipherWord = "ZLDFDQO";
+        [SerializeField] private string _cipherWord = "XJQBVK";
 
         // Working rotor state (the live machine position).
         private int _r0, _r1, _r2;
@@ -68,8 +68,8 @@ namespace Decrypted.Interaction
             _calibratedPairs.Clear();
 
             string key = Sanitise(_solutionKey, 3, "MAC");
-            string plain = Sanitise(_plaintextWord, _plaintextWord.Length, "VICTORY");
-            string cipher = Sanitise(_cipherWord, _cipherWord.Length, "ZLDFDQO");
+            string plain = Sanitise(_plaintextWord, _plaintextWord.Length, "TSANLC");
+            string cipher = Sanitise(_cipherWord, _cipherWord.Length, "XJQBVK");
 
             if (plain.Length != cipher.Length)
             {
@@ -152,8 +152,8 @@ namespace Decrypted.Interaction
         }
 
         public string SolutionKey => Sanitise(_solutionKey, 3, "MAC");
-        public string PlaintextWord => Sanitise(_plaintextWord, _plaintextWord.Length, "VICTORY");
-        public string CipherWord => Sanitise(_cipherWord, _cipherWord.Length, "ZLDFDQO");
+        public string PlaintextWord => Sanitise(_plaintextWord, _plaintextWord.Length, "TSANLC");
+        public string CipherWord => Sanitise(_cipherWord, _cipherWord.Length, "XJQBVK");
 
         // ------------------------------------------------------ involution table
 

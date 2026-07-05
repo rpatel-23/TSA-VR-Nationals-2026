@@ -33,16 +33,25 @@ namespace Decrypted.Interaction
         [SerializeField] private DoorStyle _style = DoorStyle.Hinged;
         [Tooltip("The door object that moves. For Hinged, this should pivot at its hinge.")]
         [SerializeField] private Transform _door;
+        [Tooltip("Optional EDGE hinge: an empty parent placed at the door's EDGE with the " +
+                 "slab parented under it. If set, the swing rotates THIS, so the door opens " +
+                 "from its edge like a real door instead of spinning about its own centre. " +
+                 "Leave null to rotate the door transform directly. Hinged style only.")]
+        [SerializeField] private Transform _hingePivot;
         [Tooltip("Optional Animator; if set, its 'Open' trigger is fired and the " +
                  "transform tween below is skipped.")]
         [SerializeField] private Animator _doorAnimator;
-        [Tooltip("Hinged: open angle (deg) about local up. Sliding: ignored.")]
-        [SerializeField] private float _openAngle = 105f;
+        [Tooltip("Hinged: open angle (deg) about local Y (the hinge axis). Sliding: ignored.")]
+        [SerializeField] private float _openAngle = 100f;
         [Tooltip("Sliding: local offset to the open position. Hinged: ignored.")]
         [SerializeField] private Vector3 _openOffset = new Vector3(0f, 0f, 2.4f);
-        [SerializeField] private float _openSeconds = 2.4f;
+        [SerializeField] private float _openSeconds = 2.0f;
         [SerializeField] private AnimationCurve _openEase =
             AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+        [Tooltip("When true, drive the door + ring via a Blender FBX Animator (the " +
+                 "'Open' trigger) instead of the procedural tween. Default false = " +
+                 "current behaviour. See Documentation/08_Animation_Pipeline.md.")]
+        [SerializeField] private bool _useBlenderAnimations = false;
 
         [Header("Locking ring")]
         [Tooltip("Optional ring that spins as the bolts retract.")]
@@ -75,6 +84,14 @@ namespace Decrypted.Interaction
         private Quaternion _doorClosedRot;
         private Vector3 _doorClosedPos;
 
+        // Door + locking-ring motion goes through this swappable animator (procedural
+        // tween or Blender Animator), so this controller never moves those transforms
+        // directly.
+        private IVaultAnimator _vaultAnim;
+        private IVaultAnimator VaultAnim => _vaultAnim ??= (_useBlenderAnimations && _doorAnimator != null)
+            ? (IVaultAnimator)new BlenderVaultAnimator(_doorAnimator)
+            : new ProceduralVaultAnimator(_door, _lockingRing);
+
         private void Awake()
         {
             _mpb = new MaterialPropertyBlock();
@@ -101,11 +118,8 @@ namespace Decrypted.Interaction
         {
             StopAllCoroutines();
             _unlocked = false;
-            if (_door != null)
-            {
-                _door.localRotation = _doorClosedRot;
-                _door.localPosition = _doorClosedPos;
-            }
+            VaultAnim.SetDoorRotation(_doorClosedRot);
+            VaultAnim.SetDoorPosition(_doorClosedPos);
             SetStatusLights(_lockedColor);
             SetArchiveEmissive(0f);
             SetRevealLights(0f);
@@ -124,11 +138,10 @@ namespace Decrypted.Interaction
             if (_lockingRing != null) yield return SpinRing();
 
             // 3) Open the door (Animator wins if present), warming the room in parallel.
-            if (_doorAnimator != null)
+            if (VaultAnim.TryTriggerOpen())
             {
-                _doorAnimator.SetTrigger("Open");
                 StartCoroutine(RevealRoom(_openSeconds));
-                yield return new WaitForSeconds(_openSeconds);
+                yield return new WaitForSecondsRealtime(_openSeconds); // unscaled time
             }
             else if (_door != null)
             {
@@ -150,35 +163,44 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _ringSpinSeconds);
-                _lockingRing.localRotation = Quaternion.Slerp(start, end, Mathf.SmoothStep(0f, 1f, t));
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _ringSpinSeconds); // unscaled time
+                VaultAnim.SetRingRotation(Quaternion.Slerp(start, end, Mathf.SmoothStep(0f, 1f, t)));
                 yield return null;
             }
-            _lockingRing.localRotation = end;
+            VaultAnim.SetRingRotation(end);
         }
 
         private IEnumerator OpenDoorTween()
         {
             StartCoroutine(RevealRoom(_openSeconds));
 
-            Quaternion rotStart = _door.localRotation;
-            Quaternion rotEnd = _doorClosedRot * Quaternion.AngleAxis(_openAngle, Vector3.up);
+            // Swing about WORLD up (true vertical), pivoting about the door's hinge. The
+            // imported door's local axes are NOT world-aligned - its local Y points sideways
+            // (world +Z) because the FBX sits at a 90 deg tilt - so the old local-Y tween
+            // rotated the door about a HORIZONTAL axis and it never looked like it opened.
+            // Rotating the WORLD rotation about Vector3.up is robust to any import orientation.
+            // With _hingePivot set (an edge transform) the door swings from that edge;
+            // otherwise it pivots about its own origin.
+            Transform swing = _hingePivot != null ? _hingePivot : _door;
+            Quaternion worldStart = swing.rotation;
             Vector3 posStart = _door.localPosition;
             Vector3 posEnd = _doorClosedPos + _openOffset;
 
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _openSeconds);
-                float k = _openEase.Evaluate(Mathf.Clamp01(t));
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _openSeconds); // unscaled time
+                float k = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(t));         // ease-in-out
                 if (_style == DoorStyle.Hinged)
-                    _door.localRotation = Quaternion.Slerp(rotStart, rotEnd, k);
+                    swing.rotation = Quaternion.AngleAxis(_openAngle * k, Vector3.up) * worldStart;
                 else
-                    _door.localPosition = Vector3.Lerp(posStart, posEnd, k);
+                    VaultAnim.SetDoorPosition(Vector3.Lerp(posStart, posEnd, k));
                 yield return null;
             }
-            if (_style == DoorStyle.Hinged) _door.localRotation = rotEnd;
-            else _door.localPosition = posEnd;
+            if (_style == DoorStyle.Hinged)
+                swing.rotation = Quaternion.AngleAxis(_openAngle, Vector3.up) * worldStart;
+            else
+                VaultAnim.SetDoorPosition(posEnd);
         }
 
         private IEnumerator RevealRoom(float seconds)
@@ -186,7 +208,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, seconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, seconds); // unscaled time
                 float k = Mathf.SmoothStep(0f, 1f, t);
                 SetRevealLights(k * _revealLightTarget);
                 SetArchiveEmissive(k * _archivePeak);

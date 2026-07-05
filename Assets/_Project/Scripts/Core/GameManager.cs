@@ -104,6 +104,9 @@ namespace Decrypted.Core
                 SetState(MuseumState.Splash, instant: true);
             }
 
+            // Warm the first room the player will enter so the opening transition is smooth.
+            PreWarmNext();
+
             if (_demoMode)
             {
                 // DemoDirector (optional component) listens for this and scripts input.
@@ -192,15 +195,46 @@ namespace Decrypted.Core
         {
             _transitioning = true;
 
-            // Fade out -> activate room -> place player -> fade in is delegated to
-            // the SceneController, which owns the screen-fade + room toggling.
-            if (_sceneController != null)
-                yield return _sceneController.TransitionTo(target);
+            // Defensive: make sure a transition never runs under a slowed timeScale.
+            // Nothing in the project lowers timeScale today, so this is just a guard.
+            Time.timeScale = 1f;
 
-            SetState(target, instant: false);
-            EventBus.Publish(new RoomEnteredEvent(target));
+            // try/finally GUARANTEES we always clear _transitioning, even if the
+            // SceneController throws mid-fade. Without this, an exception during room
+            // activation would latch "transitioning" forever and silently reject every
+            // future Advance() — a permanent freeze from the player's point of view.
+            try
+            {
+                // Fade out -> activate room -> place player -> fade in is delegated to
+                // the SceneController, which owns the screen-fade + room toggling.
+                if (_sceneController != null)
+                    yield return _sceneController.TransitionTo(target);
 
-            _transitioning = false;
+                SetState(target, instant: false);
+                EventBus.Publish(new RoomEnteredEvent(target));
+
+                // Now that we're in the new room, warm the NEXT one off-screen so the
+                // following transition doesn't stall on first-render shader compile +
+                // mesh upload (the frozen-frame hitch the player feels after a solve).
+                PreWarmNext();
+            }
+            finally
+            {
+                _transitioning = false;
+            }
+        }
+
+        /// <summary>Warm the room the player will enter NEXT so its first render (shader
+        /// compile + mesh upload) happens off-screen now, instead of as a frozen-frame
+        /// hitch when we transition into it. The heavy imported models (the 67K-vertex
+        /// Enigma) make this cold-activation cost the dominant cause of the post-solve
+        /// stall. Pre-warm is a no-op past the last room and skips already-active rooms.</summary>
+        private void PreWarmNext()
+        {
+            if (_sceneController == null) return;
+            int idx = System.Array.IndexOf(_order, CurrentState);
+            if (idx >= 0 && idx < _order.Length - 1)
+                _sceneController.PreWarm(_order[idx + 1]);
         }
 
         private void SetState(MuseumState target, bool instant)
@@ -219,22 +253,16 @@ namespace Decrypted.Core
 
         private void OnExperienceStarted(ExperienceStartedEvent _)
         {
+            // The splash PLAY button starts the tour (Splash -> Atrium). Rooms use
+            // physical doors; the splash is a menu, so its button remains its exit.
             if (CurrentState == MuseumState.Splash) AdvanceTo(MuseumState.Atrium);
         }
 
         private void OnExhibitSolved(ExhibitSolvedEvent e)
         {
-            // Auto-advance shortly after a solve so the player feels rewarded and
-            // the "door opens" beat lines up with the transition. Tunable per room
-            // via the SceneController's per-state exit delay.
-            float delay = _sceneController != null ? _sceneController.GetExitDelay(e.Room) : 2.5f;
-            StartCoroutine(AdvanceAfter(delay, e.Room));
-        }
-
-        private IEnumerator AdvanceAfter(float delay, MuseumState room)
-        {
-            yield return new WaitForSeconds(delay);
-            if (CurrentState == room) Advance();
+            // Intentionally empty. Solves are recorded in MarkSolved (which raises this
+            // event), and the advance is owned by AutoProgressionController. GameManager
+            // subscribes only so the solve flow stays visible in one place.
         }
     }
 }

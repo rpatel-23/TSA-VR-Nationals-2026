@@ -37,14 +37,14 @@ namespace Decrypted.Core
         [Tooltip("Seconds for fade-out and fade-in halves of a transition.")]
         [SerializeField] private float _fadeDuration = 0.6f;
 
-        [Header("Pacing")]
-        [Tooltip("Default delay between solving an exhibit and the room transition.")]
-        [SerializeField] private float _defaultExitDelay = 2.5f;
-        [Tooltip("Per-room overrides (lets the WWII 'power up' sequence breathe).")]
-        [SerializeField] private List<RoomExitDelay> _exitDelays = new List<RoomExitDelay>();
-
-        [System.Serializable]
-        public struct RoomExitDelay { public MuseumState state; public float delay; }
+        [Header("Pre-warm (kills the 'black screen then recovers' hitch)")]
+        [Tooltip("A short while after entering a room, silently make the NEXT room's shaders/" +
+                 "meshes GPU-resident so switching to it later doesn't stall on first render " +
+                 "while the screen is black. Uncheck only if you ever see the upcoming room " +
+                 "flicker into view for a frame.")]
+        [SerializeField] private bool _preWarmNextRoom = true;
+        [Tooltip("Seconds to wait after entering a room before pre-warming the next one.")]
+        [SerializeField] private float _preWarmDelay = 1.5f;
 
         private readonly Dictionary<MuseumState, RoomDescriptor> _byState =
             new Dictionary<MuseumState, RoomDescriptor>();
@@ -62,12 +62,6 @@ namespace Decrypted.Core
                 if (r?.roomRoot != null) r.roomRoot.SetActive(false);
         }
 
-        public float GetExitDelay(MuseumState state)
-        {
-            foreach (var e in _exitDelays) if (e.state == state) return e.delay;
-            return _defaultExitDelay;
-        }
-
         /// <summary>Immediate activation with no fade (boot/reset).</summary>
         public void SnapTo(MuseumState target)
         {
@@ -81,9 +75,19 @@ namespace Decrypted.Core
         {
             if (_fader != null) yield return _fader.FadeOut(_fadeDuration);
 
-            ActivateRoom(target);
-            PlacePlayer(target);
-            _active = target;
+            // The room swap is synchronous; guard it so a throw here can NEVER skip the
+            // fade-in below. A stuck-opaque fader would look exactly like a hard freeze
+            // (black headset, no progression). On failure we log and still fade back in.
+            try
+            {
+                ActivateRoom(target);
+                PlacePlayer(target);
+                _active = target;
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[SceneController] Room activation for {target} failed; revealing anyway. {e}");
+            }
 
             // Give the GPU a couple of frames to warm up the now-visible room
             // before we reveal it (prevents a first-frame hitch in the headset).
@@ -93,14 +97,34 @@ namespace Decrypted.Core
             if (_fader != null) yield return _fader.FadeIn(_fadeDuration);
         }
 
+        /// <summary>Make a room GPU-resident ahead of time WITHOUT fully activating it, so a
+        /// later TransitionTo(target) doesn't stall on first-render shader compile + mesh
+        /// upload while the screen is black (the "black then recovers" hitch on Quest). It
+        /// briefly enables the (off-screen, one-step-away) room root for two frames so the
+        /// renderer submits it once, then disables it again — RoomActivator.PreWarm does NOT
+        /// run OnActivated, so no lights/audio/particles start during the warm-up.</summary>
+        public void PreWarm(MuseumState target)
+        {
+            if (!_preWarmNextRoom) return;
+            if (target == _active) return;
+            if (!_byState.TryGetValue(target, out var room) || room.roomRoot == null) return;
+            if (room.roomRoot.activeSelf) return; // already live; nothing to warm
+            var activator = room.roomRoot.GetComponent<RoomActivator>();
+            if (activator != null) StartCoroutine(PreWarmAfter(activator));
+        }
+
+        private IEnumerator PreWarmAfter(RoomActivator activator)
+        {
+            if (_preWarmDelay > 0f) yield return new WaitForSecondsRealtime(_preWarmDelay);
+            yield return activator.PreWarm();
+        }
+
         // --------------------------------------------------------- internals
 
         private void ActivateRoom(MuseumState target)
         {
-            // Activate target; deactivate all others. We also pre-warm the *next*
-            // room one step ahead so its lightmaps/meshes are resident, but keep
-            // it disabled-but-loaded by toggling only the renderers via the
-            // RoomActivator's PreWarm path.
+            // Activate the target room and deactivate all others. (Pre-warming the next
+            // room ahead of time is handled separately by PreWarm/PreWarmAfter.)
             foreach (var kvp in _byState)
             {
                 bool isActive = kvp.Key == target;
@@ -133,8 +157,13 @@ namespace Decrypted.Core
             if (_hmdCamera != null)
             {
                 Vector3 camOffset = _hmdCamera.transform.position - _xrOrigin.position;
-                camOffset.y = 0f; // keep vertical placement exact
-                _xrOrigin.position = room.playerAnchor.position - camOffset;
+                camOffset.y = 0f; // only recenter horizontally
+                Vector3 placed = room.playerAnchor.position - camOffset;
+                // Respect the rig's configured height (Inspector Y); do NOT snap the
+                // rig down to the anchor's floor Y on every room entry. This is what
+                // previously pushed the camera back to floor level after a transition.
+                placed.y = _xrOrigin.position.y;
+                _xrOrigin.position = placed;
 
                 // Yaw the rig so the player faces the anchor's forward.
                 float yawDelta = room.playerAnchor.eulerAngles.y - _hmdCamera.transform.eulerAngles.y;
@@ -142,7 +171,25 @@ namespace Decrypted.Core
             }
             else
             {
-                _xrOrigin.SetPositionAndRotation(room.playerAnchor.position, room.playerAnchor.rotation);
+                // Preserve the rig's configured height; only place X/Z from the anchor.
+                Vector3 pos = room.playerAnchor.position;
+                pos.y = _xrOrigin.position.y;
+                _xrOrigin.SetPositionAndRotation(pos, room.playerAnchor.rotation);
+            }
+
+            // Demo Mode has no headset to supply a standing height, so the camera would
+            // otherwise sit on the floor. Frame it per room: lift the rig until the camera
+            // EYE lands at the anchor's Y (authored ~5% above that room's main artifact).
+            // Interactive (non-demo) play keeps the player's real floor-tracked height.
+            if (GameManager.Instance != null && GameManager.Instance.DemoMode)
+            {
+                float eyeY = room.playerAnchor.position.y;
+                if (_hmdCamera != null)
+                    _xrOrigin.position += new Vector3(0f, eyeY - _hmdCamera.transform.position.y, 0f);
+                else
+                {
+                    var p = _xrOrigin.position; p.y = eyeY; _xrOrigin.position = p;
+                }
             }
         }
 

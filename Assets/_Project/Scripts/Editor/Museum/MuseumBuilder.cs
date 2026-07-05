@@ -1,26 +1,29 @@
 // -----------------------------------------------------------------------------
 //  MuseumBuilder.cs   (Editor)
-//  DECRYPTED — A Walk Through the History of Secret Writing
+//  DECRYPTED, A Walk Through the History of Secret Writing
 //
-//  The orchestrator that turns the six bare room roots into a dense, grand,
-//  world-class museum. For every gallery it:
+//  The orchestrator that turns the bare room roots into a dense, grand,
+//  world-class museum. It dresses every gallery authored in MuseumContent
+//  (Entrance, Atrium, Ancient, WWII, Vault, Reveal and the Complete hall). For
+//  each one it:
 //
-//    1. Builds a GRAND architectural shell — large footprint, 6 m ceilings,
-//       coffered ceiling + skylight, colonnade, framed archway doorways, baseboard
+//    1. Builds a GRAND architectural shell, large footprint, tall ceilings,
+//       coffered ceiling + laylight, colonnade, framed archway doorways, baseboard
 //       and cornice, a runner-and-border floor, wall sconces.
-//    2. Drops a dramatic procedural HERO centerpiece (cipher disk, Enigma, vault
-//       door, synthesis sculpture, armillary globe, entrance portal) on a plinth
-//       with rope barrier, benches and real spotlights.
-//    3. Densely DRESSES the perimeter from MuseumContent — display cases,
+//    2. Drops a dramatic procedural HERO centerpiece (entrance portal, armillary
+//       globe, cipher disk, Enigma, vault door, synthesis sculpture, or the
+//       closing-plaque panel) on a plinth, with rope barrier, benches and real
+//       spotlights, except the entrance (own layout) and the baked-only Complete hall.
+//    3. Densely DRESSES the perimeter from MuseumContent, display cases,
 //       pedestals, tablet cases, wall reliefs, framed infographics, a portrait
-//       gallery of pioneers, a wall timeline, kiosks — every one carrying unique,
+//       gallery of pioneers, a wall timeline, kiosks, every one carrying unique,
 //       authored museum copy.
-//    4. Adds the small details that sell realism — signage, hanging gallery signs,
+//    4. Adds the small details that sell realism, signage, hanging gallery signs,
 //       a directory, banners, planters, a trash bin, security cameras, an exit sign.
 //
 //  Everything generated lives under a single "MuseumDressing" child per room, so a
 //  rebuild is idempotent and a one-click "Clear" cleanly reverses it. Nothing here
-//  touches the existing managers, XR rig or save data — it is purely additive set
+//  touches the existing managers, XR rig or save data, it is purely additive set
 //  dressing parented beneath each Room_* root, in that room's local space.
 //
 //  Menu:  DECRYPTED ▸ Museum ▸ Build Full Museum   (Ctrl/Cmd+Shift+M)
@@ -40,8 +43,9 @@ namespace Decrypted.EditorTools
     {
         private const string DressingName = "MuseumDressing";
 
-        // Per-gallery look. (floor, wall, ceiling, trim, accent metal, sconce glow,
-        // hero light colour, hero light intensity, footprint W, D, ceiling H)
+        // Per-gallery look: material keys for floor, wall, ceiling, trim, accent
+        // metal, sconce glow and floor runner; the hero-light colour (Key) and
+        // Intensity; and the footprint W, D and ceiling height H.
         private struct Style
         {
             public string Floor, Wall, Ceil, Trim, Accent, Sconce, Runner;
@@ -58,6 +62,10 @@ namespace Decrypted.EditorTools
                 case "wwii": return new Style { Floor = "concrete", Wall = "plasterCool", Ceil = "ceiling", Trim = "steel", Accent = "steel", Sconce = "glowWarm", Runner = "carpetBlue", Key = new Color(0.95f, 0.95f, 1f), Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
                 case "vault": return new Style { Floor = "marbleDark", Wall = "plasterCool", Ceil = "ceiling", Trim = "chrome", Accent = "steel", Sconce = "glowCool", Runner = "carpetBlue", Key = new Color(0.7f, 0.9f, 1f), Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
                 case "reveal": return new Style { Floor = "marbleDark", Wall = "marbleDark", Ceil = "ceiling", Trim = "gold", Accent = "gold", Sconce = "glowGold", Runner = "carpetRed", Key = new Color(1f, 0.88f, 0.7f), Intensity = 16f, W = 15f, D = 13f, H = 8f };
+                // Completion hall: warmer than the puzzle rooms. Ceiling height is
+                // intentionally half of the original 8.5 m (= 4.25 m) so the room is
+                // not cavernous; floor footprint is unchanged so props are not crushed.
+                case "complete": return new Style { Floor = "marbleLight", Wall = "plasterWarm", Ceil = "marbleLight", Trim = "gold", Accent = "brass", Sconce = "glowGold", Runner = "carpetRed", Key = new Color(1f, 0.9f, 0.72f), Intensity = 14f, W = 16f, D = 14f, H = 4.25f };
                 default: return new Style { Floor = "concrete", Wall = "plasterNeutral", Ceil = "ceiling", Trim = "brass", Accent = "brass", Sconce = "glowWarm", Runner = "carpetRed", Key = Color.white, Intensity = 12f, W = 16f, D = 13f, H = 7.5f };
             }
         }
@@ -75,7 +83,7 @@ namespace Decrypted.EditorTools
             foreach (var g in MuseumContent.Galleries)
             {
                 var room = FindRoom(g.State);
-                if (room == null) { Debug.LogWarning($"[Museum] Room_{g.State} not found — skipped."); missing++; continue; }
+                if (room == null) { Debug.LogWarning($"[Museum] Room_{g.State} not found, skipped."); missing++; continue; }
                 BuildGallery(g, room);
                 built++;
             }
@@ -124,6 +132,21 @@ namespace Decrypted.EditorTools
             Debug.LogWarning("[Museum] Selection is not a recognised Room_* root.");
         }
 
+        /// <summary>Build/refresh a single gallery by state (used to stamp the
+        /// completion hall without rebuilding the whole museum). Idempotent.</summary>
+        public static void BuildOne(MuseumState state)
+        {
+            if (Application.isPlaying) { Debug.LogWarning("[Museum] Exit Play Mode first."); return; }
+            MuseumKit.Init();
+            if (!MuseumContent.TryGet(state, out var g)) { Debug.LogWarning($"[Museum] No gallery authored for {state}."); return; }
+            var room = FindRoom(state);
+            if (room == null) { Debug.LogWarning($"[Museum] Room_{state} not found."); return; }
+            BuildGallery(g, room);
+            AssetDatabase.SaveAssets();
+            EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+            Debug.Log($"[Museum] Built Room_{state}.");
+        }
+
         // =====================================================================
         //  Gallery build
         // =====================================================================
@@ -163,7 +186,7 @@ namespace Decrypted.EditorTools
             CofferedCeiling(shell.transform, W, D, H, st);
             CeilingLaylight(shell.transform, W, D, H, st);
 
-            // Walls — back/front solid, side walls with framed doorways
+            // Walls, back/front solid, side walls with framed doorways
             MuseumKit.Box(shell.transform, "WallBack", new Vector3(0, H * 0.5f, hd), new Vector3(W, H, t), st.Wall, default, true);
             MuseumKit.Box(shell.transform, "WallFront", new Vector3(0, H * 0.5f, -hd), new Vector3(W, H, t), st.Wall, default, true);
             bool entry = g.State != MuseumState.Splash;
@@ -207,7 +230,7 @@ namespace Decrypted.EditorTools
             if (entry) MuseumProps.Archway(shell.transform, new Vector3(-hw + 0.25f, 0, 0), 90f, 2.6f, 3.0f, "marbleLight");
             if (exit) MuseumProps.Archway(shell.transform, new Vector3(hw - 0.25f, 0, 0), 90f, 2.6f, 3.0f, "marbleLight");
 
-            // Wall sconces (emissive — free light) on the long walls.
+            // Wall sconces (emissive, free light) on the long walls.
             for (int i = 0; i < 4; i++)
             {
                 float sx = Mathf.Lerp(-hw + 1.6f, hw - 1.6f, i / 3f);
@@ -246,7 +269,7 @@ namespace Decrypted.EditorTools
         }
 
         // ----------------------------------------------- GRAND ARCHITECTURE
-        // A coffered ceiling field — a grid of recessed panels with rosette bosses,
+        // A coffered ceiling field, a grid of recessed panels with rosette bosses,
         // left open over the centre where the laylight sits.
         private static void CofferedCeiling(Transform p, float W, float D, float H, Style st)
         {
@@ -270,7 +293,7 @@ namespace Decrypted.EditorTools
                 }
         }
 
-        // A glowing glass laylight (skylight) with frame + mullion grid — the room's
+        // A glowing glass laylight (skylight) with frame + mullion grid, the room's
         // grand light source, on the ceiling underside. Emissive: costs no light.
         private static void CeilingLaylight(Transform p, float W, float D, float H, Style st)
         {
@@ -322,7 +345,7 @@ namespace Decrypted.EditorTools
             }
         }
 
-        // A clerestory window band high on the side walls — glowing panes that read
+        // A clerestory window band high on the side walls, glowing panes that read
         // as daylight pouring in above the exhibits (emissive; clears the doorways).
         private static void Clerestory(Transform p, float W, float D, float H, Style st)
         {
@@ -389,8 +412,8 @@ namespace Decrypted.EditorTools
 
         // ---------------------------------------------------------------- HERO
         // The player spawns at the room centre (the room's PlayerAnchor) facing +Z,
-        // so the hero sits ahead of them toward the back of the hall — never on the
-        // spawn point — with its plaque on the near (visitor) side.
+        // so the hero sits ahead of them toward the back of the hall, never on the
+        // spawn point, with its plaque on the near (visitor) side.
         private const float HeroZ = 2.0f;
 
         private static void BuildHero(Transform p, Gallery g, Style st)
@@ -406,12 +429,17 @@ namespace Decrypted.EditorTools
                 case "wwii": HeroEnigma(hero.transform, g); break;
                 case "vault": HeroVault(hero.transform, g); break;
                 case "reveal": HeroSculpture(hero.transform, g); break;
+                case "complete": HeroComplete(hero.transform, g); break;
             }
 
             // Hero plaque (near side, facing the visitor) + rope barrier + benches.
             if (g.Key != "entrance")
             {
-                MuseumProps.Plaque(hero.transform, new Vector3(0, 1.15f, -1.5f), 180f, g.HeroTitle, g.HeroPlaque, 0.95f, true);
+                // The completion hall presents the closing plaque on its grand panel
+                // (HeroComplete), so it skips the small near-side plaque to avoid a
+                // duplicate of the same verbatim text.
+                if (g.Key != "complete")
+                    MuseumProps.Plaque(hero.transform, new Vector3(0, 1.15f, -1.5f), 180f, g.HeroTitle, g.HeroPlaque, 0.95f, true);
                 MuseumProps.RopeBarrier(hero.transform, "Hero", new[]
                 {
                     new Vector3(-1.5f, 0, 1.5f), new Vector3(1.5f, 0, 1.5f),
@@ -553,6 +581,28 @@ namespace Decrypted.EditorTools
             MuseumProps.Plaque(p, new Vector3(0, 1.1f, 1.9f), 0f, g.HeroTitle, g.HeroPlaque, 0.95f, true);
         }
 
+        // The payoff centerpiece: a grand freestanding panel carrying the verbatim
+        // closing plaque, on a low wide plinth, with a warm emissive backing fill so
+        // it reads cleanly without any new realtime light. Faces the visitor (-Z).
+        private static void HeroComplete(Transform p, Gallery g)
+        {
+            HeroPlinth(p, 0.35f, "marbleLight");
+
+            // Sized to sit comfortably under the 4.25 m completion-hall ceiling.
+            var panel = MuseumKit.Group(p, "ClosingPanel", new Vector3(0, 0, 0.1f));
+            MuseumKit.Box(panel.transform, "Back", new Vector3(0, 1.7f, 0.10f), new Vector3(4.2f, 2.6f, 0.18f), "marbleDark");
+            MuseumKit.Box(panel.transform, "FrameOuter", new Vector3(0, 1.7f, 0.02f), new Vector3(4.6f, 2.9f, 0.10f), "gold");
+            MuseumKit.Box(panel.transform, "FrameInner", new Vector3(0, 1.7f, -0.01f), new Vector3(4.1f, 2.5f, 0.08f), "brass");
+            // Warm emissive fill behind the text, a subtle glow, zero light cost.
+            MuseumKit.Box(panel.transform, "WarmFill", new Vector3(0, 1.7f, 0.0f), new Vector3(3.9f, 2.3f, 0.04f), "glowWarm");
+
+            // Museum name + the closing plaque (the payoff moment).
+            MuseumKit.Label(panel.transform, "Title", new Vector3(0, 2.7f, -0.04f), new Vector2(3.8f, 0.55f),
+                "DECRYPTED", MuseumKit.TextRole.Sign, MuseumKit.BrassText, TextAlignmentOptions.Center, new Vector3(0, 180f, 0));
+            MuseumKit.Label(panel.transform, "Plaque", new Vector3(0, 1.5f, -0.04f), new Vector2(3.6f, 1.7f),
+                g.HeroPlaque, MuseumKit.TextRole.Heading, MuseumKit.WarmWhite, TextAlignmentOptions.Center, new Vector3(0, 180f, 0));
+        }
+
         // ------------------------------------------------------------- PERIMETER
         private static void DressPerimeter(Transform p, Gallery g, Style st)
         {
@@ -595,7 +645,7 @@ namespace Decrypted.EditorTools
                 "“The enemy knows the system. Keep the key.”",
                 "Cryptography  ·  the art of making secrets.",
                 "Cryptanalysis  ·  the art of breaking them.",
-                "Every code ever made has met a mind clever enough to break it — so far.",
+                "Every code ever made has met a mind clever enough to break it, so far.",
             };
             int fcount = 0;
             while (wi < wallSlots.Count && fcount < fillers.Length)
@@ -652,8 +702,9 @@ namespace Decrypted.EditorTools
             MuseumProps.HangingSign(deco.transform, new Vector3(0, H - 1.0f, -hd + 2.6f), g.Name);
             MuseumProps.WallSign(deco.transform, new Vector3(0, H - 0.9f, hd - 0.14f), 180f, g.Name, g.Subtitle, st.Accent);
 
-            // Orientation plaque flush on the entrance wall.
-            MuseumProps.Plaque(deco.transform, new Vector3(hw - 2.4f, 1.6f, -hd + 0.18f), 0f, "ABOUT THIS GALLERY", g.Intro, 0.95f, true);
+            // Orientation plaque on the entrance wall, lifted into the clear band
+            // ABOVE the 2.0 m wall-slot exhibit boards so it no longer overlaps them.
+            MuseumProps.Plaque(deco.transform, new Vector3(hw - 2.4f, 3.55f, -hd + 0.18f), 0f, "ABOUT THIS GALLERY", g.Intro, 0.95f, true);
 
             // Directory near the entrance, on whichever front corner is free.
             if (g.Directory != null && g.Directory.Length > 0)
@@ -698,6 +749,25 @@ namespace Decrypted.EditorTools
         {
             var lights = MuseumKit.Group(p, "Lighting");
             float hw = st.W * 0.5f, hd = st.D * 0.5f, H = st.H;
+
+            // The completion hall is BAKED-ONLY: no new realtime lights. Its glow comes
+            // from the emissive laylight, sconces, clerestory, chandeliers and the warm
+            // panel fill (all zero-cost). We add a light probe group so the dynamic
+            // player and hands pick up the baked bounce. (Bake via Window > Rendering >
+            // Lighting > Generate Lighting for the final look.)
+            if (g.Key == "complete")
+            {
+                var probesGO = MuseumKit.Group(lights.transform, "LightProbes");
+                var lpg = probesGO.AddComponent<LightProbeGroup>();
+                var pts = new List<Vector3>();
+                float pxw = hw - 1.2f, pzd = hd - 1.2f;
+                foreach (float x in new[] { -pxw, -pxw * 0.4f, pxw * 0.4f, pxw })
+                    foreach (float z in new[] { -pzd, 0f, pzd })
+                        foreach (float y in new[] { 0.4f, 1.6f, 3.0f })
+                            pts.Add(new Vector3(x, y, z));
+                lpg.probePositions = pts.ToArray();
+                return;
+            }
 
             // Two hero spots from the ceiling, flanking and aimed at the centerpiece.
             MuseumKit.Spot(lights.transform, "HeroSpotA", new Vector3(-1.4f, H - 0.3f, HeroZ + 1.0f), new Vector3(60, 200, 0), st.Key, st.Intensity, 12f, 42f, false);

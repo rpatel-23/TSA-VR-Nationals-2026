@@ -9,8 +9,13 @@
 #  in order, so a single Blender session produces the whole art set.
 #
 #  Run:
-#    blender --background --python export_all.py            # FBX (default)
-#    blender --background --python export_all.py -- --glb   # glTF/GLB instead
+#    blender --background --python export_all.py               # BOTH .fbx and .glb
+#    blender --background --python export_all.py -- --glb-only  # GLB only
+#    blender --background --python export_all.py -- --fbx-only  # FBX only
+#
+#  By default every artifact is exported as BOTH FBX and GLB. GLB (glTF 2.0) is the
+#  modern, more stable open format and imports natively into Unity 2022.3 with no
+#  extra package, so it is the recommended fallback if an FBX ever fails.
 #
 #  The "--" separates Blender's args from this script's args.
 # -----------------------------------------------------------------------------
@@ -41,29 +46,42 @@ PIPELINE = [
 ]
 
 
-def parse_fmt():
-    fmt = "FBX"
+def parse_formats():
+    """Default: export BOTH FBX and GLB. --glb-only / --fbx-only narrow it."""
+    formats = [("FBX", ".fbx"), ("GLB", ".glb")]
     if "--" in sys.argv:
         extra = sys.argv[sys.argv.index("--") + 1:]
-        if "--glb" in extra or "--gltf" in extra:
-            fmt = "GLB"
-    return fmt
+        if "--glb-only" in extra or "--gltf-only" in extra:
+            formats = [("GLB", ".glb")]
+        elif "--fbx-only" in extra:
+            formats = [("FBX", ".fbx")]
+    return formats
 
 
 def main():
-    fmt = parse_fmt()
-    ext = ".fbx" if fmt == "FBX" else ".glb"
+    formats = parse_formats()
     os.makedirs(OUT_DIR, exist_ok=True)
-    print(f"[export_all] exporting {len(PIPELINE)} assets as {fmt} → {OUT_DIR}")
+    names = " + ".join(f for f, _ in formats)
+    print(f"[export_all] exporting {len(PIPELINE)} assets as {names} -> {OUT_DIR}")
 
+    results = []  # (base, fmt, ok)
     for module, base in PIPELINE:
-        print(f"[export_all] building {base} via {module.__name__}.build() …")
+        print(f"[export_all] building {base} via {module.__name__}.build() ...")
         col = module.build()                      # resets scene, returns its collection
-        out_path = os.path.join(OUT_DIR, base + ext)
-        gc.export_collection(col, out_path, fmt=fmt)
+        for fmt, ext in formats:
+            out_path = os.path.join(OUT_DIR, base + ext)
+            ok = gc.export_collection(col, out_path, fmt=fmt)   # never raises; prints traceback on failure
+            results.append((base, fmt, ok))
 
-    print("[export_all] all assets exported. Import the folder into Unity, set the "
-          "model scale/axis on import, and assign materials/URP shaders as needed.")
+    ok_count = sum(1 for _, _, ok in results if ok)
+    print(f"\n[export_all] done: {ok_count}/{len(results)} exports succeeded.")
+    for base, fmt, ok in results:
+        print(f"   {'OK  ' if ok else 'FAIL'} {base}.{fmt.lower()}")
+    if ok_count < len(results):
+        print("[export_all] Some exports FAILED (see tracebacks above). The GLB "
+              "fallback is preferred if FBX keeps failing.")
+    print("[export_all] Run validate_exports.py to confirm file sizes, then import "
+          "the Generated folder into Unity (set model scale/axis on import).")
 
 
 if __name__ == "__main__":

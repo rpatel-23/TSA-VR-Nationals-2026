@@ -117,7 +117,7 @@ namespace Decrypted.Interaction
 
         private IEnumerator RevealRoutine()
         {
-            yield return new WaitForSeconds(_autoStartDelay);
+            yield return new WaitForSecondsRealtime(_autoStartDelay); // unscaled time
 
             // Final chord swells right as the transformation begins.
             if (!_chordPlayed && !string.IsNullOrEmpty(_finalChordKey) && AudioManager.Instance != null)
@@ -130,12 +130,12 @@ namespace Decrypted.Interaction
             bool plaqueStarted = false;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _morphSeconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _morphSeconds); // unscaled time
                 float p = Mathf.Clamp01(t);
                 ApplyMorph(p);
 
                 if (_spinRoot != null)
-                    _spinRoot.Rotate(Vector3.up, _spinSpeed * Time.deltaTime, Space.World);
+                    _spinRoot.Rotate(Vector3.up, _spinSpeed * Time.unscaledDeltaTime, Space.World);
 
                 if (!plaqueStarted && p >= _plaqueFadeStart)
                 {
@@ -149,9 +149,11 @@ namespace Decrypted.Interaction
             // Make sure the plaque is fully up even on very short morph times.
             if (!plaqueStarted) yield return FadePlaqueIn();
 
-            // Hold the final tableau briefly, then complete the experience.
-            yield return new WaitForSeconds(2.0f);
-            GameManager.Instance?.Advance(); // RevealChamber -> Complete
+            // Hold the final tableau briefly, then signal the win condition.
+            // AutoProgressionController listens for this and carries the player on
+            // (RevealChamber -> Complete) via the countdown popup.
+            yield return new WaitForSecondsRealtime(2.0f); // unscaled time
+            EventBus.Publish(new ExhibitSolvedEvent(MuseumState.RevealChamber));
         }
 
         /// <summary>Map progress 0..1 onto the three stages (and the blendshapes).
@@ -207,7 +209,7 @@ namespace Decrypted.Interaction
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / Mathf.Max(0.01f, _plaqueFadeSeconds);
+                t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _plaqueFadeSeconds); // unscaled time
                 _conclusionGroup.alpha = Mathf.Lerp(start, 1f, Mathf.SmoothStep(0f, 1f, t));
                 yield return null;
             }

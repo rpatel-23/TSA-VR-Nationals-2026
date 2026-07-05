@@ -63,17 +63,22 @@ namespace Decrypted.Interaction
 
         public void AllOff()
         {
+            // Stop any in-flight flash coroutines first, otherwise a running Flash would
+            // keep re-lighting the lamp after we zero it (the "lamp still glows" bug).
+            if (_routines != null)
+                for (int i = 0; i < _routines.Length; i++)
+                    if (_routines[i] != null) { StopCoroutine(_routines[i]); _routines[i] = null; }
             for (int i = 0; i < _lamps.Length; i++) SetLamp(i, 0f);
         }
 
         private IEnumerator Flash(int idx)
         {
             float t = 0f;
-            while (t < 1f) { t += Time.deltaTime / Mathf.Max(0.01f, _onSeconds); SetLamp(idx, _peak * t); yield return null; }
+            while (t < 1f) { t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _onSeconds); SetLamp(idx, _peak * t); yield return null; }
             SetLamp(idx, _peak);
-            yield return new WaitForSeconds(_holdSeconds);
+            yield return new WaitForSecondsRealtime(_holdSeconds);
             t = 0f;
-            while (t < 1f) { t += Time.deltaTime / Mathf.Max(0.01f, _offSeconds); SetLamp(idx, _peak * (1f - t)); yield return null; }
+            while (t < 1f) { t += Time.unscaledDeltaTime / Mathf.Max(0.01f, _offSeconds); SetLamp(idx, _peak * (1f - t)); yield return null; }
             SetLamp(idx, 0f);
             _routines[idx] = null;
         }

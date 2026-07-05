@@ -11,8 +11,8 @@
 //                          status lamps, kiosk screens) via a MaterialPropertyBlock
 //                          so no material is instanced and no GI rebuild occurs.
 //
-//  They are placed and configured from the editor builder; nothing else in the
-//  project depends on them, so they are safe to remove.
+//  They are placed and configured from the editor builders (MuseumBuilder /
+//  MuseumProps) and instanced into the scene, so both classes are in active use.
 // -----------------------------------------------------------------------------
 
 using UnityEngine;
